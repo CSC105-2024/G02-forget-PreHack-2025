@@ -1,0 +1,114 @@
+import React from 'react'
+import Navbar from '../components/Navbar'
+import { NavLink } from "react-router-dom";
+import { IoMdArrowBack } from "react-icons/io";
+import { IoIosStar } from "react-icons/io";
+import { FaPlus } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import { BiLike } from "react-icons/bi";
+
+const FoodPostPage = () => {
+  return (
+    <>
+    <Navbar></Navbar>
+    <div className='text-[36px] ml-10 mt-5'>
+        <NavLink to={"/search"}><IoMdArrowBack /></NavLink>
+    </div>
+    <div className='bg-white h-80 mt-5'>
+        <div></div>
+    </div>
+    <div className='flex justify-center mt-10'>
+        <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+            <div className='flex justify-between items-center'>
+                <h1 className='text-[36px] font-semibold'>Name</h1>
+                <button className='bg-[#DE0000] text-white text-[20px] font-semibold px-8 py-1 rounded-lg cursor-pointer'>Review</button>
+            </div>
+            <p className='text-[#A9A9A9] text-[24px]'>Category</p>
+            <p className='text-[#A9A9A9] text-[24px]'>Price</p>
+            <div className='flex items-center gap-2'>
+                <div className='flex w-20 justify-center items-center w-15 gap-1 bg-[#DE0000] px-2 rounded-sm'>
+                    <p className='text-white text-[20px] font-semibold'>4.0</p>
+                    <IoIosStar className='text-white text-[20px]'/>
+                </div>
+                <p className='text-[#A9A9A9] text-[18px]'>2 reviews</p>
+            </div>
+            <hr className='my-5 border-1'/>
+            <button className='flex justify-center items-center gap-2 text-[20px] text-white bg-black px-8 py-1 rounded-lg cursor-pointer'><FaPlus /> Image</button>
+        </div>
+    </div>
+
+    <div className='flex justify-center mt-10'>
+        <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+            <div className='flex items-center gap-5 text-[30px] mb-4'>
+                <FaLocationDot/>
+                <h1>Location</h1>
+            </div>
+            <div className='flex items-center gap-5 text-[30px]'>
+                <FaPhoneAlt/>
+                <h1>Phone number</h1>
+            </div>
+        </div>
+    </div>
+
+    <div className='flex justify-center mt-10 mb-20'>
+        <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+            <h1 className='text-[36px] font-bold'>Comment</h1>
+            <div className='flex justify-center items-center text-[#DE0000] text-[48px] gap-x-4'>
+                <h1 className='font-bold'>4.0</h1>
+                <IoIosStar/>
+            </div>
+            {/* Comment #1 */}
+            <div>
+                <div className='flex items-center gap-4'>
+                    <div className='border-1 rounded-[100%] p-2'>
+                        <FaUser className='text-[28px]'/>
+                    </div>
+                    <p className='text-[24px] font-bold'>To***</p>
+                </div>
+                <div className='flex gap-1 mt-2'>
+                    <IoIosStar className='bg-[#DE0000] text-white text-[24px] p-1 rounded-sm'/>
+                    <IoIosStar className='bg-[#DE0000] text-white text-[24px] p-1 rounded-sm'/>
+                    <IoIosStar className='bg-[#DE0000] text-white text-[24px] p-1 rounded-sm'/>
+                    <IoIosStar className='bg-[#DE0000] text-white text-[24px] p-1 rounded-sm'/>
+                    <IoIosStar className='bg-[#DE0000] text-white text-[24px] p-1 rounded-sm'/>
+                    <p className='text-[#A9A9A9] ml-2'>02/01/2025</p>
+                </div>
+                <p className='text-[24px] my-3'>Content.................................................................................</p>
+                <div className='flex items-center text-[24px] gap-2'>
+                    <BiLike className='cursor-pointer'/>
+                    <p>0 like</p>
+                </div>
+            </div>
+            <hr className='my-5 border-1'/>
+
+            {/* Comment #2 */}
+            <div>
+                <div className='flex items-center gap-4'>
+                    <div className='border-1 rounded-[100%] p-2'>
+                        <FaUser className='text-[28px]'/>
+                    </div>
+                    <p className='text-[24px] font-bold'>Ji***</p>
+                </div>
+                <div className='flex gap-1 mt-2'>
+                    <IoIosStar className='bg-[#DE0000] text-white text-[24px] p-1 rounded-sm'/>
+                    <IoIosStar className='bg-[#DE0000] text-white text-[24px] p-1 rounded-sm'/>
+                    <IoIosStar className='bg-[#DE0000] text-white text-[24px] p-1 rounded-sm'/>
+                    <IoIosStar className='bg-[#A9A9A9] text-white text-[24px] p-1 rounded-sm'/>
+                    <IoIosStar className='bg-[#A9A9A9] text-white text-[24px] p-1 rounded-sm'/>
+                    <p className='text-[#A9A9A9] ml-2'>02/01/2025</p>
+                </div>
+                <p className='text-[24px] my-3'>Content.................................................................................</p>
+                <div className='flex items-center text-[24px] gap-2'>
+                    <BiLike className='cursor-pointer'/>
+                    <p>0 like</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </>
+  )
+}
+
+export default FoodPostPage

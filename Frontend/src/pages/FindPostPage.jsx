@@ -27,7 +27,7 @@ const FindPostPage = () => {
         </div>
     </div>
 
-    {showFilter && <FilterModal></FilterModal>}
+    {showFilter && <FilterModal filter={setShowModal}></FilterModal>}
 
     <div className='flex justify-center mt-10 cursor-pointer'>
         <div className='flex gap-5 bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>

@@ -8,6 +8,8 @@ import MainPage from './pages/MainPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import FindPostPage from './pages/FindPostPage.jsx';
+import FoodPostPage from './pages/FoodPostPage.jsx';
+import AddFoodPost from './pages/AddFoodPost.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
   {
     path: "/search",
     element: <FindPostPage />
+  },
+  {
+    path: "/foodPost",
+    element: <FoodPostPage />
+  },
+  {
+    path: "/addFoodPost",
+    element: <AddFoodPost />
   }
 ]);
 
