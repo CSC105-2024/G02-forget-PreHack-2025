@@ -1,13 +1,26 @@
-import React from 'react'
+import { React, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { FaPlus } from "react-icons/fa";
+import { IoMdRemove } from "react-icons/io";
 
 const AddFoodPost = () => {
+    const [categoryList, setCategoryList] = useState([{category: ""}])
     const categories = [
     'Fast food', 'Seafoods', 'Noodles', 'Desserts', 'Burgers', 'Steaks',
     'Dietary Food', 'Buffets', 'Hot Pots', 'Grilled', 'Pizzas', 'Bakeries',
     'Vegetarian food', 'Thai Food', 'Chinese Food', 'Japanese Food', 'Korean Food', 'French Food',
     ];
+
+    function handleAddCategory() {
+        setCategoryList([...categoryList, {category: ""}]);
+    }
+
+    function handleRemoveCategory(index) {
+        const list = [...categoryList];
+        list.splice(index, 1);
+        setCategoryList(list);
+        console.log(index);
+    }
   return (
     <>
     <Navbar></Navbar>
@@ -21,15 +34,28 @@ const AddFoodPost = () => {
                 </label>
                 <label>
                     <p className='text-[32px] mb-2'><span className='text-[#DE0000]'>*</span> Category</p>
+                    {categoryList.map((category, index) => (
+                        <div key={index}>
+                            <select className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black'>
+                                <option value=""></option>
+                                {categories.map((food, indexFood) => (
+                                    <option key={indexFood} value={food}>{food}</option>
+                                ))}
+                            </select>
+                            {categoryList.length > 1 && <button onClick={() => handleRemoveCategory(index)} className='ml-4 bg-[#D9D9D9] p-1 rounded-[100%] cursor-pointer hover:bg-[#A9A9A9]'><IoMdRemove /></button>}
+                        </div>
+                    ))}
+                    {/* <p className='text-[32px] mb-2'><span className='text-[#DE0000]'>*</span> Category</p>
                     <select className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black'>
-                        <option value="">-</option>
-                        {categories.map((food, index) => (
-                            <option key={index} value={food}>{food}</option>
+                        <option value="-">-</option>
+                        {categories.map((food, indexFood) => (
+                            <option key={indexFood} value={food}>{food}</option>
                         ))}
-                    </select>
+                    </select> */}
+                    
                 </label>
                 <br />
-                <button className='flex items-center gap-2 text-[#DE0000] border-b-2 font-semibold mb-5 cursor-pointer'><FaPlus className='text-[14px]'/> Add Category</button>
+                <button onClick={handleAddCategory} className='flex items-center gap-2 text-[#DE0000] border-b-2 font-semibold -mt-5 mb-5 cursor-pointer'><FaPlus className='text-[14px]'/> Add Category</button>
                 <label>
                     <p className='text-[32px] mb-2'><span className='text-[#DE0000]'>*</span> Price</p>
                     <div className='flex gap-3'>
