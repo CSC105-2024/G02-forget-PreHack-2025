@@ -48,7 +48,7 @@ const MainPage = () => {
             <div className='flex justify-evenly mb-10'>
                 {/* Post#1 */}
                 <div className='w-60 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img className='flex items-start  h-[200px] w-[250px] object-cover rounded-t-lg' src={FriedChickenCurry} alt={"dsa"} />
+                    <img className='flex items-start  h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={FriedChickenCurry} alt={"dsa"} />
                     <div className='flex mt-2 p-2 justify-between items-center h-5'>
                         <h1 className='text-[24px] font-semibold'>Name</h1>
                         <div className='flex items-center gap-1 bg-[#DE0000] px-2 rounded-md'>
@@ -57,11 +57,11 @@ const MainPage = () => {
                         </div>
                     </div>
                     <h2 className='text-[#A9A9A9] ml-2 mb-10'>Category</h2>
-                    <p className='font-bold'>1234 views</p>
+                    <p className='ml-2 font-bold'>1234 views</p>
                 </div>
                 {/* Post#2 */}
                 <div className='w-60 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img className='flex h-[200px] w-[250px] object-cover rounded-t-lg' src={DryNoodle} alt={"dsa"} />
+                    <img className='flex h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={DryNoodle} alt={"dsa"} />
                     <div className='flex mt-2 p-2 justify-between items-center h-5'>
                         <h1 className='text-[24px] font-semibold'>Name</h1>
                         <div className='flex items-center gap-1 bg-[#DE0000] px-2 rounded-md'>
@@ -70,11 +70,11 @@ const MainPage = () => {
                         </div>
                     </div>
                     <h2 className='text-[#A9A9A9] ml-2 mb-10'>Category</h2>
-                    <p className='font-bold'>1234 views</p>
+                    <p className='ml-2 font-bold'>1234 views</p>
                 </div>
                 {/* Post#3 */}
                 <div className='w-60 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img className='flex h-[200px] w-[250px] object-cover rounded-t-lg' src={CrispyPorkSalad} alt={"dsa"} />
+                    <img className='flex h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={CrispyPorkSalad} alt={"dsa"} />
                     <div className='flex mt-2 p-2 justify-between items-center h-5'>
                         <h1 className='text-[24px] font-semibold'>Name</h1>
                         <div className='flex items-center gap-1 bg-[#DE0000] px-2 rounded-md'>
@@ -83,11 +83,11 @@ const MainPage = () => {
                         </div>
                     </div>
                     <h2 className='text-[#A9A9A9] ml-2 mb-10'>Category</h2>
-                    <p className='font-bold'>1234 views</p>
+                    <p className='ml-2 font-bold'>1234 views</p>
                 </div>
                 {/* Post#4 */}
                 <div className='w-60 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img className='flex h-[200px] w-[250px] object-cover rounded-t-lg' src={MalaGrilledPorkNeck} alt={"dsa"} />
+                    <img className='flex h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={MalaGrilledPorkNeck} alt={"dsa"} />
                     <div className='flex mt-2 p-2 justify-between items-center h-5'>
                         <h1 className='text-[24px] font-semibold'>Name</h1>
                         <div className='flex items-center gap-1 bg-[#DE0000] px-2 rounded-md'>
@@ -96,7 +96,7 @@ const MainPage = () => {
                         </div>
                     </div>
                     <h2 className='text-[#A9A9A9] ml-2 mb-10'>Category</h2>
-                    <p className='font-bold'>1234 views</p>
+                    <p className='ml-2 font-bold'>1234 views</p>
                 </div>
             </div>
             <div className='flex justify-center'>
