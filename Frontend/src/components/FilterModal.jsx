@@ -2,14 +2,64 @@ import { useState } from 'react'
 import { ImCross } from "react-icons/im";
 
 const FilterModal = ({filter}) => {
-    const [checkAll, setCheckAll] = useState(false)
-    const ratings = ['3.5+',, '4.0+', '4.5+'];
+    // const [checkAll, setCheckAll] = useState(false);
+    const [ratingList, setRatingList] = useState([]);
+    const [categoryList, setCategoryList] = useState([]);
+    const [priceList, setPriceList] = useState([]);
+    const [isFillAll, setIsFillAll] = useState(true)
+
+    const ratings = ['3.5+', '4.0+', '4.5+'];
     const categories = [
     'Fast food', 'Seafoods', 'Noodles', 'Desserts', 'Burgers', 'Steaks',
     'Dietary Food', 'Buffets', 'Hot Pots', 'Grilled', 'Pizzas', 'Bakeries',
     'Vegetarian food', 'Thai Food', 'Chinese Food', 'Japanese Food', 'Korean Food', 'French Food',
     ];
     const prices = ['< 100 Baht', '101-250 Baht', '251-500 baht', '500 Baht'];
+
+    function handleChangeRating(e, newValue) {
+        if (e.target.checked) {
+            setRatingList((prev) => [... prev, newValue]);
+        } else {
+            setRatingList((prev) => prev.filter((value) => value !== newValue));
+        }
+    }
+
+    function handleChangeCategory(e, newValue) {
+        if (e.target.checked) {
+            setCategoryList((prev) => [... prev, newValue]);
+        } else {
+            setCategoryList((prev) => prev.filter((value) => value !== newValue));
+        }
+    }
+
+    function handleChangePrice(e, newValue) {
+        if (e.target.checked) {
+            setPriceList((prev) => [... prev, newValue]);
+        } else {
+            setPriceList((prev) => prev.filter((value) => value !== newValue));
+        }
+    }
+
+    function fillAll() {
+        setRatingList(ratings);
+        setCategoryList(categories);
+        setPriceList(prices);
+        setIsFillAll(false);
+    }
+
+    function clearAll() {
+        setRatingList([]);
+        setCategoryList([]);
+        setPriceList([]);
+        setIsFillAll(true);
+    }
+
+    function search() {
+        console.log(ratingList);
+        console.log(categoryList);
+        console.log(priceList);
+    }
+
   return (
     <>
     <div className='fixed inset-0 z-40 bg-[rgba(0,0,0,0.50)] flex justify-center items-center'>
@@ -25,7 +75,7 @@ const FilterModal = ({filter}) => {
                     <div className='grid grid-cols-3 gap-3'>
                         {ratings.map((rating, index) => (
                             <label key={index} className='flex items-center gap-3 cursor-pointer'>
-                                <input type="checkbox" checked={checkAll} className='accent-[#DE0000] checked:border-0 h-5 w-5 border-2 rounded-sm cursor-pointer'/>
+                                <input type="checkbox" value={rating} checked={ratingList.includes(rating)} onChange={(e) => handleChangeRating(e, e.target.value)} className='accent-[#DE0000] checked:border-0 h-5 w-5 border-2 rounded-sm cursor-pointer'/>
                                 <span className='text-[20px] font-semibold'>{rating}</span>
                             </label>
                         ))}
@@ -35,7 +85,7 @@ const FilterModal = ({filter}) => {
                     <div className='grid grid-cols-3 gap-3'>
                         {categories.map((food, index) => (
                             <label key={index} className='flex items-center gap-3 cursor-pointer'>
-                                <input type="checkbox" checked={checkAll} className='accent-[#DE0000] checked:border-0 h-5 w-5 border-2 rounded-sm cursor-pointer'/>
+                                <input type="checkbox" value={food} checked={categoryList.includes(food)} onChange={(e) => handleChangeCategory(e, e.target.value)} className='accent-[#DE0000] checked:border-0 h-5 w-5 border-2 rounded-sm cursor-pointer'/>
                                 <span className='text-[20px] font-semibold'>{food}</span>
                             </label>
                         ))}
@@ -45,15 +95,15 @@ const FilterModal = ({filter}) => {
                     <div className='grid grid-cols-4 gap-3'>
                         {prices.map((price, index) => (
                             <label key={index} className='flex items-center gap-3 cursor-pointer'>
-                                <input type="checkbox" checked={checkAll} className='accent-[#DE0000] checked:border-0 h-5 w-5 border-2 rounded-sm cursor-pointer'/>
+                                <input type="checkbox" value={price} checked={priceList.includes(price)} onChange={(e) => handleChangePrice(e, e.target.value)} className='accent-[#DE0000] checked:border-0 h-5 w-5 border-2 rounded-sm cursor-pointer'/>
                                 <span className='text-[20px] font-semibold'>{price}</span>
                             </label>
                         ))}
                     </div>
                 </div>
                 <div className='flex justify-evenly mt-5'>
-                    <button onClick={() => checkAll ? setCheckAll(false) : setCheckAll(true)} className='text-[20px] font-semibold bg-black text-white px-25 py-1 rounded-lg cursor-pointer'>{checkAll ? "Clear" : "Fill All"}</button>
-                    <button className='text-[20px] font-semibold bg-[#DE0000] text-white px-25 py-1 rounded-lg cursor-pointer'>Search</button>
+                    <button onClick={isFillAll ? fillAll : clearAll} className='text-[20px] font-semibold bg-black text-white px-25 py-1 rounded-lg cursor-pointer'>{isFillAll ? "Fill All" : "Clear All"}</button>
+                    <button onClick={search} className='text-[20px] font-semibold bg-[#DE0000] text-white px-25 py-1 rounded-lg cursor-pointer'>Search</button>
                 </div>
             </div>
         </div>
