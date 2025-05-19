@@ -1,4 +1,4 @@
-import React from 'react'
+import { React, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { NavLink } from "react-router-dom";
 import { IoIosStar } from "react-icons/io";
@@ -6,8 +6,33 @@ import Fastfood from '../img/Fastfood.png'
 import Seafood from '../img/Seafood.png'
 import Dessert from '../img/Dessert.png'
 import Noodle from '../img/Noodle.png'
+import Burger from '../img/Burger.png'
+import Buffet from '../img/Buffet.png'
+import Bakery from '../img/Bakery.png'
+import ChineseFood from '../img/Chinese_Food.png'
+import DietaryFood from '../img/Dietary_Food.png'
+import FrenchFood from '../img/French_Food.png'
+import Grilled from '../img/Grilled.png'
+import HotPot from '../img/Hot_Pot.png'
+import JapaneseFood from '../img/Japanese_Food.png'
+import KoreanFood from '../img/Korean_Food.png'
+import Pizza from '../img/Pizza.png'
+import Steak from '../img/Steak.png'
+import ThaiFood from '../img/Thai_Food.png'
+import VegetarianFood from '../img/Vegetarian_Food.png'
+
 
 const MainPage = () => {
+    const [seeMore, setSeeMore] = useState(false)
+
+    function turnSeeMore() {
+        if (seeMore) {
+            setSeeMore(false);
+        } else {
+            setSeeMore(true);
+        }
+    }
+
   return (
     <>
     <Navbar></Navbar>
@@ -78,9 +103,9 @@ const MainPage = () => {
         <div className='bg-white w-275 p-5 pb-20 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
             <div className='flex justify-between items-center'>
                 <h1 className='text-[36px] font-bold underline mb-10'>Category</h1>
-                <button className='text-[#DE0000] text-[18px] font-bold cursor-pointer hover:underline'>See more</button>
+                <button onClick={turnSeeMore} className='text-[#DE0000] text-[18px] font-bold cursor-pointer hover:underline'>See more</button>
             </div>
-            <div className='flex justify-center gap-15'>
+            <div className='flex justify-center gap-15 -mb-5'>
                 {/* Category#1 */}
                 <div className='cursor-pointer'>
                     <img src={Fastfood} alt="fastfood" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
@@ -89,7 +114,7 @@ const MainPage = () => {
                 {/* Category#2 */}
                 <div className='cursor-pointer'>
                     <img src={Seafood} alt="seafood" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
-                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Seafodd</p>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Seafood</p>
                 </div>
                 {/* Category#3 */}
                 <div className='cursor-pointer'>
@@ -102,50 +127,88 @@ const MainPage = () => {
                     <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Noodle</p>
                 </div>
             </div>
-            <div>
+           {seeMore &&
+            <>
+            <div className='flex justify-center gap-15 mt-10'>
                 {/* Category#5 */}
-                <div>
-                    <img src="" alt="" />
-                    <p></p>
+                <div className='cursor-pointer'>
+                    <img src={Burger} alt="burger" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Burger</p>
                 </div>
                 {/* Category#6 */}
-                <div>
-                    <img src="" alt="" />
-                    <p></p>
+                <div className='cursor-pointer'>
+                    <img src={Steak} alt="steak" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Steak</p>
                 </div>
                 {/* Category#7 */}
-                <div>
-                    <img src="" alt="" />
-                    <p></p>
+                <div className='cursor-pointer'>
+                    <img src={DietaryFood} alt="dietary_food" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Dietary Food</p>
                 </div>
                 {/* Category#8 */}
-                <div>
-                    <img src="" alt="" />
-                    <p></p>
+                <div className='cursor-pointer'>
+                    <img src={Buffet} alt="buffet" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Buffet</p>
                 </div>
             </div>
-            <div>
+            <div className='flex justify-center gap-15 mt-5'>
                 {/* Category#9 */}
-                <div>
-                    <img src="" alt="" />
-                    <p></p>
+                <div className='cursor-pointer'>
+                    <img src={HotPot} alt="hot_pot" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Hot Pot</p>
                 </div>
                 {/* Category#10 */}
-                <div>
-                    <img src="" alt="" />
-                    <p></p>
+                <div className='cursor-pointer'>
+                    <img src={Grilled} alt="grilled" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Grilled</p>
                 </div>
                 {/* Category#11 */}
-                <div>
-                    <img src="" alt="" />
-                    <p></p>
+                <div className='cursor-pointer'>
+                    <img src={Pizza} alt="pizza" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Pizza</p>
                 </div>
                 {/* Category#12 */}
-                <div>
-                    <img src="" alt="" />
-                    <p></p>
+                <div className='cursor-pointer'>
+                    <img src={Bakery} alt="bakery" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Bakery</p>
                 </div>
             </div>
+            <div className='flex justify-center gap-15 mt-5'>
+                {/* Category#13 */}
+                <div className='cursor-pointer'>
+                    <img src={VegetarianFood} alt="vegetarian_food" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Vegetarian Food</p>
+                </div>
+                {/* Category#14 */}
+                <div className='cursor-pointer'>
+                    <img src={ThaiFood} alt="thai_food" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Thai Food</p>
+                </div>
+                {/* Category#15 */}
+                <div className='cursor-pointer'>
+                    <img src={ChineseFood} alt="chinese_food" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Chinese Food</p>
+                </div>
+                {/* Category#16 */}
+                <div className='cursor-pointer'>
+                    <img src={JapaneseFood} alt="japanese_food" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Japanese Food</p>
+                </div>
+            </div>
+            <div className='flex justify-center gap-15 mt-5'>
+                {/* Category#17 */}
+                <div className='cursor-pointer'>
+                    <img src={KoreanFood} alt="Korean_food" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>Korean Food</p>
+                </div>
+                {/* Category#18 */}
+                <div className='cursor-pointer'>
+                    <img src={FrenchFood} alt="French_food" className='rounded-md brightness-75 w-50 h-50 object-cover hover:brightness-50'/>
+                    <p className='text-center text-[20px] text-white font-bold -mt-8 relative'>French Food</p>
+                </div>
+            </div>
+            </>
+            }
         </div>
     </div>
     </>
