@@ -6,6 +6,12 @@ import Fastfood from '../img/Fastfood.png'
 import Seafood from '../img/Seafood.png'
 import Dessert from '../img/Dessert.png'
 import Noodle from '../img/Noodle.png'
+//top4
+import FriedChickenCurry from '../img/FriedChickenCurry.png'
+import MalaGrilledPorkNeck from '../img/MalaGrilledPorkNeck.png'
+import CrispyPorkSalad from '../img/CrispyPorkSalad.png'
+import DryNoodle from '../img/DryNoodle.png'
+
 import Burger from '../img/Burger.png'
 import Buffet from '../img/Buffet.png'
 import Bakery from '../img/Bakery.png'
@@ -41,55 +47,55 @@ const MainPage = () => {
             <h1 className='text-[36px] font-bold underline mb-10'>Popular menu</h1>
             <div className='flex justify-evenly mb-10'>
                 {/* Post#1 */}
-                <div className='w-60 p-2 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img src="" alt={"dsa"} />
-                    <div className='flex justify-between items-center h-5'>
+                <div className='w-60 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
+                    <img className='flex items-start  h-[200px] w-[250px] object-cover rounded-t-lg' src={FriedChickenCurry} alt={"dsa"} />
+                    <div className='flex mt-2 p-2 justify-between items-center h-5'>
                         <h1 className='text-[24px] font-semibold'>Name</h1>
                         <div className='flex items-center gap-1 bg-[#DE0000] px-2 rounded-md'>
                             <p className='text-white text-[14px] font-semibold'>4.0</p>
                             <IoIosStar className='text-white text-[14px]'/>
                         </div>
                     </div>
-                    <h2 className='text-[#A9A9A9] mb-10'>Category</h2>
+                    <h2 className='text-[#A9A9A9] ml-2 mb-10'>Category</h2>
                     <p className='font-bold'>1234 views</p>
                 </div>
                 {/* Post#2 */}
-                <div className='w-60 p-2 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img src="" alt={"dsa"} />
-                    <div className='flex justify-between items-center h-5'>
+                <div className='w-60 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
+                    <img className='flex h-[200px] w-[250px] object-cover rounded-t-lg' src={DryNoodle} alt={"dsa"} />
+                    <div className='flex mt-2 p-2 justify-between items-center h-5'>
                         <h1 className='text-[24px] font-semibold'>Name</h1>
                         <div className='flex items-center gap-1 bg-[#DE0000] px-2 rounded-md'>
                             <p className='text-white text-[14px] font-semibold'>4.0</p>
                             <IoIosStar className='text-white text-[14px]'/>
                         </div>
                     </div>
-                    <h2 className='text-[#A9A9A9] mb-10'>Category</h2>
+                    <h2 className='text-[#A9A9A9] ml-2 mb-10'>Category</h2>
                     <p className='font-bold'>1234 views</p>
                 </div>
                 {/* Post#3 */}
-                <div className='w-60 p-2 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img src="" alt={"dsa"} />
-                    <div className='flex justify-between items-center h-5'>
+                <div className='w-60 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
+                    <img className='flex h-[200px] w-[250px] object-cover rounded-t-lg' src={CrispyPorkSalad} alt={"dsa"} />
+                    <div className='flex mt-2 p-2 justify-between items-center h-5'>
                         <h1 className='text-[24px] font-semibold'>Name</h1>
                         <div className='flex items-center gap-1 bg-[#DE0000] px-2 rounded-md'>
                             <p className='text-white text-[14px] font-semibold'>4.0</p>
                             <IoIosStar className='text-white text-[14px]'/>
                         </div>
                     </div>
-                    <h2 className='text-[#A9A9A9] mb-10'>Category</h2>
+                    <h2 className='text-[#A9A9A9] ml-2 mb-10'>Category</h2>
                     <p className='font-bold'>1234 views</p>
                 </div>
                 {/* Post#4 */}
-                <div className='w-60 p-2 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img src="" alt={"dsa"} />
-                    <div className='flex justify-between items-center h-5'>
+                <div className='w-60 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
+                    <img className='flex h-[200px] w-[250px] object-cover rounded-t-lg' src={MalaGrilledPorkNeck} alt={"dsa"} />
+                    <div className='flex mt-2 p-2 justify-between items-center h-5'>
                         <h1 className='text-[24px] font-semibold'>Name</h1>
                         <div className='flex items-center gap-1 bg-[#DE0000] px-2 rounded-md'>
                             <p className='text-white text-[14px] font-semibold'>4.0</p>
                             <IoIosStar className='text-white text-[14px]'/>
                         </div>
                     </div>
-                    <h2 className='text-[#A9A9A9] mb-10'>Category</h2>
+                    <h2 className='text-[#A9A9A9] ml-2 mb-10'>Category</h2>
                     <p className='font-bold'>1234 views</p>
                 </div>
             </div>
