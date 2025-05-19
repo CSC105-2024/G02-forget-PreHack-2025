@@ -15,11 +15,14 @@ const AddFoodPost = () => {
         setCategoryList([...categoryList, {category: ""}]);
     }
 
-    function handleRemoveCategory(index) {
-        const list = [...categoryList];
-        list.splice(index, 1);
-        setCategoryList(list);
-        console.log(index);
+    function handleChangeCategory(i, newValue) {
+        const updated = [...categoryList];
+        updated[i] = newValue;
+        setCategoryList(updated)
+    }
+
+    function handleRemoveCategory(i) {
+        setCategoryList((prev) => prev.filter((category, index) => index !== i))
     }
   return (
     <>
@@ -36,7 +39,7 @@ const AddFoodPost = () => {
                     <p className='text-[32px] mb-2'><span className='text-[#DE0000]'>*</span> Category</p>
                     {categoryList.map((category, index) => (
                         <div key={index}>
-                            <select className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black'>
+                            <select value={category} onChange={(e) => handleChangeCategory(index, e.target.value)} className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black'>
                                 <option value=""></option>
                                 {categories.map((food, indexFood) => (
                                     <option key={indexFood} value={food}>{food}</option>
@@ -85,11 +88,11 @@ const AddFoodPost = () => {
             <div className='ml-20'>
                 <label>
                     <p className='text-[32px] mb-2'>Mobile Number</p>
-                    <input type="text" className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your mobile number (i.e: 082-xxx-xxxx)'/>
+                    <input type="text" pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your mobile number (i.e: 082-xxx-xxxx)'/>
                 </label>
                 <label>
                     <p className='text-[32px] mb-2'>Restaurant Number</p>
-                    <input type="text" className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your restaurant number (i.e: 02-xxx-xxxx)'/>
+                    <input type="text" pattern='[0-9]{2}-[0-9]{3}-[0-9]{4}' className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your restaurant number (i.e: 02-xxx-xxxx)'/>
                 </label>
             </div>
         </div>
