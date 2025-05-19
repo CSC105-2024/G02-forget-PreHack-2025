@@ -1,8 +1,20 @@
 import { useState } from 'react'
 import { ImCross } from "react-icons/im";
 
+export let sendFilterRating = [];
+export let sendFilterCategory = [];
+export let sendFilterPrice = [];
+export const setSendFilterRating = (rating) => {
+    sendFilterRating = rating;
+}
+export const setSendFilterCategory = (category) => {
+    sendFilterCategory = category;
+}
+export const setSendFilterPrice = (price) => {
+    sendFilterPrice = price;
+}
+
 const FilterModal = ({filter}) => {
-    // const [checkAll, setCheckAll] = useState(false);
     const [ratingList, setRatingList] = useState([]);
     const [categoryList, setCategoryList] = useState([]);
     const [priceList, setPriceList] = useState([]);
@@ -55,9 +67,10 @@ const FilterModal = ({filter}) => {
     }
 
     function search() {
-        console.log(ratingList);
-        console.log(categoryList);
-        console.log(priceList);
+        setSendFilterRating(ratingList);
+        setSendFilterCategory(categoryList);
+        setSendFilterPrice(priceList);
+        filter(false);
     }
 
   return (

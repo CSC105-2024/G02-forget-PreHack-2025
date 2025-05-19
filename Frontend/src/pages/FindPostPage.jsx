@@ -1,12 +1,16 @@
 import { useState } from 'react'
 import NavbarNoSearchingBar from '../components/NavbarNoSearchingBar'
 import FilterModal from '../components/FilterModal';
+import { sendFilterRating, sendFilterCategory, sendFilterPrice } from '../components/FilterModal';
+// router
 import { NavLink } from "react-router-dom";
+// Icon
 import { IoMdArrowBack } from "react-icons/io";
 import { FaSearch } from "react-icons/fa";
 import { FiFilter } from "react-icons/fi";
 import { IoIosStar } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
+import { ImCross } from "react-icons/im";
 
 const FindPostPage = () => {
     const [showFilter, setShowModal] = useState(false);
@@ -28,6 +32,29 @@ const FindPostPage = () => {
     </div>
 
     {showFilter && <FilterModal filter={setShowModal}></FilterModal>}
+
+    <div className='flex justify-center mt-10'>
+        <div className='grid grid-cols-6 gap-3 w-275'>
+            {sendFilterRating.map((rating, index) => (
+                <div key={index} className='flex justify-evenly items-center py-1 px-2 border-1 rounded-xl bg-[#D9D9D9] cursor-pointer'>
+                    <ImCross className='text-[12px]'/>
+                    <p>{rating}</p>
+                </div>
+            ))}
+            {sendFilterCategory.map((category, index) => (
+                <div key={index} className='flex justify-evenly items-center py-1 px-2 border-1 rounded-xl bg-[#D9D9D9] cursor-pointer'>
+                    <ImCross className='text-[12px]'/>
+                    <p>{category}</p>
+                </div>
+            ))}
+            {sendFilterPrice.map((price, index) => (
+                <div key={index} className='flex justify-evenly items-center py-1 px-2 border-1 rounded-xl bg-[#D9D9D9] cursor-pointer'>
+                    <ImCross className='text-[12px]'/>
+                    <p>{price}</p>
+                </div>
+            ))}
+        </div>
+    </div>
 
     <div className='flex justify-center mt-10 cursor-pointer'>
         <div className='flex gap-5 bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
