@@ -45,7 +45,7 @@ const Navbar = () => {
             <>
             <NavLink to={"/login"} className='flex items-center gap-3 border-1 border-[#D9D9D9] py-2 px-6 rounded-2xl mr-10 hover:border-black cursor-pointer'>
                 <FaUser className='border-1 rounded-[100%] text-[48px] p-1'/>
-                <p className='text-[24px] font-bold'>login</p>
+                <p className='text-[24px] font-bold'>Login</p>
             </NavLink>
             </>
             }
