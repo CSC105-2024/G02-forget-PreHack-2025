@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <>
     <header className=''>
-        <nav className='flex justify-between items-center max-sm:h-15 h-25 w-screen bg-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.25)]'>
+        <nav className='flex justify-between items-center max-sm:h-15 h-25 bg-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.25)]'>
             <NavLink to={"/home"} className='max-sm:text-[20px] text-[36px] font-bold ml-2 lg:ml-10 cursor-pointer'>
                 <h1 className='flex flex-row'>
                     <span className='text-[#DE0000]'>Abb&nbsp;</span>
