@@ -113,7 +113,7 @@ const MainPage = () => {
                 <h1 className='text-[36px] font-bold underline'>Category</h1>
                 <button onClick={turnSeeMore} className='text-[#DE0000] text-[18px] font-bold cursor-pointer hover:underline'>See more</button>
             </div>
-            <div className='flex justify-center gap-3 lg:gap-15 -mb-5 mt-4'>
+            <div className='flex justify-center gap-3 lg:gap-15 lg:-mb-5 mt-4'>
                 {/* Category#1 */}
                 <div className='cursor-pointer'>
                     <img src={Fastfood} alt="fastfood" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>

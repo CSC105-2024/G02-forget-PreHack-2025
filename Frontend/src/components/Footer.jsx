@@ -17,7 +17,7 @@ function Footer() {
                 <p className='text-[16px] lg:text-[20px] font-semibold'>Food from anywhere</p>
             </div>
             <div className='absolute right-5 lg:right-10'>
-                <p className='max-sm:mt-25 ml-10 text-[20px] lg:text-[36px] font-bold'>Contract info</p>
+                <p className='max-sm:mt-[50px] ml-10 text-[20px] lg:text-[36px] font-bold'>Contract info</p>
                 <p className='ml-10 text-[16px] lg:text-[20px] font-semibold'>tel:0xx-xxx-xxxx</p>
                 <p className='ml-10 text-[16px] lg:text-[20px] font-semibold'>Email:Bxxxxxxx@gmail.com</p>
             </div>
