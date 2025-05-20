@@ -32,14 +32,17 @@ const Navbar = () => {
 
   return (
     <>
-    <header className='relative z-10'>
-        <nav className='flex justify-between items-center h-25 bg-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.25)]'>
-            <NavLink to={"/home"} className='text-[36px] font-bold ml-10 cursor-pointer'>
-                <h1><span className='text-[#DE0000]'>Abb</span> Sabb</h1>
+    <header className=''>
+        <nav className='flex justify-between items-center max-sm:h-15 h-25 w-screen bg-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.25)]'>
+            <NavLink to={"/home"} className='max-sm:text-[20px] text-[36px] font-bold ml-2 lg:ml-10 cursor-pointer'>
+                <h1 className='flex flex-row'>
+                    <span className='text-[#DE0000]'>Abb&nbsp;</span>
+                    <span className='text-[#000000]'>Sapp</span>
+                </h1>
             </NavLink>
-            <NavLink className='flex items-center'>
-                <input type="text" placeholder='Type your food' className='border-1 border-[#D9D9D9] rounded-2xl py-2 px-3 w-150 text-[20px] hover:border-black'/>
-                <FaSearch className='text-[24px] -ml-10 cursor-pointer'/>
+            <NavLink className='flex items-center max-sm:ml-2 max-sm:mr-2 ml-5 mr-5'>
+                <input type="text" placeholder='Type your food' className='border-1 border-[#D9D9D9] max-sm:rounded-[50px] max-sm:h-[30px] rounded-2xl py-2 px-3 lg:w-150 max-sm:text-[15px] text-[20px] hover:border-black'/>
+                <FaSearch className='text-[15px] lg:text-[24px] -ml-5 cursor-pointer'/>
             </NavLink>
             {!login &&
             <>
@@ -60,7 +63,7 @@ const Navbar = () => {
             {dropDown &&
             <>
             <div className='relative w-60 h-75 bg-white top-30 right-10 rounded-xl drop-shadow-[0_5px_2px_rgba(0,0,0,0.25)]'>
-                <div className='flex flex-col items-center mt-5 mt-7'>
+                <div className='flex flex-col items-center mt-7'>
                     <div onClick={() => setDropDown(false)} className='flex justify-center items-center gap-4 cursor-pointer'>
                         <FaUser className='border-1 rounded-[100%] text-[48px] p-1'/>
                         <p className='text-[24px] font-bold'>{username}</p>

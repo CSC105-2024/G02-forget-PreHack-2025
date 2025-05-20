@@ -72,23 +72,23 @@ const LoginPage = () => {
     <>
     <NavbarNoSearchingBar></NavbarNoSearchingBar>
     <div className='flex justify-center mt-10'>
-        <div className='bg-white flex flex-col items-center w-125 p-5 pb-30 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+        <div className='bg-white flex flex-col items-center w-125 p-5 pb-30 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] max-sm:w-97'>
             <h1 className='text-[36px] font-bold mb-5'>Login</h1>
             <div className=''>
                 <form onSubmit={handleSubmit}>
-                    <label className='text-[20px]'>Email</label> <br />
+                    <label className='text-[20px] max-sm:ml-3'>Email</label> <br />
                     {errorText && <span className='text-red-600'>{errorText}</span>}
                     {errors.email && <span className='text-red-600'>{errors.email}</span>}
-                    <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder='Enter your email' className='text-[18px] border-1 border-[#D9D9D9] rounded-lg px-3 py-1 my-2 w-[100%] hover:border-black'/> <br />
+                    <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder='Enter your email' className='text-[18px] border-1 border-[#D9D9D9] rounded-lg px-3 py-1 my-2 w-[100%] hover:border-black max-sm:ml-2'/> <br />
                     <label className='text-[20px]'>Password</label> <br />
                     {errors.password && <span className='text-red-600'>{errors.password}</span>}
                     <div className='flex items-center'>
-                        <input type={hide ? "password" : "text"} value={formData.password} onChange={(e) => setFormData({ ...formData, password: e.target.value })} placeholder='Enter your Password' className='text-[18px] border-1 border-[#D9D9D9] rounded-lg px-3 py-1 mt-2 w-[100%] hover:border-black'/>
+                        <input type={hide ? "password" : "text"} value={formData.password} onChange={(e) => setFormData({ ...formData, password: e.target.value })} placeholder='Enter your Password' className='text-[18px] border-1 border-[#D9D9D9] rounded-lg px-3 py-1 mt-2 w-[100%] hover:border-black max-sm:ml-2'/>
                         {hide && <LuEyeClosed onClick={() => setHide(false)} className='-ml-8 text-[20px] cursor-pointer'/>}
                         {!hide && <LuEye onClick={() => setHide(true)} className='-ml-8 text-[20px] cursor-pointer'/>}
                     </div>
                     <div className='flex justify-center my-7'>
-                        <button type='submit' className='text-[20px] text-white font-bold bg-[#DE0000] w-100 py-2 rounded-xl cursor-pointer hover:bg-[#C70000]'>Login</button>
+                        <button type='submit' className='text-[20px] text-white font-bold bg-[#DE0000] w-100 max-sm:w-85 py-2 rounded-xl cursor-pointer hover:bg-[#C70000] max-sm:ml-2'>Login</button>
                     </div>
                 </form>
             </div>
