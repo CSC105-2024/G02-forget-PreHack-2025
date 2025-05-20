@@ -6,6 +6,7 @@ import Fastfood from '../img/Fastfood.png'
 import Seafood from '../img/Seafood.png'
 import Dessert from '../img/Dessert.png'
 import Noodle from '../img/Noodle.png'
+import footer from '../components/Footer'
 //top4
 import FriedChickenCurry from '../img/FriedChickenCurry.png'
 import MalaGrilledPorkNeck from '../img/MalaGrilledPorkNeck.png'
@@ -26,6 +27,7 @@ import Pizza from '../img/Pizza.png'
 import Steak from '../img/Steak.png'
 import ThaiFood from '../img/Thai_Food.png'
 import VegetarianFood from '../img/Vegetarian_Food.png'
+import Footer from '../components/Footer';
 
 
 const MainPage = () => {
@@ -217,6 +219,7 @@ const MainPage = () => {
             }
         </div>
     </div>
+    <Footer></Footer>
     </>
   )
 }
