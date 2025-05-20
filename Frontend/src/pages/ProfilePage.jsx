@@ -4,6 +4,11 @@ import { FaUser } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
 import { BiLike } from "react-icons/bi";
 
+const handleSignOut = () => {
+    localStorage.removeItem("userAccount");
+    navigate('/signin');
+  };
+
 const ProfilePage = () => {
     const [showComment, setShowComment] = useState(true);
     const [showPost, setShowPost] = useState(false);
@@ -92,6 +97,15 @@ const ProfilePage = () => {
             }
         </div>
     </div>
+    <div className=" flex flex-row justify-end w-[100%] "> 
+          <button 
+            onClick={handleSignOut}
+            className="mt-6 px-4 py-2  text-[16px]  mr-5 max-sm:mr-3 font-semibold  rounded-md bg-[#DE0000] text-white  transition cursor-pointer shadow-lg lg:py-3 lg:text-[24px]"
+          >
+            Log out
+          </button>
+
+        </div>
     </>
   )
 }
