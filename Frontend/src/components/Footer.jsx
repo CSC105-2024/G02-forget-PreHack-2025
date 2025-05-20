@@ -26,11 +26,15 @@ function Footer() {
     <section>
         <div className='bg-[#FFFFFF] h-40 flex flex-col'>
             <p className='ml-10 text-[36px] font-bold'>Explore</p>
-            <NavLink to={"/login"} className='w-[0px] cursor-pointer'>
+            <NavLink to={"/login"} className='w-0 cursor-pointer'>
             <p className='ml-10 text-[20px] underline font-semibold'>login</p>
             </NavLink>
+            <NavLink to={"/home"} className='w-0 cursor-pointer'>
             <p className='ml-10 text-[20px] underline font-semibold'>Home</p>
+            </NavLink>
+            <NavLink to={"/profile"} className='w-0 cursor-pointer'>
             <p className='ml-10 text-[20px] underline font-semibold'>Profile</p>
+            </NavLink>
         </div>
     </section>
     <section className='flex bg-[#FFFFFF] h-20'>
