@@ -1,14 +1,39 @@
-import { React, useState} from 'react'
+import { React, useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import EditProfileModal from '../components/EditProfileModal';
 import { FaUser } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
 import { BiLike } from "react-icons/bi";
+import * as apiUser from '../api/user';
 
 const ProfilePage = () => {
     const [showComment, setShowComment] = useState(true);
     const [showPost, setShowPost] = useState(false);
     const [edit, setEdit] = useState(false);
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    // Get userId from localStorage and assign to userAccount (variable)
+    const userAccount = parseInt(localStorage.getItem("userAccount"));
+
+    // Backend => API getInfoUser
+    const getInfoUser = async (id) => {
+        try {
+            const data = await apiUser.getInfoUser(id);
+            if (data.data.success) {
+                setUsername(data.data.data.username);
+                setEmail(data.data.data.email)
+                setPassword(data.data.data.password)
+            }
+        } catch (e) {
+            console.log(e);
+        } 
+    }
+
+    useEffect(() => {
+        getInfoUser(userAccount);
+    }, [])
   return (
     <>
     <Navbar></Navbar>
@@ -19,7 +44,7 @@ const ProfilePage = () => {
                     <FaUser className='border-1 rounded-[100%] text-[128px] p-5'/>
                 </div>
                 <div className='flex flex-col -ml-30'>
-                    <h2 className='text-[30px] font-semibold mb-5'>Tommy</h2>
+                    <h2 className='text-[30px] font-semibold mb-5'>{username}</h2>
                     <div className='flex gap-20 font-semibold'>
                         <div className='text-[24px] text-center mr-20'>
                             <p>2</p>
@@ -36,7 +61,7 @@ const ProfilePage = () => {
         </div>
     </div>
 
-    {edit && <EditProfileModal edit={setEdit}></EditProfileModal>}
+    {edit && <EditProfileModal edit={setEdit} username={username} email={email} password={password} ></EditProfileModal>}
 
     <div className='flex justify-center my-10'>
         <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
