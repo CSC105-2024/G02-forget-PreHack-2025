@@ -1,0 +1,2 @@
+# Ignore line endings in node_modules
+node_modules/** -text
