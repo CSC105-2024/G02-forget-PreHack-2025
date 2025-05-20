@@ -6,6 +6,7 @@ import Fastfood from '../img/Fastfood.png'
 import Seafood from '../img/Seafood.png'
 import Dessert from '../img/Dessert.png'
 import Noodle from '../img/Noodle.png'
+import footer from '../components/Footer'
 //top4
 import FriedChickenCurry from '../img/FriedChickenCurry.png'
 import MalaGrilledPorkNeck from '../img/MalaGrilledPorkNeck.png'
@@ -26,6 +27,7 @@ import Pizza from '../img/Pizza.png'
 import Steak from '../img/Steak.png'
 import ThaiFood from '../img/Thai_Food.png'
 import VegetarianFood from '../img/Vegetarian_Food.png'
+import Footer from '../components/Footer';
 
 
 const MainPage = () => {
@@ -43,64 +45,64 @@ const MainPage = () => {
     <>
     <Navbar></Navbar>
     <div className='flex justify-center mt-10'>
-        <div className='bg-white w-275 p-5 pb-20 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
-            <h1 className='text-[36px] font-bold underline mb-10'>Popular menu</h1>
-            <div className='flex justify-evenly mb-10'>
+        <div className='bg-white w-275 mx-3 p-5 pb-20 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+            <h1 className='text-[24px] lg:text-[36px] font-bold underline mb-4 lg:mb-10'>Popular menu</h1>
+            <div className='grid justify-evenly grid-cols-2 lg:grid-cols-4 gap-5 mb-10'>
                 {/* Post#1 */}
-                <div className='w-60 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img className='flex items-start  h-[200px] w-[250px] object-cover rounded-t-lg' src={FriedChickenCurry} alt={"dsa"} />
+                <div className='w-[100%] lg:w-60 rounded-lg max-sm:h-45 bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
+                    <img className='flex h-25 lg:h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={FriedChickenCurry} alt={"dsa"} />
                     <div className='flex mt-2 p-2 justify-between items-center h-5'>
-                        <h1 className='text-[24px] font-semibold'>Name</h1>
-                        <div className='flex items-center gap-1 bg-[#DE0000] px-2 rounded-md'>
-                            <p className='text-white text-[14px] font-semibold'>4.0</p>
-                            <IoIosStar className='text-white text-[14px]'/>
+                        <h1 className='text-[18px] lg:text-[24px] font-semibold'>Name</h1>
+                        <div className='flex items-center gap-1 bg-[#DE0000] px-1 lg:px-2 rounded-md'>
+                            <p className='text-white text-[10px] lg:text-[14px] font-semibold'>4.0</p>
+                            <IoIosStar className='text-white text-[10px]'/>
                         </div>
                     </div>
-                    <h2 className='text-[#A9A9A9] ml-2 mb-10'>Category</h2>
-                    <p className='font-bold'>1234 views</p>
+                    <h2 className='max-sm:text-[12px] text-[#A9A9A9] ml-2 lg:mb-10'>Category</h2>
+                    <p className='flex items-end max-sm:h-8 max-sm:text-[12px] ml-2 font-bold'>1234 views</p>
                 </div>
                 {/* Post#2 */}
-                <div className='w-60 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img className='flex h-[200px] w-[250px] object-cover rounded-t-lg' src={DryNoodle} alt={"dsa"} />
+                <div className='w-[100%] lg:w-60 rounded-lg max-sm:h-45 bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
+                    <img className='flex h-25 lg:h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={DryNoodle} alt={"dsa"} />
                     <div className='flex mt-2 p-2 justify-between items-center h-5'>
-                        <h1 className='text-[24px] font-semibold'>Name</h1>
-                        <div className='flex items-center gap-1 bg-[#DE0000] px-2 rounded-md'>
-                            <p className='text-white text-[14px] font-semibold'>4.0</p>
-                            <IoIosStar className='text-white text-[14px]'/>
+                        <h1 className='text-[18px] lg:text-[24px] font-semibold'>Name</h1>
+                        <div className='flex items-center gap-1 bg-[#DE0000] px-1 lg:px-2 rounded-md'>
+                            <p className='text-white text-[10px] lg:text-[14px] font-semibold'>4.0</p>
+                            <IoIosStar className='text-white text-[10px]'/>
                         </div>
                     </div>
-                    <h2 className='text-[#A9A9A9] ml-2 mb-10'>Category</h2>
-                    <p className='font-bold'>1234 views</p>
+                    <h2 className='max-sm:text-[12px] text-[#A9A9A9] ml-2 lg:mb-10'>Category</h2>
+                    <p className='flex items-end max-sm:h-8 max-sm:text-[12px] ml-2 font-bold'>1234 views</p>
                 </div>
                 {/* Post#3 */}
-                <div className='w-60 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img className='flex h-[200px] w-[250px] object-cover rounded-t-lg' src={CrispyPorkSalad} alt={"dsa"} />
+                <div className='w-[100%] lg:w-60 rounded-lg max-sm:h-45 bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
+                    <img className='flex h-25 lg:h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={CrispyPorkSalad} alt={"dsa"} />
                     <div className='flex mt-2 p-2 justify-between items-center h-5'>
-                        <h1 className='text-[24px] font-semibold'>Name</h1>
-                        <div className='flex items-center gap-1 bg-[#DE0000] px-2 rounded-md'>
-                            <p className='text-white text-[14px] font-semibold'>4.0</p>
-                            <IoIosStar className='text-white text-[14px]'/>
+                        <h1 className='text-[18px] lg:text-[24px] font-semibold'>Name</h1>
+                        <div className='flex items-center gap-1 bg-[#DE0000] px-1 lg:px-2 rounded-md'>
+                            <p className='text-white text-[10px] lg:text-[14px] font-semibold'>4.0</p>
+                            <IoIosStar className='text-white text-[10px]'/>
                         </div>
                     </div>
-                    <h2 className='text-[#A9A9A9] ml-2 mb-10'>Category</h2>
-                    <p className='font-bold'>1234 views</p>
+                    <h2 className='max-sm:text-[12px] text-[#A9A9A9] ml-2 lg:mb-10'>Category</h2>
+                    <p className='flex items-end max-sm:h-8 max-sm:text-[12px] ml-2 font-bold'>1234 views</p>
                 </div>
                 {/* Post#4 */}
-                <div className='w-60 rounded-lg bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img className='flex h-[200px] w-[250px] object-cover rounded-t-lg' src={MalaGrilledPorkNeck} alt={"dsa"} />
+                <div className='w-[100%] lg:w-60 rounded-lg max-sm:h-45 bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
+                    <img className='flex h-25 lg:h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={MalaGrilledPorkNeck} alt={"dsa"} />
                     <div className='flex mt-2 p-2 justify-between items-center h-5'>
-                        <h1 className='text-[24px] font-semibold'>Name</h1>
-                        <div className='flex items-center gap-1 bg-[#DE0000] px-2 rounded-md'>
-                            <p className='text-white text-[14px] font-semibold'>4.0</p>
-                            <IoIosStar className='text-white text-[14px]'/>
+                        <h1 className='text-[18px] lg:text-[24px] font-semibold'>Name</h1>
+                        <div className='flex items-center gap-1 bg-[#DE0000] px-1 lg:px-2 rounded-md'>
+                            <p className='text-white text-[10px] lg:text-[14px] font-semibold'>4.0</p>
+                            <IoIosStar className='text-white text-[10px]'/>
                         </div>
                     </div>
-                    <h2 className='text-[#A9A9A9] ml-2 mb-10'>Category</h2>
-                    <p className='font-bold'>1234 views</p>
+                    <h2 className='max-sm:text-[12px] text-[#A9A9A9] ml-2 lg:mb-10'>Category</h2>
+                    <p className='flex items-end max-sm:h-8 max-sm:text-[12px] ml-2 font-bold'>1234 views</p>
                 </div>
             </div>
             <div className='flex justify-center'>
-                <NavLink to={"/search"} className='bg-[#F3F3F3] w-[95%] text-center font-bold py-2 rounded-lg cursor-pointer hover:bg-[#E2E2E2]'>See more</NavLink>
+                <NavLink to={"/search"} className='bg-[#F3F3F3] w-[95%] text-center font-bold py-1 lg:py-2 rounded-lg cursor-pointer hover:bg-[#E2E2E2]'>See more</NavLink>
             </div>
         </div>
     </div>
@@ -217,6 +219,7 @@ const MainPage = () => {
             }
         </div>
     </div>
+    <Footer></Footer>
     </>
   )
 }
