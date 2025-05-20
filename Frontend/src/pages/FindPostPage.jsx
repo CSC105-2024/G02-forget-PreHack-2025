@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import NavbarNoSearchingBar from '../components/NavbarNoSearchingBar'
 import FilterModal from '../components/FilterModal';
-import { sendFilterRating, sendFilterCategory, sendFilterPrice } from '../components/FilterModal';
+import { sendFilterRating, sendFilterCategory, sendFilterPrice, setSendFilterRating, setSendFilterCategory, setSendFilterPrice } from '../components/FilterModal';
 // router
 import { NavLink } from "react-router-dom";
 // Icon
@@ -14,6 +14,33 @@ import { ImCross } from "react-icons/im";
 
 const FindPostPage = () => {
     const [showFilter, setShowModal] = useState(false);
+    const [ratingList, setRatingList] = useState([]);
+    const [categoryList, setCategoryList] = useState([]);
+    const [priceList, setPriceList] = useState([]);
+    
+    function removeFilterRating(i) {
+        setRatingList((prev) => prev.filter((rating, index) => index !== i));      
+    }
+
+    function removeFilterCategory(i) {
+        setCategoryList((prev) => prev.filter((rating, index) => index !== i));
+    }
+
+    function removeFilterPrice(i) {
+        setPriceList((prev) => prev.filter((rating, index) => index !== i));
+    }
+
+    useEffect(() => {
+        setRatingList(sendFilterRating)
+    }, [sendFilterRating])
+
+    useEffect(() => {
+        setCategoryList(sendFilterCategory)
+    }, [sendFilterCategory])
+
+    useEffect(() => {
+        setPriceList(sendFilterPrice)
+    }, [sendFilterPrice])
 
   return (
     <>
@@ -35,20 +62,20 @@ const FindPostPage = () => {
 
     <div className='flex justify-center mt-10'>
         <div className='grid grid-cols-6 gap-3 w-275'>
-            {sendFilterRating.map((rating, index) => (
-                <div key={index} className='flex justify-evenly items-center py-1 px-2 border-1 rounded-xl bg-[#D9D9D9] cursor-pointer'>
+            {ratingList.map((rating, index) => (
+                <div onClick={() => removeFilterRating(index)} key={index} className='flex justify-center gap-3 items-center py-1 px-2 border-1 rounded-xl bg-[#D9D9D9] cursor-pointer'>
                     <ImCross className='text-[12px]'/>
                     <p>{rating}</p>
                 </div>
             ))}
-            {sendFilterCategory.map((category, index) => (
-                <div key={index} className='flex justify-evenly items-center py-1 px-2 border-1 rounded-xl bg-[#D9D9D9] cursor-pointer'>
+            {categoryList.map((category, index) => (
+                <div onClick={() => removeFilterCategory(index)} key={index} className='flex justify-center gap-3 items-center py-1 px-2 border-1 rounded-xl bg-[#D9D9D9] cursor-pointer'>
                     <ImCross className='text-[12px]'/>
                     <p>{category}</p>
                 </div>
             ))}
-            {sendFilterPrice.map((price, index) => (
-                <div key={index} className='flex justify-evenly items-center py-1 px-2 border-1 rounded-xl bg-[#D9D9D9] cursor-pointer'>
+            {priceList.map((price, index) => (
+                <div onClick={() => removeFilterPrice(index)} key={index} className='flex justify-center gap-3 items-center py-1 px-2 border-1 rounded-xl bg-[#D9D9D9] cursor-pointer'>
                     <ImCross className='text-[12px]'/>
                     <p>{price}</p>
                 </div>
