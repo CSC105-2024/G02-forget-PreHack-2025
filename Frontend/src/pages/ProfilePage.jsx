@@ -3,15 +3,18 @@ import Navbar from '../components/Navbar'
 import { FaUser } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
 import { BiLike } from "react-icons/bi";
-
-const handleSignOut = () => {
-    localStorage.removeItem("userAccount");
-    navigate('/signin');
-  };
+import { useNavigate } from 'react-router-dom';
+import { IoExitOutline } from "react-icons/io5";
 
 const ProfilePage = () => {
+    const navigate = useNavigate();
     const [showComment, setShowComment] = useState(true);
     const [showPost, setShowPost] = useState(false);
+
+    const handleSignOut = () => {
+    localStorage.removeItem("userAccount");
+    navigate('/login');
+  };
   return (
     <>
     <Navbar></Navbar>
@@ -97,12 +100,13 @@ const ProfilePage = () => {
             }
         </div>
     </div>
-    <div className=" flex flex-row justify-end w-[100%] "> 
+    <div className=" flex flex-row justify-end w-[100%]"> 
           <button 
             onClick={handleSignOut}
-            className="mt-6 px-4 py-2  text-[16px]  mr-5 max-sm:mr-3 font-semibold  rounded-md bg-[#DE0000] text-white  transition cursor-pointer shadow-lg lg:py-3 lg:text-[24px]"
+            className=" flex justify-center items-center mt-5 px-4 py-2  text-[16px]  mr-102 max-sm:mr-3 font-semibold  rounded-md bg-[#DE0000] text-white  transition cursor-pointer shadow-lg lg:py-3 lg:text-[24px] "
           >
-            Log out
+           <IoExitOutline className="mt-1 mr-2 " ></IoExitOutline > 
+            <p>Logout</p>
           </button>
 
         </div>
