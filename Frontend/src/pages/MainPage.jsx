@@ -1,7 +1,9 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { NavLink } from "react-router-dom";
 import { IoIosStar } from "react-icons/io";
+import * as apiUser from '../api/user';
+// Image for select categories
 import Fastfood from '../img/Fastfood.png'
 import Seafood from '../img/Seafood.png'
 import Dessert from '../img/Dessert.png'
@@ -40,7 +42,7 @@ const MainPage = () => {
             setSeeMore(true);
         }
     }
-
+    
   return (
     <>
     <Navbar></Navbar>
