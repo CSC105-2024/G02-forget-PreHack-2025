@@ -37,7 +37,7 @@ const Navbar = () => {
             <NavLink to={"/home"} className='max-sm:text-[20px] text-[36px] font-bold ml-2 lg:ml-10 cursor-pointer'>
                 <h1 className='flex flex-row'>
                     <span className='text-[#DE0000]'>Abb&nbsp;</span>
-                    <span className='text-[#000000]'>Sapp</span>
+                    <span className='text-[#000000]'>Sabb</span>
                 </h1>
             </NavLink>
             <NavLink className='flex items-center max-sm:ml-2 max-sm:mr-2 ml-5 mr-5'>
