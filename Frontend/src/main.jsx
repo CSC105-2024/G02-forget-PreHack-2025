@@ -11,6 +11,7 @@ import FindPostPage from './pages/FindPostPage.jsx';
 import FoodPostPage from './pages/FoodPostPage.jsx';
 import AddFoodPost from './pages/AddFoodPost.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
+import UploadImage from './components/UploadImage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <ProfilePage />
+  },
+  {
+    path: "/upload",
+    element: <UploadImage />
   }
 ]);
 

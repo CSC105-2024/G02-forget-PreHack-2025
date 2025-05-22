@@ -1,6 +1,7 @@
 import { React, useState } from 'react'
 import Navbar from '../components/Navbar'
 import CommentBox from '../components/CommentBox';
+import UploadImage from '../components/UploadImage';
 import { NavLink } from "react-router-dom";
 import { IoMdArrowBack } from "react-icons/io";
 import { IoIosStar } from "react-icons/io";
@@ -12,6 +13,7 @@ import { BiLike } from "react-icons/bi";
 
 const FoodPostPage = () => {
     const [showComment, setShowComment] = useState(false);
+    const [showUpload, setShowUpload] = useState(false);
 
   return (
     <>
@@ -38,9 +40,11 @@ const FoodPostPage = () => {
                 <p className='text-[#A9A9A9] text-[16px]'>2 reviews</p>
             </div>
             <hr className='my-5 border-1'/>
-            <button className='flex justify-center items-center gap-2 max-sm:w-30 text-[20px] text-white bg-black px-8 max-sm:px-2 py-1 rounded-lg cursor-pointer'><FaPlus /> Image</button>
+            <button onClick={() => setShowUpload(true)} className='flex justify-center items-center gap-2 max-sm:w-30 text-[20px] text-white bg-black px-8 max-sm:px-2 py-1 rounded-lg cursor-pointer'><FaPlus /> Image</button>
         </div>
     </div>
+
+    {showUpload && <UploadImage showUpload={setShowUpload}></UploadImage>}
 
     <div className='flex mx-3 justify-center mt-10'>
         <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
