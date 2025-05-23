@@ -122,7 +122,7 @@ const AddFoodPost = () => {
                 </label>
             </div>
         </div>
-        <button onClick={submitPost} className='bg-[#DE0000] text-white text-[20px] font-semibold ml-250 mt-10 px-6 py-2 rounded-lg cursor-pointer'>Confirm</button>
+        <button onClick={submitPost} className='bg-[#DE0000] text-white text-[20px] font-semibold ml-250 mt-10 px-6 py-2 rounded-lg cursor-pointer max-sm:ml-65'>Confirm</button>
     </div>
     </>
   )
