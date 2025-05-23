@@ -62,7 +62,7 @@ const FoodPostPage = () => {
     {showComment && <CommentBox showComment={setShowComment}></CommentBox>}
 
     <div className='flex justify-center mt-10 mb-20'>
-        <div className='bg-white w-275 max-sm:w-100 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+        <div className='bg-white mx-3 w-275 max-sm:w-100 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
             <h1 className='text-[36px] max-sm:text-[26px] font-bold'>Comment</h1>
             <div className='flex justify-center items-center text-[#DE0000] text-[48px] gap-x-4'>
                 <h1 className='font-bold'>4.0</h1>

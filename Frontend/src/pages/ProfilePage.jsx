@@ -120,16 +120,6 @@ const ProfilePage = () => {
             }
         </div>
     </div>
-    <div className=" flex flex-row justify-end w-[100%]"> 
-          <button 
-            onClick={handleSignOut}
-            className=" flex justify-center items-center mt-5 px-4 py-2  text-[16px]  mr-102 max-sm:mr-3 font-semibold  rounded-md bg-[#DE0000] text-white  transition cursor-pointer shadow-lg lg:py-3 lg:text-[24px] "
-          >
-           <IoExitOutline className="mt-1 mr-2 " ></IoExitOutline > 
-            <p>Logout</p>
-          </button>
-
-        </div>
     </>
   )
 }
