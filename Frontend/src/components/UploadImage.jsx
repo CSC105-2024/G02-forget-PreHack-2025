@@ -36,8 +36,8 @@ const UploadImage = ({showUpload}) => {
         <div className='fixed inset-0 z-40 bg-[rgba(0,0,0,0.50)] flex justify-center items-center'>
             <div className='flex justify-center'>
                 <div className="bg-white border-3 border-dashed border-[#A9A9A9] w-175 px-5 py-20 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]">
-                    <div className="flex justify-end -mt-15 mr-5">
-                        <ImCross onClick={() => showUpload(false)} className="text-[24px] cursor-pointer"/>
+                    <div className="flex justify-end -mt-15 mr-5 max-sm:mr-35">
+                        <ImCross onClick={() => showUpload(false)} className="text-[24px] cursor-pointer "/>
                     </div>
                     <div className="flex flex-col items-center my-10">
                         {loading ? <p className="text-[64px] mb-8">Loading...</p> : <FiUpload className="text-[120px] mb-8"/>}
