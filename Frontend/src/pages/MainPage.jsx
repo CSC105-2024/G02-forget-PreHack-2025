@@ -110,7 +110,7 @@ const MainPage = () => {
     <div className='flex justify-center my-10'>
         <div className='bg-white max-sm:mx-3 w-275 p-3 lg:p-5 pb-5 lg:pb-20 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
             <div className='flex justify-between items-center'>
-                <h1 className='text-[36px] font-bold underline'>Category</h1>
+                <h1 className='text-[24px] lg:text-[36px] font-bold underline'>Category</h1>
                 <button onClick={turnSeeMore} className='text-[#DE0000] text-[18px] font-bold cursor-pointer hover:underline'>See more</button>
             </div>
             <div className='flex justify-center gap-3 lg:gap-15 lg:-mb-5 mt-4'>
