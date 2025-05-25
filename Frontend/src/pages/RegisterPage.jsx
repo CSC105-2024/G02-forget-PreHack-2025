@@ -108,10 +108,8 @@ const RegisterPage = () => {
                         <button type='submit'className='text-[20px] text-white font-bold bg-[#DE0000] w-100  max-sm:w-85 py-2 rounded-xl cursor-pointer hover:bg-[#C70000]'>Register</button>
                     </div>
                 </form>
-                </div>
-                    <p className='font-bold text-[18px]'>Already have an account? <NavLink to={"/login"} className='font-normal underline cursor-pointer'>Click here</NavLink></p>
-                <div>
             </div>
+            <p className='font-bold text-[18px]'>Already have an account? <NavLink to={"/login"} className='font-normal underline cursor-pointer'>Click here</NavLink></p>
         </div>
     </div>
     {success &&
