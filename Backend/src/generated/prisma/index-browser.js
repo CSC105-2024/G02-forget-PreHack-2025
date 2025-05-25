@@ -114,9 +114,6 @@ Prisma.NullTypes = {
  */
 
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
@@ -131,6 +128,7 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.FoodPostScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  price: 'price',
   location: 'location',
   phoneNumber: 'phoneNumber',
   resNumber: 'resNumber',
@@ -149,13 +147,15 @@ exports.Prisma.CommentScalarFieldEnum = {
   id: 'id',
   rating: 'rating',
   content: 'content',
+  like: 'like',
   day: 'day',
   month: 'month',
   year: 'year',
+  foodPostId: 'foodPostId',
   userId: 'userId'
 };
 
-exports.Prisma.LikeScalarFieldEnum = {
+exports.Prisma.PeopleScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   commentId: 'commentId'
@@ -166,27 +166,9 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.UserOrderByRelevanceFieldEnum = {
-  username: 'username',
-  email: 'email',
-  password: 'password',
-  profile: 'profile'
-};
-
-exports.Prisma.FoodPostOrderByRelevanceFieldEnum = {
-  name: 'name',
-  location: 'location',
-  phoneNumber: 'phoneNumber',
-  resNumber: 'resNumber',
-  image: 'image'
-};
-
-exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
-  category: 'category'
-};
-
-exports.Prisma.CommentOrderByRelevanceFieldEnum = {
-  content: 'content'
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 
@@ -195,7 +177,7 @@ exports.Prisma.ModelName = {
   FoodPost: 'FoodPost',
   Category: 'Category',
   Comment: 'Comment',
-  Like: 'Like'
+  People: 'People'
 };
 
 /**

@@ -45,4 +45,16 @@ const loginUser = async (email: string, password: string) => {
     }
 }
 
-export {createUser, getInfoUser, loginUser}
+const editUsername = async (id: number, username: string) => {
+    try {
+        await Axios.patch(`/users/${id}`, {id: id, username: username});
+    } catch (e) {
+        console.log(e);
+        return {
+            success: false,
+            data: null
+        }
+    }
+}
+
+export {createUser, getInfoUser, loginUser, editUsername}

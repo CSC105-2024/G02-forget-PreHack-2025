@@ -1,7 +1,14 @@
 import { React, useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
+// Router
+import { useNavigate, NavLink } from "react-router-dom";
+// Icon
 import { FaPlus } from "react-icons/fa";
 import { IoMdRemove } from "react-icons/io";
+import { IoMdArrowBack } from "react-icons/io";
+// API
+import * as apiPost from "../api/foodPost"
+import * as apiCategory from "../api/category"
 
 const AddFoodPost = () => {
     const [posts, setPosts] = useState([]);
@@ -16,6 +23,31 @@ const AddFoodPost = () => {
     'Dietary Food', 'Buffets', 'Hot Pots', 'Grilled', 'Pizzas', 'Bakeries',
     'Vegetarian food', 'Thai Food', 'Chinese Food', 'Japanese Food', 'Korean Food', 'French Food',
     ];
+
+    // Get userId from localStorage and assign to userAccount (variable)
+    const userAccount = parseInt(localStorage.getItem("userAccount"));
+
+    const navigate = new useNavigate();
+
+    // Backend => API createFoodPost
+    const createPost = async (name, price, location, phoneNumber, resNumber, userId) => {
+        const data = await apiPost.createPost(name, price, location, phoneNumber, resNumber, userId);
+        if (data.data.success) {        
+            for (let i = 0; i < categoryList.length; i++) {
+                await createCategory(categoryList[i], data.data.data.id);
+            }
+
+            // Reset data
+            setCategoryList([{category: ""}])
+        }
+        navigate(`/foodPost/${data.data.data.id}`);
+    }
+
+    // Backend => API createCategory
+    const createCategory = async (category, foodPostId) => {
+        await apiCategory.createCategory(category, foodPostId);
+    }
+
     // Add category input
     function handleAddCategory() {
         setCategoryList([...categoryList, {category: ""}]);
@@ -30,8 +62,9 @@ const AddFoodPost = () => {
     function handleRemoveCategory(i) {
         setCategoryList((prev) => prev.filter((category, index) => index !== i))
     }
+
     // Add data to posts(useState)
-    function submitPost() {
+    async function submitPost() {
         let newPost = {
             id: Date.now(),
             food: food,
@@ -44,9 +77,11 @@ const AddFoodPost = () => {
         // Add newPost in posts(useState)
         setPosts(prev => [...prev, newPost]);
 
+        // Send to API createPost and createCategory
+        await createPost(food, parseInt(price), location, mobileNumber, resNumber, userAccount);
+
         // Reset data
         setFood("");
-        setCategoryList([{category: ""}])
         setPrice("");
         setLocation("");
         setMobileNumber("");
@@ -61,69 +96,74 @@ const AddFoodPost = () => {
   return (
     <>
     <Navbar></Navbar>
-    <div className='flex justify-center mt-10'>
-        <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
-            <h1 className='text-[36px] font-bold underline mb-10'>Food Information</h1>
-            <div className='ml-20'>
-                <label>
-                    <p className='text-[32px] mb-2'><span className='text-[#DE0000]'>*</span> Food</p>
-                    <input type="text" value={food} onChange={(e) => setFood(e.target.value)} className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your food name'/>
-                </label>
-                <label>
-                    <p className='text-[32px] mb-2'><span className='text-[#DE0000]'>*</span> Category</p>
-                    {categoryList.map((category, index) => (
-                        <div key={index}>
-                            <select value={category} onChange={(e) => handleChangeCategory(index, e.target.value)} className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black'>
-                                <option value=""></option>
-                                {categories.map((food, indexFood) => (
-                                    <option key={indexFood} value={food}>{food}</option>
-                                ))}
-                            </select>
-                            {categoryList.length > 1 && <button onClick={() => handleRemoveCategory(index)} className='ml-4 bg-[#D9D9D9] p-1 rounded-[100%] cursor-pointer hover:bg-[#A9A9A9]'><IoMdRemove /></button>}
+    <div className='text-[36px] ml-10 mt-5 w-9 max-sm:ml-2 '>
+        <NavLink to={"/search"}><IoMdArrowBack /></NavLink>
+    </div>
+    <form action="">
+        <div className='flex justify-center mt-10'>
+            <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+                <h1 className='text-[36px] font-bold underline mb-10'>Food Information</h1>
+                <div className='ml-20'>
+                    <label>
+                        <p className='text-[32px] mb-2'><span className='text-[#DE0000]'>*</span> Food</p>
+                        <input type="text" value={food} onChange={(e) => setFood(e.target.value)} required className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your food name'/>
+                    </label>
+                    <label>
+                        <p className='text-[32px] mb-2'><span className='text-[#DE0000]'>*</span> Category</p>
+                        {categoryList.map((category, index) => (
+                            <div key={index}>
+                                <select value={category} onChange={(e) => handleChangeCategory(index, e.target.value)} required className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black'>
+                                    <option value=""></option>
+                                    {categories.map((food, indexFood) => (
+                                        <option key={indexFood} value={food}>{food}</option>
+                                    ))}
+                                </select>
+                                {categoryList.length > 1 && <button onClick={() => handleRemoveCategory(index)} className='ml-4 bg-[#D9D9D9] p-1 rounded-[100%] cursor-pointer hover:bg-[#A9A9A9]'><IoMdRemove /></button>}
+                            </div>
+                        ))}
+                    </label>
+                    <br />
+                    <button onClick={handleAddCategory} className='flex items-center gap-2 text-[#DE0000] border-b-2 font-semibold -mt-5 mb-5 cursor-pointer'><FaPlus className='text-[14px]'/> Add Category</button>
+                    <label>
+                        <p className='text-[32px] mb-2'><span className='text-[#DE0000]'>*</span> Price</p>
+                        <div className='flex gap-3'>
+                            <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} required className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your food price'/>
+                            <p className='text-[30px]'>Baht</p>
                         </div>
-                    ))}
-                </label>
-                <br />
-                <button onClick={handleAddCategory} className='flex items-center gap-2 text-[#DE0000] border-b-2 font-semibold -mt-5 mb-5 cursor-pointer'><FaPlus className='text-[14px]'/> Add Category</button>
-                <label>
-                    <p className='text-[32px] mb-2'><span className='text-[#DE0000]'>*</span> Price</p>
-                    <div className='flex gap-3'>
-                        <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your food price'/>
-                        <p className='text-[30px]'>Baht</p>
-                    </div>
-                </label>
+                    </label>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div className='flex justify-center mt-10'>
-        <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
-            <h1 className='text-[36px] font-bold underline mb-10'>Location</h1>
-            <div className='ml-20'>
-                <label>
-                    <p className='text-[32px] mb-2'><span className='text-[#DE0000]'>*</span> Location</p>
-                    <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your food location'/>
-                </label>
+        <div className='flex justify-center mt-10'>
+            <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+                <h1 className='text-[36px] font-bold underline mb-10'>Location</h1>
+                <div className='ml-20'>
+                    <label>
+                        <p className='text-[32px] mb-2'><span className='text-[#DE0000]'>*</span> Location</p>
+                        <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your food location'/>
+                    </label>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div className='flex flex-col items-center justify-center my-10'>
-        <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
-            <h1 className='text-[36px] font-bold underline mb-10'>Phone Number</h1>
-            <div className='ml-20'>
-                <label>
-                    <p className='text-[32px] mb-2'>Mobile Number</p>
-                    <input type="text" value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your mobile number (i.e: 082-xxx-xxxx)'/>
-                </label>
-                <label>
-                    <p className='text-[32px] mb-2'>Restaurant Number</p>
-                    <input type="text" value={resNumber} onChange={(e) => setResNumber(e.target.value)} pattern='[0-9]{2}-[0-9]{3}-[0-9]{4}' className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your restaurant number (i.e: 02-xxx-xxxx)'/>
-                </label>
+        <div className='flex flex-col items-center justify-center my-10'>
+            <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+                <h1 className='text-[36px] font-bold underline mb-10'>Phone Number</h1>
+                <div className='ml-20'>
+                    <label>
+                        <p className='text-[32px] mb-2'>Mobile Number</p>
+                        <input type="text" value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your mobile number (i.e: 082-xxx-xxxx)'/>
+                    </label>
+                    <label>
+                        <p className='text-[32px] mb-2'>Restaurant Number</p>
+                        <input type="text" value={resNumber} onChange={(e) => setResNumber(e.target.value)} pattern='[0-9]{2}-[0-9]{3}-[0-9]{4}' className='border-1 border-[#D9D9D9] p-2 text-[18px] rounded-lg w-150 mb-5 hover:border-black' placeholder='Type your restaurant number (i.e: 02-xxx-xxxx)'/>
+                    </label>
+                </div>
             </div>
+            <button type='submit' onClick={submitPost} className='bg-[#DE0000] text-white text-[20px] font-semibold ml-250 mt-10 px-6 py-2 rounded-lg cursor-pointer'>Confirm</button>
         </div>
-        <button onClick={submitPost} className='bg-[#DE0000] text-white text-[20px] font-semibold ml-250 mt-10 px-6 py-2 rounded-lg cursor-pointer'>Confirm</button>
-    </div>
+    </form>
     </>
   )
 }

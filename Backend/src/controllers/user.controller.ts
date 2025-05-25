@@ -117,5 +117,28 @@ const loginUser = async (c: Context) => {
 	}
 }
 
+const editUsername = async (c: Context) => {
+	try {
+		const id = Number(c.req.param("id"));
+		const { username } = await c.req.json();
+		const user = await userModel.editUsername(id, username);
+        return c.json(
+            {
+                success: true,
+                data: user,
+				msg: `Your username have changed to ${username}`
+            }
+        );
+	} catch (e) {
+		return c.json(
+			{
+				success: false,
+				data: null,
+				msg: `${e}`,
+			},
+			500
+		);
+	}
+}
 
-export { createUser, getAllUser, getInfoUser, loginUser };
+export { createUser, getAllUser, getInfoUser, loginUser, editUsername };

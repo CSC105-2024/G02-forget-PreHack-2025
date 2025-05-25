@@ -20,6 +20,7 @@ const LoginPage = () => {
         email: z.string().email("Email is wrong"),
         password: z.string().min(4, "Wrong passwrod")
     });
+    
     // Backend => API loginUser
     const login = async (email, password) => {
         try {
@@ -27,7 +28,8 @@ const LoginPage = () => {
         if (data.data.success && data.data.data.password == password) {
             // Collect userId in localStorage
             localStorage.setItem("userAccount", data.data.data.id);
-            
+            // User already login
+            localStorage.setItem("isLogin", true);
             // Navigate to home page
             navigate("/home");
         } else {
@@ -39,6 +41,7 @@ const LoginPage = () => {
             console.log(e);
         } 
     }
+
     // When click submit form it will run here and check inputs are email and password
     const handleSubmit = (e) => {
         e.preventDefault();

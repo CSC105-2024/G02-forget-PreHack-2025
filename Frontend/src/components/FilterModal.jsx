@@ -14,7 +14,7 @@ export const setSendFilterPrice = (price) => {
     sendFilterPrice = price;
 }
 
-const FilterModal = ({filter}) => {
+const FilterModal = ({filter, usingFilter}) => {
     const [ratingList, setRatingList] = useState([]);
     const [categoryList, setCategoryList] = useState([]);
     const [priceList, setPriceList] = useState([]);
@@ -22,11 +22,11 @@ const FilterModal = ({filter}) => {
 
     const ratings = ['3.5+', '4.0+', '4.5+'];
     const categories = [
-    'Fast food', 'Seafoods', 'Noodles', 'Desserts', 'Burgers', 'Steaks',
+    'Fast Food', 'Seafoods', 'Noodles', 'Desserts', 'Burgers', 'Steaks',
     'Dietary Food', 'Buffets', 'Hot Pots', 'Grilled', 'Pizzas', 'Bakeries',
     'Vegetarian food', 'Thai Food', 'Chinese Food', 'Japanese Food', 'Korean Food', 'French Food',
     ];
-    const prices = ['< 100 Baht', '101-250 Baht', '251-500 baht', '500 Baht'];
+    const prices = ['< 100 Baht', '101-250 Baht', '251-500 Baht', '500 Baht'];
 
     function handleChangeRating(e, newValue) {
         if (e.target.checked) {
@@ -70,6 +70,7 @@ const FilterModal = ({filter}) => {
         setSendFilterRating(ratingList);
         setSendFilterCategory(categoryList);
         setSendFilterPrice(priceList);
+        usingFilter(true);
         filter(false);
     }
 

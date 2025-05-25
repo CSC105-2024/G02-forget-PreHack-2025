@@ -1,12 +1,28 @@
-import { React, useState} from 'react'
+import { React, useState } from 'react'
 import { FaUser } from "react-icons/fa";
 import { LuEyeClosed } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
+import * as apiUser from "../api/user";
 
 const EditProfileModal = ({edit, username, email, password}) => {
     const [hide, setHide] = useState(true);
-    const [editUsername, setEditUsername] = useState("");
+    const [editUsername, setEditUsername] = useState(username);
     const blind = "*************";
+
+    // Get userId from localStorage and assign to userAccount (variable)
+    const userAccount = parseInt(localStorage.getItem("userAccount"));
+
+    // Backend => API editUsername
+    const editUser = async (id, newUsername) => {
+        await apiUser.editUsername(id, newUsername);
+    }
+
+    function confirm() {
+        editUser(userAccount, editUsername);
+        edit(false);
+        window.location.reload();
+    }
+
 
   return (
     <>
@@ -19,7 +35,7 @@ const EditProfileModal = ({edit, username, email, password}) => {
                         <label className='text-[20px] font-semibold'>Email</label> <br />
                         <input type="text" value={email} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5' readOnly/> <br />
                         <label className='text-[20px] font-semibold'>Username</label> <br />
-                        <input type="text" onChange={(e) => setEditUsername(e.target.value)} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5 hover:border-black' /> <br />
+                        <input type="text" value={editUsername} onChange={(e) => setEditUsername(e.target.value)} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5 hover:border-black' /> <br />
                         <label className='text-[20px] font-semibold'>Password</label> <br />
                         <div className='flex items-center'>
                             <input type="text" value={hide ? blind : password} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5' readOnly/> <br />
@@ -28,7 +44,7 @@ const EditProfileModal = ({edit, username, email, password}) => {
                         </div>
                         <div className='flex justify-center gap-5 mt-5'>
                             <button onClick={() => edit(false)} className='text-[18px] font-semibold bg-black text-white rounded-lg px-7 py-2 cursor-pointer'>Cancel</button>
-                            <button className='text-[18px] font-semibold bg-[#DE0000] text-white rounded-lg px-7 py-2 cursor-pointer'>Confirm</button>
+                            <button onClick={confirm} className='text-[18px] font-semibold bg-[#DE0000] text-white rounded-lg px-7 py-2 cursor-pointer'>Confirm</button>
                         </div>
                     </div>
                 </div>

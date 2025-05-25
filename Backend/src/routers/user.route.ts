@@ -6,6 +6,7 @@ const userRouter = new Hono();
 userRouter.post("/", userController.createUser);
 userRouter.get("/", userController.getAllUser);
 userRouter.get("/:id", userController.getInfoUser);
-userRouter.post("/login", userController.loginUser)
+userRouter.post("/login", userController.loginUser);
+userRouter.patch("/:id", userController.editUsername);
 
 export { userRouter };
