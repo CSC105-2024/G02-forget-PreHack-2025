@@ -1,0 +1,7 @@
+-- CreateTable
+CREATE TABLE "People" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "userId" INTEGER NOT NULL,
+    "likeId" INTEGER NOT NULL,
+    CONSTRAINT "People_likeId_fkey" FOREIGN KEY ("likeId") REFERENCES "Like" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
