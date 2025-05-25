@@ -85,31 +85,31 @@ const Navbar = () => {
             </div>
             {!login &&
             <>
-            <NavLink to={"/login"} className='flex items-center gap-3 border-1 border-[#D9D9D9] py-2 px-6 rounded-2xl mr-10 hover:border-black cursor-pointer'>
-                <FaUser className='border-1 rounded-[100%] text-[48px] p-1'/>
-                <p className='text-[24px] font-bold'>Login</p>
+            <NavLink to={"/login"} className='flex items-center gap-3 border-1 border-[#D9D9D9] py-1 px-1 lg:py-2 lg:px-6 rounded-2xl ml-2 mr-1 lg:mr-10 hover:border-black cursor-pointer'>
+                <FaUser className='border-1 rounded-[100%] max-sm:text-[30px] text-[48px] p-1'/>
+                <p className='text-[20px] lg:text-[24px] font-bold'>Login</p>
             </NavLink>
             </>
             }
             {login &&
             <>
             {!dropDown &&
-            <div onClick={() => setDropDown(true)} className='flex items-center gap-3 border-1 border-[#D9D9D9] py-2 px-6 rounded-2xl mr-10 hover:border-black cursor-pointer'>
-                <FaUser className='border-1 rounded-[100%] text-[48px] p-1'/>
-                <p className='text-[24px] font-bold'>{username}</p>
+            <div onClick={() => setDropDown(true)} className='flex items-center gap-3 border-1 border-[#D9D9D9] py-1 px-1 lg:py-2 lg:px-6 rounded-2xl ml-2 mr-1 lg:mr-10 hover:border-black cursor-pointer'>
+                <FaUser className='border-1 rounded-[100%] max-sm:text-[30px] text-[48px] p-1'/>
+                <p className='text-[20px] lg:text-[24px] font-bold'>{username}</p>
             </div>
             }
             {dropDown &&
             <>
             <div className='relative w-60 h-75 bg-white top-30 right-10 rounded-xl drop-shadow-[0_5px_2px_rgba(0,0,0,0.25)]'>
-                <div className='flex flex-col items-center mt-7'>
+                <div className='flex flex-col max-sm:w-35 items-center mt-7'>
                     <div onClick={() => setDropDown(false)} className='flex justify-center items-center gap-4 cursor-pointer'>
-                        <FaUser className='border-1 rounded-[100%] text-[48px] p-1'/>
-                        <p className='text-[24px] font-bold'>{username}</p>
+                        <FaUser className='border-1 rounded-[100%] max-sm:text-[30px] text-[48px] p-1'/>
+                        <p className='text-[20px] lg:text-[24px] font-bold'>{username}</p>
                     </div>
-                    <NavLink to={"/profile"} className='bg-[#DE0000] text-white px-6 py-2 mt-5 text-[18px] font-semibold rounded-xl cursor-pointer'>Go to Profile</NavLink>
-                    <NavLink to={"/addFoodPost"} className='flex justify-center items-center w-[100%] py-3 mt-5 gap-2 cursor-pointer hover:bg-[#D9D9D9]'><FaPlus />Add food post</NavLink>
-                    <button onClick={handleLogout} className='flex justify-center items-center w-[100%] py-3 gap-2 cursor-pointer hover:bg-[#D9D9D9]'><FiLogOut /> Log out</button>
+                    <NavLink to={"/profile"} className='bg-[#DE0000] text-white px-6 py-2 mt-5 text-[14px] lg:text-[18px] font-semibold rounded-xl cursor-pointer'>Go to Profile</NavLink>
+                    <NavLink to={"/addFoodPost"} className='flex justify-center items-center w-[100%] py-3 mt-5 text-[14px] lg:text-[18px] gap-2 cursor-pointer hover:bg-[#D9D9D9]'><FaPlus />Add food post</NavLink>
+                    <button onClick={handleLogout} className='flex justify-center items-center w-[100%] py-3 text-[14px] lg:text-[18px] gap-2 cursor-pointer hover:bg-[#D9D9D9]'><FiLogOut /> Log out</button>
                 </div>
             </div>
             </> 
@@ -118,7 +118,7 @@ const Navbar = () => {
             }
         </nav>
     </header>
-    <div className='absolute top-20 right-50 z-20 '>
+    <div className='absolute left-0 w-full top-20 z-20 '>
         {isSearchOpen && searchPosts.map((post) => (
         <div className='flex justify-center drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
             <div className='w-175 bg-white hover:bg-[#D9D9D9]'>

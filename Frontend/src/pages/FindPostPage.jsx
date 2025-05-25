@@ -187,14 +187,14 @@ const FindPostPage = () => {
         <div>
             <div className='flex items-center justify-center gap-15'>
                 <div className='flex items-center'>
-                    <input type="text" onClick={() => setIsSearchOpen(prev => !prev)} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Type your food' className='border-1 border-[#D9D9D9] bg-white rounded-2xl py-2 px-3 w-150 text-[20px] hover:border-black'/>
+                    <input type="text" onClick={() => setIsSearchOpen(prev => !prev)} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Type your food' className='border-1 border-[#D9D9D9] bg-white rounded-2xl py-2 px-3 mx-2 lg:w-150 text-[20px] hover:border-black'/>
                     <FaSearch className='text-[24px] -ml-10 cursor-pointer'/>
                 </div>
                 <div>
                     <button onClick={() => setShowFilter(true)}><FiFilter className='w-13 h-13 p-2 bg-white border-1 border-[#D9D9D9] rounded-[100%] cursor-pointer hover:border-black'/></button>
                 </div>
             </div>
-            <div className='mt-2 drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+            <div className='mt-2 absolute left-0 w-full z-20 drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
                 {isSearchOpen && searchPosts.map((post) => (
                 <div className='flex justify-center'>
                     <div className='w-175 bg-white hover:bg-[#D9D9D9]'>
