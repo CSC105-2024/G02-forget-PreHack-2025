@@ -229,20 +229,20 @@ const ProfilePage = () => {
   return (
     <>
     <Navbar></Navbar>
-    <div className='flex justify-center mt-10'>
-        <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+    <div className='flex justify-center mt-10 max-sm:mt-5'>
+        <div className='bg-white w-275 max-sm:w-100  p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
             <div className='flex justify-around items-center '>
                 <div>
-                    <FaUser className='border-1 rounded-[100%] text-[128px] p-5'/>
+                    <FaUser className='border-1 rounded-[100%] text-[128px] p-5 max-sm:text-[70px]'/>
                 </div>
                 <div className='flex flex-col -ml-30'>
-                    <h2 className='text-[30px] font-semibold mb-5'>{username}</h2>
+                    <h2 className='text-[30px] font-bold mb-5 max-sm:ml-31 max-sm:text-[20px]'>{username}</h2>
                     <div className='flex gap-20 font-semibold'>
-                        <div className='text-[24px] text-center mr-20'>
+                        <div className='text-[24px] text-center mr-20 max-sm:ml-27 max-sm:-mt-5 max-sm:text-[20px]'>
                             <p>{comments.length}</p>
                             <p>{comments.length > 1 ? "Comments" : "Comment"}</p>
                         </div>
-                        <div className='text-[24px] text-center font-semibold'>
+                        <div className='text-[24px] text-center font-semibold max-sm:-ml-35 max-sm:text-[20px] max-sm:-mt-5'>
                             <p>{likes}</p>
                             <p>{likes > 1 ? "likes" : "like"}</p>
                         </div>
@@ -252,12 +252,11 @@ const ProfilePage = () => {
             </div>
         </div>
     </div>
-
     {edit && <EditProfileModal edit={setEdit} username={username} email={email} password={password} ></EditProfileModal>}
 
     <div className='flex justify-center my-10'>
-        <div className='bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
-            <div className='flex justify-center gap-20 text-[24px] font-bold mb-10'>
+        <div className='bg-white w-275 max-sm:w-100 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+            <div className='flex justify-center gap-20 text-[24px] font-bold mb-10 max-sm:text-[20px]'>
                 <button onClick={() => {setShowComment(true); setShowPost(false);}} className={`${showComment ? "border-b-4" : "border-none"} cursor-pointer`}>Comment</button>
                 <button onClick={() => {setShowComment(false); setShowPost(true);}} className={`${showPost ? "border-b-4" : "border-none"} cursor-pointer`}>Food Post</button>
             </div>
@@ -405,7 +404,6 @@ const ProfilePage = () => {
             }
         </div>
     </div>
-
     {confirmDelete &&
     <>
     <div className='fixed inset-0 z-40 bg-[rgba(0,0,0,0.50)] flex justify-center items-center'>

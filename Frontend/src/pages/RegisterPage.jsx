@@ -96,6 +96,14 @@ const RegisterPage = () => {
                         {hideConfirmPassword && <LuEyeClosed onClick={() => setHideConfirmPassword(false)} className='-ml-8 text-[20px] cursor-pointer'/>}
                         {!hideConfirmPassword && <LuEye onClick={() => setHideConfirmPassword(true)} className='-ml-8 text-[20px] cursor-pointer'/>}
                     </div>
+                    </div>
+                    <div>
+                    <label className='text-[20px] max-sm:ml-3'> Confirm Password</label> <br />
+                    <div className='flex items-center'>
+                        <input type="Password" placeholder='Enter your Password' className='text-[18px] border-1 border-[#D9D9D9] rounded-lg px-3 py-1 my-2 w-100 max-sm:ml-2 hover:border-black max-sm:w-85 '/>
+                        <LuEyeClosed className='-ml-8 text-[20px] cursor-pointer'/>
+                    </div>
+                    </div>
                     <div className='flex justify-center my-7'>
                         <button type='submit'className='text-[20px] text-white font-bold bg-[#DE0000] w-100  max-sm:w-85 py-2 rounded-xl cursor-pointer hover:bg-[#C70000]'>Register</button>
                     </div>
