@@ -1,38 +1,48 @@
 import { React, useState, useEffect } from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import * as apiUser from '../api/user';
 
 const NavbarNoSearchingBar = () => {
-  const [login, setLogin] = useState(false);
-  const [username, setUsername] = useState("");
-  const [dropDown, setDropDown] = useState(false);
-  // Get userId from localStorage and assign to userAccount (variable)
-  const userAccount = parseInt(localStorage.getItem("userAccount"));
 
-  // Backend => API getInfoUser
-  const getInfoUser = async (id) => {
-      try {
-          const data = await apiUser.getInfoUser(id);
-          if (data.data.success) {
-              setUsername(data.data.data.username);
-              setLogin(true);
-          }
-      } catch (e) {
-          console.log(e);
-      } 
-  }
+    const navigate = useNavigate();
+    
+    const [login, setLogin] = useState(false);
+    const [username, setUsername] = useState("");
+    const [dropDown, setDropDown] = useState(false);
+    // Get userId from localStorage and assign to userAccount (variable)
+    const userAccount = parseInt(localStorage.getItem("userAccount"));
 
-  useEffect(() => {
-      getInfoUser(userAccount);
-  }, [])
+    // Backend => API getInfoUser
+    const getInfoUser = async (id) => {
+        try {
+            const data = await apiUser.getInfoUser(id);
+            if (data.data.success) {
+                setUsername(data.data.data.username.substring(0,3) + "....");
+                setLogin(true);
+            }
+        } catch (e) {
+            console.log(e);
+        } 
+    }
+
+    useEffect(() => {
+        getInfoUser(userAccount);
+    }, [])
+
+    function handleLogout() {
+        localStorage.removeItem("userAccount");
+        localStorage.removeItem("isLogin");
+        navigate("/home");
+        window.location.reload();
+    }
 
   return (
     <>
-    <header className=''>
-        <nav className='flex justify-between items-center max-sm:h-15 h-25  w-screen bg-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.25)]'>
+    <header className='relative z-20'>
+        <nav className='flex justify-between items-center max-sm:h-15 h-25 bg-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.25)]'>
             <NavLink to={"/home"} className='max-sm:text-[20px] text-[36px] font-bold ml-2 lg:ml-10 cursor-pointer'>
                 <h1 className='flex flex-row'>
                     <span className='text-[#DE0000]'>Abb&nbsp;</span>
@@ -65,7 +75,7 @@ const NavbarNoSearchingBar = () => {
                     </div>
                     <NavLink to={"/profile"} className='bg-[#DE0000] text-white px-6 py-2 mt-5 text-[18px] font-semibold rounded-xl cursor-pointer'>Go to Profile</NavLink>
                     <NavLink to={"/addFoodPost"} className='flex justify-center items-center w-[100%] py-3 mt-5 gap-2 cursor-pointer hover:bg-[#D9D9D9]'><FaPlus />Add food post</NavLink>
-                    <button className='flex justify-center items-center w-[100%] py-3 gap-2 cursor-pointer hover:bg-[#D9D9D9]'><FiLogOut /> Log out</button>
+                    <button onClick={handleLogout} className='flex justify-center items-center w-[100%] py-3 gap-2 cursor-pointer hover:bg-[#D9D9D9]'><FiLogOut /> Log out</button>
                 </div>
             </div>
             </> 

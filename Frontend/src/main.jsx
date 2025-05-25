@@ -12,6 +12,7 @@ import FoodPostPage from './pages/FoodPostPage.jsx';
 import AddFoodPost from './pages/AddFoodPost.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
 import UploadImage from './components/UploadImage.jsx';
+import EditFoodPost from './pages/EditFoodPost.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
     element: <FindPostPage />
   },
   {
-    path: "/foodPost",
+    path: "/foodPost/:foodPostId",
     element: <FoodPostPage />
   },
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: "/upload",
     element: <UploadImage />
+  },
+  {
+    path: "/editFoodPost",
+    element: <EditFoodPost />
   }
 ]);
 

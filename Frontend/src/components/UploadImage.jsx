@@ -1,11 +1,21 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import { FiUpload } from "react-icons/fi";
 import { ImCross } from "react-icons/im";
+// API
+import * as apiFoodPost from "../api/foodPost";
 
-const UploadImage = ({showUpload}) => {
-    const [file, setFile] = useState();
+const UploadImage = ({showUpload, postId}) => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+
+    // Get userId from localStorage and assign to userAccount (variable)
+    const userAccount = parseInt(localStorage.getItem("userAccount"));
+
+    // Backend => API editImage
+    const editImage = async (id, userId, image) => {
+        await apiFoodPost.editImage(id, userId, image);
+    }
+
     const handleChange = async(e) => {
 
         const file = e.target.files[0]
@@ -14,10 +24,10 @@ const UploadImage = ({showUpload}) => {
 
         const data = new FormData();
         data.append('file', file);
-        data.append('upload_preset', 'FoodImage'); //your upload preset name
-        data.append('cloud_name', 'dulhv9arc'); //your cloud name
+        data.append('upload_preset', 'FoodImage'); // Your upload preset name
+        data.append('cloud_name', 'dulhv9arc'); // Your cloud name
         
-        //cloud name in url
+        // Cloud name in url
         const result  = await fetch('https://api.cloudinary.com/v1_1/dulhv9arc/image/upload', {
             method: 'POST',
             body: data,
@@ -26,9 +36,10 @@ const UploadImage = ({showUpload}) => {
         const img = await result.json();
         console.log(img.url)
 
-        setFile(img.url);
+        editImage(postId, userAccount, img.url)
         setLoading(false);
         setSuccess(true);
+        showUpload(false);
     }
 
     return (
@@ -43,7 +54,7 @@ const UploadImage = ({showUpload}) => {
                         {loading ? <p className="text-[64px] mb-8">Loading...</p> : <FiUpload className="text-[120px] mb-8"/>}
                         <label htmlFor="file-upload" className="text-[20px] border-1 text-white bg-black px-5 py-1 rounded-lg cursor-pointer">Upload File</label>
                         <input type="file" id="file-upload" onChange={handleChange} className="hidden"/>
-                        <img src={file} />
+                        {/* <img src={file} /> */}
                         {success && <p className="text-green-600 text-[24px] font-bold">Success!!</p>}
                     </div>
                 </div>

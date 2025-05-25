@@ -30,6 +30,8 @@ import Steak from '../img/Steak.png'
 import ThaiFood from '../img/Thai_Food.png'
 import VegetarianFood from '../img/Vegetarian_Food.png'
 import Footer from '../components/Footer';
+// Router
+import { useNavigate } from "react-router-dom";
 
 
 const MainPage = () => {
@@ -41,6 +43,13 @@ const MainPage = () => {
         } else {
             setSeeMore(true);
         }
+    }
+
+    const navigate = new useNavigate();
+
+    function selectCategory(category) {
+        localStorage.setItem("category", category);
+        navigate("/search");
     }
     
   return (
@@ -117,22 +126,22 @@ const MainPage = () => {
             </div>
             <div className='flex justify-center gap-3 lg:gap-15 lg:-mb-5 mt-4'>
                 {/* Category#1 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Fast Food")} className='cursor-pointer'>
                     <img src={Fastfood} alt="fastfood" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Fast Food</p>
                 </div>
                 {/* Category#2 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Seafoods")} className='cursor-pointer'>
                     <img src={Seafood} alt="seafood" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Seafood</p>
                 </div>
                 {/* Category#3 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Desserts")} className='cursor-pointer'>
                     <img src={Dessert} alt="dessert" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Dessert</p>
                 </div>
                 {/* Category#4 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Noodles")} className='cursor-pointer'>
                     <img src={Noodle} alt="Noodle" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Noodle</p>
                 </div>
@@ -141,78 +150,78 @@ const MainPage = () => {
             <>
             <div className='flex justify-center gap-3 lg:gap-15 mt-10 -mb-2'>
                 {/* Category#5 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Burgers")} className='cursor-pointer'>
                     <img src={Burger} alt="burger" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Burger</p>
                 </div>
                 {/* Category#6 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Steaks")} className='cursor-pointer'>
                     <img src={Steak} alt="steak" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Steak</p>
                 </div>
                 {/* Category#7 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Dietary Food")} className='cursor-pointer'>
                     <img src={DietaryFood} alt="dietary_food" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-12 lg:-mt-8 relative'>Dietary Food</p>
                 </div>
                 {/* Category#8 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Buffets")} className='cursor-pointer'>
                     <img src={Buffet} alt="buffet" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Buffet</p>
                 </div>
             </div>
             <div className='flex justify-center gap-3 lg:gap-15 mt-5'>
                 {/* Category#9 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Hot Pots")} className='cursor-pointer'>
                     <img src={HotPot} alt="hot_pot" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Hot Pot</p>
                 </div>
                 {/* Category#10 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Grilled")} className='cursor-pointer'>
                     <img src={Grilled} alt="grilled" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Grilled</p>
                 </div>
                 {/* Category#11 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Pizzas")} className='cursor-pointer'>
                     <img src={Pizza} alt="pizza" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Pizza</p>
                 </div>
                 {/* Category#12 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Bakeries")} className='cursor-pointer'>
                     <img src={Bakery} alt="bakery" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Bakery</p>
                 </div>
             </div>
             <div className='flex justify-center gap-3 lg:gap-15 mt-5 -mb-2'>
                 {/* Category#13 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Vegetarian Food")} className='cursor-pointer'>
                     <img src={VegetarianFood} alt="vegetarian_food" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-12 lg:-mt-8 relative'>Vegetarian Food</p>
                 </div>
                 {/* Category#14 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Thai Food")} className='cursor-pointer'>
                     <img src={ThaiFood} alt="thai_food" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Thai Food</p>
                 </div>
                 {/* Category#15 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Chinese Food")} className='cursor-pointer'>
                     <img src={ChineseFood} alt="chinese_food" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-12 lg:-mt-8 relative'>Chinese Food</p>
                 </div>
                 {/* Category#16 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Japanese Food")} className='cursor-pointer'>
                     <img src={JapaneseFood} alt="japanese_food" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-12 lg:-mt-8 relative'>Japanese Food</p>
                 </div>
             </div>
             <div className='flex justify-center gap-3 lg:gap-15 mt-5'>
                 {/* Category#17 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("Korean Food")} className='cursor-pointer'>
                     <img src={KoreanFood} alt="Korean_food" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>Korean Food</p>
                 </div>
                 {/* Category#18 */}
-                <div className='cursor-pointer'>
+                <div onClick={() => selectCategory("French Food")} className='cursor-pointer'>
                     <img src={FrenchFood} alt="French_food" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>
                     <p className='text-center text-[15px] lg:text-[20px] text-white font-bold -mt-8 relative'>French Food</p>
                 </div>

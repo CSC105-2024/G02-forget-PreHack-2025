@@ -34,10 +34,10 @@ export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
  */
 export type Comment = $Result.DefaultSelection<Prisma.$CommentPayload>
 /**
- * Model Like
+ * Model People
  * 
  */
-export type Like = $Result.DefaultSelection<Prisma.$LikePayload>
+export type People = $Result.DefaultSelection<Prisma.$PeoplePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -205,14 +205,14 @@ export class PrismaClient<
   get comment(): Prisma.CommentDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.like`: Exposes CRUD operations for the **Like** model.
+   * `prisma.people`: Exposes CRUD operations for the **People** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Likes
-    * const likes = await prisma.like.findMany()
+    * // Fetch zero or more People
+    * const people = await prisma.people.findMany()
     * ```
     */
-  get like(): Prisma.LikeDelegate<ExtArgs, ClientOptions>;
+  get people(): Prisma.PeopleDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -657,7 +657,7 @@ export namespace Prisma {
     FoodPost: 'FoodPost',
     Category: 'Category',
     Comment: 'Comment',
-    Like: 'Like'
+    People: 'People'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -676,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "foodPost" | "category" | "comment" | "like"
+      modelProps: "user" | "foodPost" | "category" | "comment" | "people"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -712,6 +712,10 @@ export namespace Prisma {
             args: Prisma.UserCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          createManyAndReturn: {
+            args: Prisma.UserCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+          }
           delete: {
             args: Prisma.UserDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$UserPayload>
@@ -727,6 +731,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.UserUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
           }
           upsert: {
             args: Prisma.UserUpsertArgs<ExtArgs>
@@ -778,6 +786,10 @@ export namespace Prisma {
             args: Prisma.FoodPostCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          createManyAndReturn: {
+            args: Prisma.FoodPostCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodPostPayload>[]
+          }
           delete: {
             args: Prisma.FoodPostDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$FoodPostPayload>
@@ -793,6 +805,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.FoodPostUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FoodPostUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodPostPayload>[]
           }
           upsert: {
             args: Prisma.FoodPostUpsertArgs<ExtArgs>
@@ -844,6 +860,10 @@ export namespace Prisma {
             args: Prisma.CategoryCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          createManyAndReturn: {
+            args: Prisma.CategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
           delete: {
             args: Prisma.CategoryDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
@@ -859,6 +879,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.CategoryUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CategoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
           }
           upsert: {
             args: Prisma.CategoryUpsertArgs<ExtArgs>
@@ -910,6 +934,10 @@ export namespace Prisma {
             args: Prisma.CommentCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          createManyAndReturn: {
+            args: Prisma.CommentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>[]
+          }
           delete: {
             args: Prisma.CommentDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$CommentPayload>
@@ -925,6 +953,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.CommentUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CommentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>[]
           }
           upsert: {
             args: Prisma.CommentUpsertArgs<ExtArgs>
@@ -944,69 +976,77 @@ export namespace Prisma {
           }
         }
       }
-      Like: {
-        payload: Prisma.$LikePayload<ExtArgs>
-        fields: Prisma.LikeFieldRefs
+      People: {
+        payload: Prisma.$PeoplePayload<ExtArgs>
+        fields: Prisma.PeopleFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.LikeFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LikePayload> | null
+            args: Prisma.PeopleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeoplePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.LikeFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LikePayload>
+            args: Prisma.PeopleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeoplePayload>
           }
           findFirst: {
-            args: Prisma.LikeFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LikePayload> | null
+            args: Prisma.PeopleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeoplePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.LikeFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LikePayload>
+            args: Prisma.PeopleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeoplePayload>
           }
           findMany: {
-            args: Prisma.LikeFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LikePayload>[]
+            args: Prisma.PeopleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeoplePayload>[]
           }
           create: {
-            args: Prisma.LikeCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LikePayload>
+            args: Prisma.PeopleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeoplePayload>
           }
           createMany: {
-            args: Prisma.LikeCreateManyArgs<ExtArgs>
+            args: Prisma.PeopleCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          createManyAndReturn: {
+            args: Prisma.PeopleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeoplePayload>[]
+          }
           delete: {
-            args: Prisma.LikeDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LikePayload>
+            args: Prisma.PeopleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeoplePayload>
           }
           update: {
-            args: Prisma.LikeUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LikePayload>
+            args: Prisma.PeopleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeoplePayload>
           }
           deleteMany: {
-            args: Prisma.LikeDeleteManyArgs<ExtArgs>
+            args: Prisma.PeopleDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.LikeUpdateManyArgs<ExtArgs>
+            args: Prisma.PeopleUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.PeopleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeoplePayload>[]
+          }
           upsert: {
-            args: Prisma.LikeUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LikePayload>
+            args: Prisma.PeopleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PeoplePayload>
           }
           aggregate: {
-            args: Prisma.LikeAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateLike>
+            args: Prisma.PeopleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePeople>
           }
           groupBy: {
-            args: Prisma.LikeGroupByArgs<ExtArgs>
-            result: $Utils.Optional<LikeGroupByOutputType>[]
+            args: Prisma.PeopleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PeopleGroupByOutputType>[]
           }
           count: {
-            args: Prisma.LikeCountArgs<ExtArgs>
-            result: $Utils.Optional<LikeCountAggregateOutputType> | number
+            args: Prisma.PeopleCountArgs<ExtArgs>
+            result: $Utils.Optional<PeopleCountAggregateOutputType> | number
           }
         }
       }
@@ -1098,7 +1138,7 @@ export namespace Prisma {
     foodPost?: FoodPostOmit
     category?: CategoryOmit
     comment?: CommentOmit
-    like?: LikeOmit
+    people?: PeopleOmit
   }
 
   /* Types for Logging */
@@ -1195,13 +1235,11 @@ export namespace Prisma {
   export type UserCountOutputType = {
     foodPost: number
     comment: number
-    Like: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     foodPost?: boolean | UserCountOutputTypeCountFoodPostArgs
     comment?: boolean | UserCountOutputTypeCountCommentArgs
-    Like?: boolean | UserCountOutputTypeCountLikeArgs
   }
 
   // Custom InputTypes
@@ -1229,13 +1267,6 @@ export namespace Prisma {
     where?: CommentWhereInput
   }
 
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountLikeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LikeWhereInput
-  }
-
 
   /**
    * Count Type FoodPostCountOutputType
@@ -1243,10 +1274,12 @@ export namespace Prisma {
 
   export type FoodPostCountOutputType = {
     category: number
+    comment: number
   }
 
   export type FoodPostCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | FoodPostCountOutputTypeCountCategoryArgs
+    comment?: boolean | FoodPostCountOutputTypeCountCommentArgs
   }
 
   // Custom InputTypes
@@ -1267,17 +1300,24 @@ export namespace Prisma {
     where?: CategoryWhereInput
   }
 
+  /**
+   * FoodPostCountOutputType without action
+   */
+  export type FoodPostCountOutputTypeCountCommentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentWhereInput
+  }
+
 
   /**
    * Count Type CommentCountOutputType
    */
 
   export type CommentCountOutputType = {
-    like: number
+    people: number
   }
 
   export type CommentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    like?: boolean | CommentCountOutputTypeCountLikeArgs
+    people?: boolean | CommentCountOutputTypeCountPeopleArgs
   }
 
   // Custom InputTypes
@@ -1294,8 +1334,8 @@ export namespace Prisma {
   /**
    * CommentCountOutputType without action
    */
-  export type CommentCountOutputTypeCountLikeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LikeWhereInput
+  export type CommentCountOutputTypeCountPeopleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PeopleWhereInput
   }
 
 
@@ -1503,11 +1543,24 @@ export namespace Prisma {
     profile?: boolean
     foodPost?: boolean | User$foodPostArgs<ExtArgs>
     comment?: boolean | User$commentArgs<ExtArgs>
-    Like?: boolean | User$LikeArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
+  export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    username?: boolean
+    email?: boolean
+    password?: boolean
+    profile?: boolean
+  }, ExtArgs["result"]["user"]>
 
+  export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    username?: boolean
+    email?: boolean
+    password?: boolean
+    profile?: boolean
+  }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
@@ -1521,16 +1574,16 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     foodPost?: boolean | User$foodPostArgs<ExtArgs>
     comment?: boolean | User$commentArgs<ExtArgs>
-    Like?: boolean | User$LikeArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
       foodPost: Prisma.$FoodPostPayload<ExtArgs>[]
       comment: Prisma.$CommentPayload<ExtArgs>[]
-      Like: Prisma.$LikePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1656,6 +1709,30 @@ export namespace Prisma {
     createMany<T extends UserCreateManyArgs>(args?: SelectSubset<T, UserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Create many Users and returns the data saved in the database.
+     * @param {UserCreateManyAndReturnArgs} args - Arguments to create many Users.
+     * @example
+     * // Create many Users
+     * const user = await prisma.user.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Users and only return the `id`
+     * const userWithIdOnly = await prisma.user.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Delete a User.
      * @param {UserDeleteArgs} args - Arguments to delete one User.
      * @example
@@ -1718,6 +1795,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends UserUpdateManyArgs>(args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users and returns the data updated in the database.
+     * @param {UserUpdateManyAndReturnArgs} args - Arguments to update many Users.
+     * @example
+     * // Update many Users
+     * const user = await prisma.user.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Users and only return the `id`
+     * const userWithIdOnly = await prisma.user.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserUpdateManyAndReturnArgs>(args: SelectSubset<T, UserUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one User.
@@ -1880,7 +1987,6 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     foodPost<T extends User$foodPostArgs<ExtArgs> = {}>(args?: Subset<T, User$foodPostArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FoodPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     comment<T extends User$commentArgs<ExtArgs> = {}>(args?: Subset<T, User$commentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    Like<T extends User$LikeArgs<ExtArgs> = {}>(args?: Subset<T, User$LikeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2144,7 +2250,24 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
-    skipDuplicates?: boolean
+  }
+
+  /**
+   * User createManyAndReturn
+   */
+  export type UserCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * The data used to create many Users.
+     */
+    data: UserCreateManyInput | UserCreateManyInput[]
   }
 
   /**
@@ -2177,6 +2300,32 @@ export namespace Prisma {
    * User updateMany
    */
   export type UserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Users.
+     */
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
+    /**
+     * Filter which Users to update
+     */
+    where?: UserWhereInput
+    /**
+     * Limit how many Users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * User updateManyAndReturn
+   */
+  export type UserUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
     /**
      * The data used to update Users.
      */
@@ -2306,30 +2455,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.Like
-   */
-  export type User$LikeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Like
-     */
-    select?: LikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Like
-     */
-    omit?: LikeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LikeInclude<ExtArgs> | null
-    where?: LikeWhereInput
-    orderBy?: LikeOrderByWithRelationInput | LikeOrderByWithRelationInput[]
-    cursor?: LikeWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: LikeScalarFieldEnum | LikeScalarFieldEnum[]
-  }
-
-  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2362,12 +2487,14 @@ export namespace Prisma {
 
   export type FoodPostAvgAggregateOutputType = {
     id: number | null
+    price: number | null
     rating: number | null
     userId: number | null
   }
 
   export type FoodPostSumAggregateOutputType = {
     id: number | null
+    price: number | null
     rating: number | null
     userId: number | null
   }
@@ -2375,6 +2502,7 @@ export namespace Prisma {
   export type FoodPostMinAggregateOutputType = {
     id: number | null
     name: string | null
+    price: number | null
     location: string | null
     phoneNumber: string | null
     resNumber: string | null
@@ -2386,6 +2514,7 @@ export namespace Prisma {
   export type FoodPostMaxAggregateOutputType = {
     id: number | null
     name: string | null
+    price: number | null
     location: string | null
     phoneNumber: string | null
     resNumber: string | null
@@ -2397,6 +2526,7 @@ export namespace Prisma {
   export type FoodPostCountAggregateOutputType = {
     id: number
     name: number
+    price: number
     location: number
     phoneNumber: number
     resNumber: number
@@ -2409,12 +2539,14 @@ export namespace Prisma {
 
   export type FoodPostAvgAggregateInputType = {
     id?: true
+    price?: true
     rating?: true
     userId?: true
   }
 
   export type FoodPostSumAggregateInputType = {
     id?: true
+    price?: true
     rating?: true
     userId?: true
   }
@@ -2422,6 +2554,7 @@ export namespace Prisma {
   export type FoodPostMinAggregateInputType = {
     id?: true
     name?: true
+    price?: true
     location?: true
     phoneNumber?: true
     resNumber?: true
@@ -2433,6 +2566,7 @@ export namespace Prisma {
   export type FoodPostMaxAggregateInputType = {
     id?: true
     name?: true
+    price?: true
     location?: true
     phoneNumber?: true
     resNumber?: true
@@ -2444,6 +2578,7 @@ export namespace Prisma {
   export type FoodPostCountAggregateInputType = {
     id?: true
     name?: true
+    price?: true
     location?: true
     phoneNumber?: true
     resNumber?: true
@@ -2542,9 +2677,10 @@ export namespace Prisma {
   export type FoodPostGroupByOutputType = {
     id: number
     name: string
+    price: number
     location: string
-    phoneNumber: string
-    resNumber: string
+    phoneNumber: string | null
+    resNumber: string | null
     image: string
     rating: number
     userId: number
@@ -2572,6 +2708,7 @@ export namespace Prisma {
   export type FoodPostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    price?: boolean
     location?: boolean
     phoneNumber?: boolean
     resNumber?: boolean
@@ -2579,15 +2716,41 @@ export namespace Prisma {
     rating?: boolean
     userId?: boolean
     category?: boolean | FoodPost$categoryArgs<ExtArgs>
+    comment?: boolean | FoodPost$commentArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | FoodPostCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["foodPost"]>
 
+  export type FoodPostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    price?: boolean
+    location?: boolean
+    phoneNumber?: boolean
+    resNumber?: boolean
+    image?: boolean
+    rating?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["foodPost"]>
 
+  export type FoodPostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    price?: boolean
+    location?: boolean
+    phoneNumber?: boolean
+    resNumber?: boolean
+    image?: boolean
+    rating?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["foodPost"]>
 
   export type FoodPostSelectScalar = {
     id?: boolean
     name?: boolean
+    price?: boolean
     location?: boolean
     phoneNumber?: boolean
     resNumber?: boolean
@@ -2596,25 +2759,34 @@ export namespace Prisma {
     userId?: boolean
   }
 
-  export type FoodPostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "location" | "phoneNumber" | "resNumber" | "image" | "rating" | "userId", ExtArgs["result"]["foodPost"]>
+  export type FoodPostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "location" | "phoneNumber" | "resNumber" | "image" | "rating" | "userId", ExtArgs["result"]["foodPost"]>
   export type FoodPostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | FoodPost$categoryArgs<ExtArgs>
+    comment?: boolean | FoodPost$commentArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | FoodPostCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type FoodPostIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type FoodPostIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $FoodPostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "FoodPost"
     objects: {
       category: Prisma.$CategoryPayload<ExtArgs>[]
+      comment: Prisma.$CommentPayload<ExtArgs>[]
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
+      price: number
       location: string
-      phoneNumber: string
-      resNumber: string
+      phoneNumber: string | null
+      resNumber: string | null
       image: string
       rating: number
       userId: number
@@ -2736,6 +2908,30 @@ export namespace Prisma {
     createMany<T extends FoodPostCreateManyArgs>(args?: SelectSubset<T, FoodPostCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Create many FoodPosts and returns the data saved in the database.
+     * @param {FoodPostCreateManyAndReturnArgs} args - Arguments to create many FoodPosts.
+     * @example
+     * // Create many FoodPosts
+     * const foodPost = await prisma.foodPost.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FoodPosts and only return the `id`
+     * const foodPostWithIdOnly = await prisma.foodPost.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FoodPostCreateManyAndReturnArgs>(args?: SelectSubset<T, FoodPostCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FoodPostPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Delete a FoodPost.
      * @param {FoodPostDeleteArgs} args - Arguments to delete one FoodPost.
      * @example
@@ -2798,6 +2994,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends FoodPostUpdateManyArgs>(args: SelectSubset<T, FoodPostUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FoodPosts and returns the data updated in the database.
+     * @param {FoodPostUpdateManyAndReturnArgs} args - Arguments to update many FoodPosts.
+     * @example
+     * // Update many FoodPosts
+     * const foodPost = await prisma.foodPost.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FoodPosts and only return the `id`
+     * const foodPostWithIdOnly = await prisma.foodPost.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FoodPostUpdateManyAndReturnArgs>(args: SelectSubset<T, FoodPostUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FoodPostPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one FoodPost.
@@ -2959,6 +3185,7 @@ export namespace Prisma {
   export interface Prisma__FoodPostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     category<T extends FoodPost$categoryArgs<ExtArgs> = {}>(args?: Subset<T, FoodPost$categoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    comment<T extends FoodPost$commentArgs<ExtArgs> = {}>(args?: Subset<T, FoodPost$commentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2991,6 +3218,7 @@ export namespace Prisma {
   interface FoodPostFieldRefs {
     readonly id: FieldRef<"FoodPost", 'Int'>
     readonly name: FieldRef<"FoodPost", 'String'>
+    readonly price: FieldRef<"FoodPost", 'Int'>
     readonly location: FieldRef<"FoodPost", 'String'>
     readonly phoneNumber: FieldRef<"FoodPost", 'String'>
     readonly resNumber: FieldRef<"FoodPost", 'String'>
@@ -3226,7 +3454,28 @@ export namespace Prisma {
      * The data used to create many FoodPosts.
      */
     data: FoodPostCreateManyInput | FoodPostCreateManyInput[]
-    skipDuplicates?: boolean
+  }
+
+  /**
+   * FoodPost createManyAndReturn
+   */
+  export type FoodPostCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodPost
+     */
+    select?: FoodPostSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodPost
+     */
+    omit?: FoodPostOmit<ExtArgs> | null
+    /**
+     * The data used to create many FoodPosts.
+     */
+    data: FoodPostCreateManyInput | FoodPostCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodPostIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3271,6 +3520,36 @@ export namespace Prisma {
      * Limit how many FoodPosts to update.
      */
     limit?: number
+  }
+
+  /**
+   * FoodPost updateManyAndReturn
+   */
+  export type FoodPostUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodPost
+     */
+    select?: FoodPostSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodPost
+     */
+    omit?: FoodPostOmit<ExtArgs> | null
+    /**
+     * The data used to update FoodPosts.
+     */
+    data: XOR<FoodPostUpdateManyMutationInput, FoodPostUncheckedUpdateManyInput>
+    /**
+     * Filter which FoodPosts to update
+     */
+    where?: FoodPostWhereInput
+    /**
+     * Limit how many FoodPosts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodPostIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3361,6 +3640,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * FoodPost.comment
+   */
+  export type FoodPost$commentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    cursor?: CommentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
   }
 
   /**
@@ -3568,10 +3871,22 @@ export namespace Prisma {
     id?: boolean
     category?: boolean
     foodPostId?: boolean
-    foodPost?: boolean | FoodPostDefaultArgs<ExtArgs>
+    foodPost?: boolean | Category$foodPostArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
+  export type CategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    category?: boolean
+    foodPostId?: boolean
+    foodPost?: boolean | Category$foodPostArgs<ExtArgs>
+  }, ExtArgs["result"]["category"]>
 
+  export type CategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    category?: boolean
+    foodPostId?: boolean
+    foodPost?: boolean | Category$foodPostArgs<ExtArgs>
+  }, ExtArgs["result"]["category"]>
 
   export type CategorySelectScalar = {
     id?: boolean
@@ -3581,13 +3896,19 @@ export namespace Prisma {
 
   export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "category" | "foodPostId", ExtArgs["result"]["category"]>
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    foodPost?: boolean | FoodPostDefaultArgs<ExtArgs>
+    foodPost?: boolean | Category$foodPostArgs<ExtArgs>
+  }
+  export type CategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    foodPost?: boolean | Category$foodPostArgs<ExtArgs>
+  }
+  export type CategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    foodPost?: boolean | Category$foodPostArgs<ExtArgs>
   }
 
   export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Category"
     objects: {
-      foodPost: Prisma.$FoodPostPayload<ExtArgs>
+      foodPost: Prisma.$FoodPostPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3711,6 +4032,30 @@ export namespace Prisma {
     createMany<T extends CategoryCreateManyArgs>(args?: SelectSubset<T, CategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Create many Categories and returns the data saved in the database.
+     * @param {CategoryCreateManyAndReturnArgs} args - Arguments to create many Categories.
+     * @example
+     * // Create many Categories
+     * const category = await prisma.category.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Categories and only return the `id`
+     * const categoryWithIdOnly = await prisma.category.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, CategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Delete a Category.
      * @param {CategoryDeleteArgs} args - Arguments to delete one Category.
      * @example
@@ -3773,6 +4118,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends CategoryUpdateManyArgs>(args: SelectSubset<T, CategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Categories and returns the data updated in the database.
+     * @param {CategoryUpdateManyAndReturnArgs} args - Arguments to update many Categories.
+     * @example
+     * // Update many Categories
+     * const category = await prisma.category.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Categories and only return the `id`
+     * const categoryWithIdOnly = await prisma.category.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CategoryUpdateManyAndReturnArgs>(args: SelectSubset<T, CategoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Category.
@@ -3933,7 +4308,7 @@ export namespace Prisma {
    */
   export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    foodPost<T extends FoodPostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FoodPostDefaultArgs<ExtArgs>>): Prisma__FoodPostClient<$Result.GetResult<Prisma.$FoodPostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    foodPost<T extends Category$foodPostArgs<ExtArgs> = {}>(args?: Subset<T, Category$foodPostArgs<ExtArgs>>): Prisma__FoodPostClient<$Result.GetResult<Prisma.$FoodPostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4195,7 +4570,28 @@ export namespace Prisma {
      * The data used to create many Categories.
      */
     data: CategoryCreateManyInput | CategoryCreateManyInput[]
-    skipDuplicates?: boolean
+  }
+
+  /**
+   * Category createManyAndReturn
+   */
+  export type CategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many Categories.
+     */
+    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4240,6 +4636,36 @@ export namespace Prisma {
      * Limit how many Categories to update.
      */
     limit?: number
+  }
+
+  /**
+   * Category updateManyAndReturn
+   */
+  export type CategoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * The data used to update Categories.
+     */
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which Categories to update
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4309,6 +4735,25 @@ export namespace Prisma {
   }
 
   /**
+   * Category.foodPost
+   */
+  export type Category$foodPostArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodPost
+     */
+    select?: FoodPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FoodPost
+     */
+    omit?: FoodPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodPostInclude<ExtArgs> | null
+    where?: FoodPostWhereInput
+  }
+
+  /**
    * Category without action
    */
   export type CategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4342,18 +4787,22 @@ export namespace Prisma {
   export type CommentAvgAggregateOutputType = {
     id: number | null
     rating: number | null
+    like: number | null
     day: number | null
     month: number | null
     year: number | null
+    foodPostId: number | null
     userId: number | null
   }
 
   export type CommentSumAggregateOutputType = {
     id: number | null
     rating: number | null
+    like: number | null
     day: number | null
     month: number | null
     year: number | null
+    foodPostId: number | null
     userId: number | null
   }
 
@@ -4361,9 +4810,11 @@ export namespace Prisma {
     id: number | null
     rating: number | null
     content: string | null
+    like: number | null
     day: number | null
     month: number | null
     year: number | null
+    foodPostId: number | null
     userId: number | null
   }
 
@@ -4371,9 +4822,11 @@ export namespace Prisma {
     id: number | null
     rating: number | null
     content: string | null
+    like: number | null
     day: number | null
     month: number | null
     year: number | null
+    foodPostId: number | null
     userId: number | null
   }
 
@@ -4381,9 +4834,11 @@ export namespace Prisma {
     id: number
     rating: number
     content: number
+    like: number
     day: number
     month: number
     year: number
+    foodPostId: number
     userId: number
     _all: number
   }
@@ -4392,18 +4847,22 @@ export namespace Prisma {
   export type CommentAvgAggregateInputType = {
     id?: true
     rating?: true
+    like?: true
     day?: true
     month?: true
     year?: true
+    foodPostId?: true
     userId?: true
   }
 
   export type CommentSumAggregateInputType = {
     id?: true
     rating?: true
+    like?: true
     day?: true
     month?: true
     year?: true
+    foodPostId?: true
     userId?: true
   }
 
@@ -4411,9 +4870,11 @@ export namespace Prisma {
     id?: true
     rating?: true
     content?: true
+    like?: true
     day?: true
     month?: true
     year?: true
+    foodPostId?: true
     userId?: true
   }
 
@@ -4421,9 +4882,11 @@ export namespace Prisma {
     id?: true
     rating?: true
     content?: true
+    like?: true
     day?: true
     month?: true
     year?: true
+    foodPostId?: true
     userId?: true
   }
 
@@ -4431,9 +4894,11 @@ export namespace Prisma {
     id?: true
     rating?: true
     content?: true
+    like?: true
     day?: true
     month?: true
     year?: true
+    foodPostId?: true
     userId?: true
     _all?: true
   }
@@ -4528,9 +4993,11 @@ export namespace Prisma {
     id: number
     rating: number
     content: string
+    like: number
     day: number
     month: number
     year: number
+    foodPostId: number
     userId: number
     _count: CommentCountAggregateOutputType | null
     _avg: CommentAvgAggregateOutputType | null
@@ -4557,47 +5024,90 @@ export namespace Prisma {
     id?: boolean
     rating?: boolean
     content?: boolean
+    like?: boolean
     day?: boolean
     month?: boolean
     year?: boolean
+    foodPostId?: boolean
     userId?: boolean
-    like?: boolean | Comment$likeArgs<ExtArgs>
+    people?: boolean | Comment$peopleArgs<ExtArgs>
+    foodPost?: boolean | FoodPostDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | CommentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
+  export type CommentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    rating?: boolean
+    content?: boolean
+    like?: boolean
+    day?: boolean
+    month?: boolean
+    year?: boolean
+    foodPostId?: boolean
+    userId?: boolean
+    foodPost?: boolean | FoodPostDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comment"]>
 
+  export type CommentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    rating?: boolean
+    content?: boolean
+    like?: boolean
+    day?: boolean
+    month?: boolean
+    year?: boolean
+    foodPostId?: boolean
+    userId?: boolean
+    foodPost?: boolean | FoodPostDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comment"]>
 
   export type CommentSelectScalar = {
     id?: boolean
     rating?: boolean
     content?: boolean
+    like?: boolean
     day?: boolean
     month?: boolean
     year?: boolean
+    foodPostId?: boolean
     userId?: boolean
   }
 
-  export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "rating" | "content" | "day" | "month" | "year" | "userId", ExtArgs["result"]["comment"]>
+  export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "rating" | "content" | "like" | "day" | "month" | "year" | "foodPostId" | "userId", ExtArgs["result"]["comment"]>
   export type CommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    like?: boolean | Comment$likeArgs<ExtArgs>
+    people?: boolean | Comment$peopleArgs<ExtArgs>
+    foodPost?: boolean | FoodPostDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | CommentCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CommentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    foodPost?: boolean | FoodPostDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CommentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    foodPost?: boolean | FoodPostDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $CommentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Comment"
     objects: {
-      like: Prisma.$LikePayload<ExtArgs>[]
+      people: Prisma.$PeoplePayload<ExtArgs>[]
+      foodPost: Prisma.$FoodPostPayload<ExtArgs>
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       rating: number
       content: string
+      like: number
       day: number
       month: number
       year: number
+      foodPostId: number
       userId: number
     }, ExtArgs["result"]["comment"]>
     composites: {}
@@ -4717,6 +5227,30 @@ export namespace Prisma {
     createMany<T extends CommentCreateManyArgs>(args?: SelectSubset<T, CommentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Create many Comments and returns the data saved in the database.
+     * @param {CommentCreateManyAndReturnArgs} args - Arguments to create many Comments.
+     * @example
+     * // Create many Comments
+     * const comment = await prisma.comment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Comments and only return the `id`
+     * const commentWithIdOnly = await prisma.comment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CommentCreateManyAndReturnArgs>(args?: SelectSubset<T, CommentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Delete a Comment.
      * @param {CommentDeleteArgs} args - Arguments to delete one Comment.
      * @example
@@ -4779,6 +5313,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends CommentUpdateManyArgs>(args: SelectSubset<T, CommentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Comments and returns the data updated in the database.
+     * @param {CommentUpdateManyAndReturnArgs} args - Arguments to update many Comments.
+     * @example
+     * // Update many Comments
+     * const comment = await prisma.comment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Comments and only return the `id`
+     * const commentWithIdOnly = await prisma.comment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CommentUpdateManyAndReturnArgs>(args: SelectSubset<T, CommentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Comment.
@@ -4939,7 +5503,8 @@ export namespace Prisma {
    */
   export interface Prisma__CommentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    like<T extends Comment$likeArgs<ExtArgs> = {}>(args?: Subset<T, Comment$likeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    people<T extends Comment$peopleArgs<ExtArgs> = {}>(args?: Subset<T, Comment$peopleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    foodPost<T extends FoodPostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FoodPostDefaultArgs<ExtArgs>>): Prisma__FoodPostClient<$Result.GetResult<Prisma.$FoodPostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4973,9 +5538,11 @@ export namespace Prisma {
     readonly id: FieldRef<"Comment", 'Int'>
     readonly rating: FieldRef<"Comment", 'Int'>
     readonly content: FieldRef<"Comment", 'String'>
+    readonly like: FieldRef<"Comment", 'Int'>
     readonly day: FieldRef<"Comment", 'Int'>
     readonly month: FieldRef<"Comment", 'Int'>
     readonly year: FieldRef<"Comment", 'Int'>
+    readonly foodPostId: FieldRef<"Comment", 'Int'>
     readonly userId: FieldRef<"Comment", 'Int'>
   }
     
@@ -5206,7 +5773,28 @@ export namespace Prisma {
      * The data used to create many Comments.
      */
     data: CommentCreateManyInput | CommentCreateManyInput[]
-    skipDuplicates?: boolean
+  }
+
+  /**
+   * Comment createManyAndReturn
+   */
+  export type CommentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * The data used to create many Comments.
+     */
+    data: CommentCreateManyInput | CommentCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5251,6 +5839,36 @@ export namespace Prisma {
      * Limit how many Comments to update.
      */
     limit?: number
+  }
+
+  /**
+   * Comment updateManyAndReturn
+   */
+  export type CommentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * The data used to update Comments.
+     */
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyInput>
+    /**
+     * Filter which Comments to update
+     */
+    where?: CommentWhereInput
+    /**
+     * Limit how many Comments to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5320,27 +5938,27 @@ export namespace Prisma {
   }
 
   /**
-   * Comment.like
+   * Comment.people
    */
-  export type Comment$likeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Comment$peopleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Like
+     * Select specific fields to fetch from the People
      */
-    select?: LikeSelect<ExtArgs> | null
+    select?: PeopleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Like
+     * Omit specific fields from the People
      */
-    omit?: LikeOmit<ExtArgs> | null
+    omit?: PeopleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LikeInclude<ExtArgs> | null
-    where?: LikeWhereInput
-    orderBy?: LikeOrderByWithRelationInput | LikeOrderByWithRelationInput[]
-    cursor?: LikeWhereUniqueInput
+    include?: PeopleInclude<ExtArgs> | null
+    where?: PeopleWhereInput
+    orderBy?: PeopleOrderByWithRelationInput | PeopleOrderByWithRelationInput[]
+    cursor?: PeopleWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: LikeScalarFieldEnum | LikeScalarFieldEnum[]
+    distinct?: PeopleScalarFieldEnum | PeopleScalarFieldEnum[]
   }
 
   /**
@@ -5363,42 +5981,42 @@ export namespace Prisma {
 
 
   /**
-   * Model Like
+   * Model People
    */
 
-  export type AggregateLike = {
-    _count: LikeCountAggregateOutputType | null
-    _avg: LikeAvgAggregateOutputType | null
-    _sum: LikeSumAggregateOutputType | null
-    _min: LikeMinAggregateOutputType | null
-    _max: LikeMaxAggregateOutputType | null
+  export type AggregatePeople = {
+    _count: PeopleCountAggregateOutputType | null
+    _avg: PeopleAvgAggregateOutputType | null
+    _sum: PeopleSumAggregateOutputType | null
+    _min: PeopleMinAggregateOutputType | null
+    _max: PeopleMaxAggregateOutputType | null
   }
 
-  export type LikeAvgAggregateOutputType = {
+  export type PeopleAvgAggregateOutputType = {
     id: number | null
     userId: number | null
     commentId: number | null
   }
 
-  export type LikeSumAggregateOutputType = {
+  export type PeopleSumAggregateOutputType = {
     id: number | null
     userId: number | null
     commentId: number | null
   }
 
-  export type LikeMinAggregateOutputType = {
+  export type PeopleMinAggregateOutputType = {
     id: number | null
     userId: number | null
     commentId: number | null
   }
 
-  export type LikeMaxAggregateOutputType = {
+  export type PeopleMaxAggregateOutputType = {
     id: number | null
     userId: number | null
     commentId: number | null
   }
 
-  export type LikeCountAggregateOutputType = {
+  export type PeopleCountAggregateOutputType = {
     id: number
     userId: number
     commentId: number
@@ -5406,350 +6024,356 @@ export namespace Prisma {
   }
 
 
-  export type LikeAvgAggregateInputType = {
+  export type PeopleAvgAggregateInputType = {
     id?: true
     userId?: true
     commentId?: true
   }
 
-  export type LikeSumAggregateInputType = {
+  export type PeopleSumAggregateInputType = {
     id?: true
     userId?: true
     commentId?: true
   }
 
-  export type LikeMinAggregateInputType = {
+  export type PeopleMinAggregateInputType = {
     id?: true
     userId?: true
     commentId?: true
   }
 
-  export type LikeMaxAggregateInputType = {
+  export type PeopleMaxAggregateInputType = {
     id?: true
     userId?: true
     commentId?: true
   }
 
-  export type LikeCountAggregateInputType = {
+  export type PeopleCountAggregateInputType = {
     id?: true
     userId?: true
     commentId?: true
     _all?: true
   }
 
-  export type LikeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Like to aggregate.
+     * Filter which People to aggregate.
      */
-    where?: LikeWhereInput
+    where?: PeopleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Likes to fetch.
+     * Determine the order of People to fetch.
      */
-    orderBy?: LikeOrderByWithRelationInput | LikeOrderByWithRelationInput[]
+    orderBy?: PeopleOrderByWithRelationInput | PeopleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: LikeWhereUniqueInput
+    cursor?: PeopleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Likes from the position of the cursor.
+     * Take `±n` People from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Likes.
+     * Skip the first `n` People.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Likes
+     * Count returned People
     **/
-    _count?: true | LikeCountAggregateInputType
+    _count?: true | PeopleCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: LikeAvgAggregateInputType
+    _avg?: PeopleAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: LikeSumAggregateInputType
+    _sum?: PeopleSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: LikeMinAggregateInputType
+    _min?: PeopleMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: LikeMaxAggregateInputType
+    _max?: PeopleMaxAggregateInputType
   }
 
-  export type GetLikeAggregateType<T extends LikeAggregateArgs> = {
-        [P in keyof T & keyof AggregateLike]: P extends '_count' | 'count'
+  export type GetPeopleAggregateType<T extends PeopleAggregateArgs> = {
+        [P in keyof T & keyof AggregatePeople]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateLike[P]>
-      : GetScalarType<T[P], AggregateLike[P]>
+        : GetScalarType<T[P], AggregatePeople[P]>
+      : GetScalarType<T[P], AggregatePeople[P]>
   }
 
 
 
 
-  export type LikeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LikeWhereInput
-    orderBy?: LikeOrderByWithAggregationInput | LikeOrderByWithAggregationInput[]
-    by: LikeScalarFieldEnum[] | LikeScalarFieldEnum
-    having?: LikeScalarWhereWithAggregatesInput
+  export type PeopleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PeopleWhereInput
+    orderBy?: PeopleOrderByWithAggregationInput | PeopleOrderByWithAggregationInput[]
+    by: PeopleScalarFieldEnum[] | PeopleScalarFieldEnum
+    having?: PeopleScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: LikeCountAggregateInputType | true
-    _avg?: LikeAvgAggregateInputType
-    _sum?: LikeSumAggregateInputType
-    _min?: LikeMinAggregateInputType
-    _max?: LikeMaxAggregateInputType
+    _count?: PeopleCountAggregateInputType | true
+    _avg?: PeopleAvgAggregateInputType
+    _sum?: PeopleSumAggregateInputType
+    _min?: PeopleMinAggregateInputType
+    _max?: PeopleMaxAggregateInputType
   }
 
-  export type LikeGroupByOutputType = {
+  export type PeopleGroupByOutputType = {
     id: number
     userId: number
     commentId: number
-    _count: LikeCountAggregateOutputType | null
-    _avg: LikeAvgAggregateOutputType | null
-    _sum: LikeSumAggregateOutputType | null
-    _min: LikeMinAggregateOutputType | null
-    _max: LikeMaxAggregateOutputType | null
+    _count: PeopleCountAggregateOutputType | null
+    _avg: PeopleAvgAggregateOutputType | null
+    _sum: PeopleSumAggregateOutputType | null
+    _min: PeopleMinAggregateOutputType | null
+    _max: PeopleMaxAggregateOutputType | null
   }
 
-  type GetLikeGroupByPayload<T extends LikeGroupByArgs> = Prisma.PrismaPromise<
+  type GetPeopleGroupByPayload<T extends PeopleGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<LikeGroupByOutputType, T['by']> &
+      PickEnumerable<PeopleGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof LikeGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof PeopleGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], LikeGroupByOutputType[P]>
-            : GetScalarType<T[P], LikeGroupByOutputType[P]>
+              : GetScalarType<T[P], PeopleGroupByOutputType[P]>
+            : GetScalarType<T[P], PeopleGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type LikeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PeopleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
     commentId?: boolean
     comment?: boolean | CommentDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["like"]>
+  }, ExtArgs["result"]["people"]>
 
+  export type PeopleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    commentId?: boolean
+    comment?: boolean | CommentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["people"]>
 
+  export type PeopleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    commentId?: boolean
+    comment?: boolean | CommentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["people"]>
 
-  export type LikeSelectScalar = {
+  export type PeopleSelectScalar = {
     id?: boolean
     userId?: boolean
     commentId?: boolean
   }
 
-  export type LikeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "commentId", ExtArgs["result"]["like"]>
-  export type LikeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "commentId", ExtArgs["result"]["people"]>
+  export type PeopleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     comment?: boolean | CommentDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type PeopleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    comment?: boolean | CommentDefaultArgs<ExtArgs>
+  }
+  export type PeopleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    comment?: boolean | CommentDefaultArgs<ExtArgs>
   }
 
-  export type $LikePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Like"
+  export type $PeoplePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "People"
     objects: {
       comment: Prisma.$CommentPayload<ExtArgs>
-      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       userId: number
       commentId: number
-    }, ExtArgs["result"]["like"]>
+    }, ExtArgs["result"]["people"]>
     composites: {}
   }
 
-  type LikeGetPayload<S extends boolean | null | undefined | LikeDefaultArgs> = $Result.GetResult<Prisma.$LikePayload, S>
+  type PeopleGetPayload<S extends boolean | null | undefined | PeopleDefaultArgs> = $Result.GetResult<Prisma.$PeoplePayload, S>
 
-  type LikeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<LikeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: LikeCountAggregateInputType | true
+  type PeopleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PeopleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PeopleCountAggregateInputType | true
     }
 
-  export interface LikeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Like'], meta: { name: 'Like' } }
+  export interface PeopleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['People'], meta: { name: 'People' } }
     /**
-     * Find zero or one Like that matches the filter.
-     * @param {LikeFindUniqueArgs} args - Arguments to find a Like
+     * Find zero or one People that matches the filter.
+     * @param {PeopleFindUniqueArgs} args - Arguments to find a People
      * @example
-     * // Get one Like
-     * const like = await prisma.like.findUnique({
+     * // Get one People
+     * const people = await prisma.people.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends LikeFindUniqueArgs>(args: SelectSubset<T, LikeFindUniqueArgs<ExtArgs>>): Prisma__LikeClient<$Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends PeopleFindUniqueArgs>(args: SelectSubset<T, PeopleFindUniqueArgs<ExtArgs>>): Prisma__PeopleClient<$Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Like that matches the filter or throw an error with `error.code='P2025'`
+     * Find one People that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {LikeFindUniqueOrThrowArgs} args - Arguments to find a Like
+     * @param {PeopleFindUniqueOrThrowArgs} args - Arguments to find a People
      * @example
-     * // Get one Like
-     * const like = await prisma.like.findUniqueOrThrow({
+     * // Get one People
+     * const people = await prisma.people.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends LikeFindUniqueOrThrowArgs>(args: SelectSubset<T, LikeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LikeClient<$Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends PeopleFindUniqueOrThrowArgs>(args: SelectSubset<T, PeopleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PeopleClient<$Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Like that matches the filter.
+     * Find the first People that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LikeFindFirstArgs} args - Arguments to find a Like
+     * @param {PeopleFindFirstArgs} args - Arguments to find a People
      * @example
-     * // Get one Like
-     * const like = await prisma.like.findFirst({
+     * // Get one People
+     * const people = await prisma.people.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends LikeFindFirstArgs>(args?: SelectSubset<T, LikeFindFirstArgs<ExtArgs>>): Prisma__LikeClient<$Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends PeopleFindFirstArgs>(args?: SelectSubset<T, PeopleFindFirstArgs<ExtArgs>>): Prisma__PeopleClient<$Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Like that matches the filter or
+     * Find the first People that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LikeFindFirstOrThrowArgs} args - Arguments to find a Like
+     * @param {PeopleFindFirstOrThrowArgs} args - Arguments to find a People
      * @example
-     * // Get one Like
-     * const like = await prisma.like.findFirstOrThrow({
+     * // Get one People
+     * const people = await prisma.people.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends LikeFindFirstOrThrowArgs>(args?: SelectSubset<T, LikeFindFirstOrThrowArgs<ExtArgs>>): Prisma__LikeClient<$Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends PeopleFindFirstOrThrowArgs>(args?: SelectSubset<T, PeopleFindFirstOrThrowArgs<ExtArgs>>): Prisma__PeopleClient<$Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Likes that matches the filter.
+     * Find zero or more People that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LikeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {PeopleFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Likes
-     * const likes = await prisma.like.findMany()
+     * // Get all People
+     * const people = await prisma.people.findMany()
      * 
-     * // Get first 10 Likes
-     * const likes = await prisma.like.findMany({ take: 10 })
+     * // Get first 10 People
+     * const people = await prisma.people.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const likeWithIdOnly = await prisma.like.findMany({ select: { id: true } })
+     * const peopleWithIdOnly = await prisma.people.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends LikeFindManyArgs>(args?: SelectSubset<T, LikeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends PeopleFindManyArgs>(args?: SelectSubset<T, PeopleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Like.
-     * @param {LikeCreateArgs} args - Arguments to create a Like.
+     * Create a People.
+     * @param {PeopleCreateArgs} args - Arguments to create a People.
      * @example
-     * // Create one Like
-     * const Like = await prisma.like.create({
+     * // Create one People
+     * const People = await prisma.people.create({
      *   data: {
-     *     // ... data to create a Like
+     *     // ... data to create a People
      *   }
      * })
      * 
      */
-    create<T extends LikeCreateArgs>(args: SelectSubset<T, LikeCreateArgs<ExtArgs>>): Prisma__LikeClient<$Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends PeopleCreateArgs>(args: SelectSubset<T, PeopleCreateArgs<ExtArgs>>): Prisma__PeopleClient<$Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Likes.
-     * @param {LikeCreateManyArgs} args - Arguments to create many Likes.
+     * Create many People.
+     * @param {PeopleCreateManyArgs} args - Arguments to create many People.
      * @example
-     * // Create many Likes
-     * const like = await prisma.like.createMany({
+     * // Create many People
+     * const people = await prisma.people.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends LikeCreateManyArgs>(args?: SelectSubset<T, LikeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends PeopleCreateManyArgs>(args?: SelectSubset<T, PeopleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Like.
-     * @param {LikeDeleteArgs} args - Arguments to delete one Like.
+     * Create many People and returns the data saved in the database.
+     * @param {PeopleCreateManyAndReturnArgs} args - Arguments to create many People.
      * @example
-     * // Delete one Like
-     * const Like = await prisma.like.delete({
-     *   where: {
-     *     // ... filter to delete one Like
-     *   }
-     * })
-     * 
-     */
-    delete<T extends LikeDeleteArgs>(args: SelectSubset<T, LikeDeleteArgs<ExtArgs>>): Prisma__LikeClient<$Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Like.
-     * @param {LikeUpdateArgs} args - Arguments to update one Like.
-     * @example
-     * // Update one Like
-     * const like = await prisma.like.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
+     * // Create many People
+     * const people = await prisma.people.createManyAndReturn({
+     *   data: [
      *     // ... provide data here
-     *   }
+     *   ]
      * })
      * 
-     */
-    update<T extends LikeUpdateArgs>(args: SelectSubset<T, LikeUpdateArgs<ExtArgs>>): Prisma__LikeClient<$Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Likes.
-     * @param {LikeDeleteManyArgs} args - Arguments to filter Likes to delete.
-     * @example
-     * // Delete a few Likes
-     * const { count } = await prisma.like.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
+     * // Create many People and only return the `id`
+     * const peopleWithIdOnly = await prisma.people.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
      * })
-     * 
-     */
-    deleteMany<T extends LikeDeleteManyArgs>(args?: SelectSubset<T, LikeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Likes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LikeUpdateManyArgs} args - Arguments to update one or more rows.
+     * 
+     */
+    createManyAndReturn<T extends PeopleCreateManyAndReturnArgs>(args?: SelectSubset<T, PeopleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a People.
+     * @param {PeopleDeleteArgs} args - Arguments to delete one People.
      * @example
-     * // Update many Likes
-     * const like = await prisma.like.updateMany({
+     * // Delete one People
+     * const People = await prisma.people.delete({
+     *   where: {
+     *     // ... filter to delete one People
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PeopleDeleteArgs>(args: SelectSubset<T, PeopleDeleteArgs<ExtArgs>>): Prisma__PeopleClient<$Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one People.
+     * @param {PeopleUpdateArgs} args - Arguments to update one People.
+     * @example
+     * // Update one People
+     * const people = await prisma.people.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5759,56 +6383,119 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends LikeUpdateManyArgs>(args: SelectSubset<T, LikeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    update<T extends PeopleUpdateArgs>(args: SelectSubset<T, PeopleUpdateArgs<ExtArgs>>): Prisma__PeopleClient<$Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create or update one Like.
-     * @param {LikeUpsertArgs} args - Arguments to update or create a Like.
+     * Delete zero or more People.
+     * @param {PeopleDeleteManyArgs} args - Arguments to filter People to delete.
      * @example
-     * // Update or create a Like
-     * const like = await prisma.like.upsert({
+     * // Delete a few People
+     * const { count } = await prisma.people.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PeopleDeleteManyArgs>(args?: SelectSubset<T, PeopleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more People.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeopleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many People
+     * const people = await prisma.people.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PeopleUpdateManyArgs>(args: SelectSubset<T, PeopleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more People and returns the data updated in the database.
+     * @param {PeopleUpdateManyAndReturnArgs} args - Arguments to update many People.
+     * @example
+     * // Update many People
+     * const people = await prisma.people.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more People and only return the `id`
+     * const peopleWithIdOnly = await prisma.people.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PeopleUpdateManyAndReturnArgs>(args: SelectSubset<T, PeopleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one People.
+     * @param {PeopleUpsertArgs} args - Arguments to update or create a People.
+     * @example
+     * // Update or create a People
+     * const people = await prisma.people.upsert({
      *   create: {
-     *     // ... data to create a Like
+     *     // ... data to create a People
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Like we want to update
+     *     // ... the filter for the People we want to update
      *   }
      * })
      */
-    upsert<T extends LikeUpsertArgs>(args: SelectSubset<T, LikeUpsertArgs<ExtArgs>>): Prisma__LikeClient<$Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends PeopleUpsertArgs>(args: SelectSubset<T, PeopleUpsertArgs<ExtArgs>>): Prisma__PeopleClient<$Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Likes.
+     * Count the number of People.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LikeCountArgs} args - Arguments to filter Likes to count.
+     * @param {PeopleCountArgs} args - Arguments to filter People to count.
      * @example
-     * // Count the number of Likes
-     * const count = await prisma.like.count({
+     * // Count the number of People
+     * const count = await prisma.people.count({
      *   where: {
-     *     // ... the filter for the Likes we want to count
+     *     // ... the filter for the People we want to count
      *   }
      * })
     **/
-    count<T extends LikeCountArgs>(
-      args?: Subset<T, LikeCountArgs>,
+    count<T extends PeopleCountArgs>(
+      args?: Subset<T, PeopleCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], LikeCountAggregateOutputType>
+          : GetScalarType<T['select'], PeopleCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Like.
+     * Allows you to perform aggregations operations on a People.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LikeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {PeopleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5828,13 +6515,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends LikeAggregateArgs>(args: Subset<T, LikeAggregateArgs>): Prisma.PrismaPromise<GetLikeAggregateType<T>>
+    aggregate<T extends PeopleAggregateArgs>(args: Subset<T, PeopleAggregateArgs>): Prisma.PrismaPromise<GetPeopleAggregateType<T>>
 
     /**
-     * Group by Like.
+     * Group by People.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {LikeGroupByArgs} args - Group by arguments.
+     * @param {PeopleGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5849,14 +6536,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends LikeGroupByArgs,
+      T extends PeopleGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: LikeGroupByArgs['orderBy'] }
-        : { orderBy?: LikeGroupByArgs['orderBy'] },
+        ? { orderBy: PeopleGroupByArgs['orderBy'] }
+        : { orderBy?: PeopleGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5905,23 +6592,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, LikeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLikeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, PeopleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPeopleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Like model
+   * Fields of the People model
    */
-  readonly fields: LikeFieldRefs;
+  readonly fields: PeopleFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Like.
+   * The delegate class that acts as a "Promise-like" for People.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__LikeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PeopleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     comment<T extends CommentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CommentDefaultArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5948,370 +6634,421 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Like model
+   * Fields of the People model
    */
-  interface LikeFieldRefs {
-    readonly id: FieldRef<"Like", 'Int'>
-    readonly userId: FieldRef<"Like", 'Int'>
-    readonly commentId: FieldRef<"Like", 'Int'>
+  interface PeopleFieldRefs {
+    readonly id: FieldRef<"People", 'Int'>
+    readonly userId: FieldRef<"People", 'Int'>
+    readonly commentId: FieldRef<"People", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * Like findUnique
+   * People findUnique
    */
-  export type LikeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Like
+     * Select specific fields to fetch from the People
      */
-    select?: LikeSelect<ExtArgs> | null
+    select?: PeopleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Like
+     * Omit specific fields from the People
      */
-    omit?: LikeOmit<ExtArgs> | null
+    omit?: PeopleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LikeInclude<ExtArgs> | null
+    include?: PeopleInclude<ExtArgs> | null
     /**
-     * Filter, which Like to fetch.
+     * Filter, which People to fetch.
      */
-    where: LikeWhereUniqueInput
+    where: PeopleWhereUniqueInput
   }
 
   /**
-   * Like findUniqueOrThrow
+   * People findUniqueOrThrow
    */
-  export type LikeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Like
+     * Select specific fields to fetch from the People
      */
-    select?: LikeSelect<ExtArgs> | null
+    select?: PeopleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Like
+     * Omit specific fields from the People
      */
-    omit?: LikeOmit<ExtArgs> | null
+    omit?: PeopleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LikeInclude<ExtArgs> | null
+    include?: PeopleInclude<ExtArgs> | null
     /**
-     * Filter, which Like to fetch.
+     * Filter, which People to fetch.
      */
-    where: LikeWhereUniqueInput
+    where: PeopleWhereUniqueInput
   }
 
   /**
-   * Like findFirst
+   * People findFirst
    */
-  export type LikeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Like
+     * Select specific fields to fetch from the People
      */
-    select?: LikeSelect<ExtArgs> | null
+    select?: PeopleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Like
+     * Omit specific fields from the People
      */
-    omit?: LikeOmit<ExtArgs> | null
+    omit?: PeopleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LikeInclude<ExtArgs> | null
+    include?: PeopleInclude<ExtArgs> | null
     /**
-     * Filter, which Like to fetch.
+     * Filter, which People to fetch.
      */
-    where?: LikeWhereInput
+    where?: PeopleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Likes to fetch.
+     * Determine the order of People to fetch.
      */
-    orderBy?: LikeOrderByWithRelationInput | LikeOrderByWithRelationInput[]
+    orderBy?: PeopleOrderByWithRelationInput | PeopleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Likes.
+     * Sets the position for searching for People.
      */
-    cursor?: LikeWhereUniqueInput
+    cursor?: PeopleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Likes from the position of the cursor.
+     * Take `±n` People from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Likes.
+     * Skip the first `n` People.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Likes.
+     * Filter by unique combinations of People.
      */
-    distinct?: LikeScalarFieldEnum | LikeScalarFieldEnum[]
+    distinct?: PeopleScalarFieldEnum | PeopleScalarFieldEnum[]
   }
 
   /**
-   * Like findFirstOrThrow
+   * People findFirstOrThrow
    */
-  export type LikeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Like
+     * Select specific fields to fetch from the People
      */
-    select?: LikeSelect<ExtArgs> | null
+    select?: PeopleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Like
+     * Omit specific fields from the People
      */
-    omit?: LikeOmit<ExtArgs> | null
+    omit?: PeopleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LikeInclude<ExtArgs> | null
+    include?: PeopleInclude<ExtArgs> | null
     /**
-     * Filter, which Like to fetch.
+     * Filter, which People to fetch.
      */
-    where?: LikeWhereInput
+    where?: PeopleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Likes to fetch.
+     * Determine the order of People to fetch.
      */
-    orderBy?: LikeOrderByWithRelationInput | LikeOrderByWithRelationInput[]
+    orderBy?: PeopleOrderByWithRelationInput | PeopleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Likes.
+     * Sets the position for searching for People.
      */
-    cursor?: LikeWhereUniqueInput
+    cursor?: PeopleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Likes from the position of the cursor.
+     * Take `±n` People from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Likes.
+     * Skip the first `n` People.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Likes.
+     * Filter by unique combinations of People.
      */
-    distinct?: LikeScalarFieldEnum | LikeScalarFieldEnum[]
+    distinct?: PeopleScalarFieldEnum | PeopleScalarFieldEnum[]
   }
 
   /**
-   * Like findMany
+   * People findMany
    */
-  export type LikeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Like
+     * Select specific fields to fetch from the People
      */
-    select?: LikeSelect<ExtArgs> | null
+    select?: PeopleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Like
+     * Omit specific fields from the People
      */
-    omit?: LikeOmit<ExtArgs> | null
+    omit?: PeopleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LikeInclude<ExtArgs> | null
+    include?: PeopleInclude<ExtArgs> | null
     /**
-     * Filter, which Likes to fetch.
+     * Filter, which People to fetch.
      */
-    where?: LikeWhereInput
+    where?: PeopleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Likes to fetch.
+     * Determine the order of People to fetch.
      */
-    orderBy?: LikeOrderByWithRelationInput | LikeOrderByWithRelationInput[]
+    orderBy?: PeopleOrderByWithRelationInput | PeopleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Likes.
+     * Sets the position for listing People.
      */
-    cursor?: LikeWhereUniqueInput
+    cursor?: PeopleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Likes from the position of the cursor.
+     * Take `±n` People from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Likes.
+     * Skip the first `n` People.
      */
     skip?: number
-    distinct?: LikeScalarFieldEnum | LikeScalarFieldEnum[]
+    distinct?: PeopleScalarFieldEnum | PeopleScalarFieldEnum[]
   }
 
   /**
-   * Like create
+   * People create
    */
-  export type LikeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Like
+     * Select specific fields to fetch from the People
      */
-    select?: LikeSelect<ExtArgs> | null
+    select?: PeopleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Like
+     * Omit specific fields from the People
      */
-    omit?: LikeOmit<ExtArgs> | null
+    omit?: PeopleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LikeInclude<ExtArgs> | null
+    include?: PeopleInclude<ExtArgs> | null
     /**
-     * The data needed to create a Like.
+     * The data needed to create a People.
      */
-    data: XOR<LikeCreateInput, LikeUncheckedCreateInput>
+    data: XOR<PeopleCreateInput, PeopleUncheckedCreateInput>
   }
 
   /**
-   * Like createMany
+   * People createMany
    */
-  export type LikeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Likes.
+     * The data used to create many People.
      */
-    data: LikeCreateManyInput | LikeCreateManyInput[]
-    skipDuplicates?: boolean
+    data: PeopleCreateManyInput | PeopleCreateManyInput[]
   }
 
   /**
-   * Like update
+   * People createManyAndReturn
    */
-  export type LikeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Like
+     * Select specific fields to fetch from the People
      */
-    select?: LikeSelect<ExtArgs> | null
+    select?: PeopleSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Like
+     * Omit specific fields from the People
      */
-    omit?: LikeOmit<ExtArgs> | null
+    omit?: PeopleOmit<ExtArgs> | null
+    /**
+     * The data used to create many People.
+     */
+    data: PeopleCreateManyInput | PeopleCreateManyInput[]
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LikeInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Like.
-     */
-    data: XOR<LikeUpdateInput, LikeUncheckedUpdateInput>
-    /**
-     * Choose, which Like to update.
-     */
-    where: LikeWhereUniqueInput
+    include?: PeopleIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Like updateMany
+   * People update
    */
-  export type LikeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Likes.
+     * Select specific fields to fetch from the People
      */
-    data: XOR<LikeUpdateManyMutationInput, LikeUncheckedUpdateManyInput>
+    select?: PeopleSelect<ExtArgs> | null
     /**
-     * Filter which Likes to update
+     * Omit specific fields from the People
      */
-    where?: LikeWhereInput
+    omit?: PeopleOmit<ExtArgs> | null
     /**
-     * Limit how many Likes to update.
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeopleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a People.
+     */
+    data: XOR<PeopleUpdateInput, PeopleUncheckedUpdateInput>
+    /**
+     * Choose, which People to update.
+     */
+    where: PeopleWhereUniqueInput
+  }
+
+  /**
+   * People updateMany
+   */
+  export type PeopleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update People.
+     */
+    data: XOR<PeopleUpdateManyMutationInput, PeopleUncheckedUpdateManyInput>
+    /**
+     * Filter which People to update
+     */
+    where?: PeopleWhereInput
+    /**
+     * Limit how many People to update.
      */
     limit?: number
   }
 
   /**
-   * Like upsert
+   * People updateManyAndReturn
    */
-  export type LikeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Like
+     * Select specific fields to fetch from the People
      */
-    select?: LikeSelect<ExtArgs> | null
+    select?: PeopleSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Like
+     * Omit specific fields from the People
      */
-    omit?: LikeOmit<ExtArgs> | null
+    omit?: PeopleOmit<ExtArgs> | null
+    /**
+     * The data used to update People.
+     */
+    data: XOR<PeopleUpdateManyMutationInput, PeopleUncheckedUpdateManyInput>
+    /**
+     * Filter which People to update
+     */
+    where?: PeopleWhereInput
+    /**
+     * Limit how many People to update.
+     */
+    limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LikeInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Like to update in case it exists.
-     */
-    where: LikeWhereUniqueInput
-    /**
-     * In case the Like found by the `where` argument doesn't exist, create a new Like with this data.
-     */
-    create: XOR<LikeCreateInput, LikeUncheckedCreateInput>
-    /**
-     * In case the Like was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<LikeUpdateInput, LikeUncheckedUpdateInput>
+    include?: PeopleIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Like delete
+   * People upsert
    */
-  export type LikeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Like
+     * Select specific fields to fetch from the People
      */
-    select?: LikeSelect<ExtArgs> | null
+    select?: PeopleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Like
+     * Omit specific fields from the People
      */
-    omit?: LikeOmit<ExtArgs> | null
+    omit?: PeopleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LikeInclude<ExtArgs> | null
+    include?: PeopleInclude<ExtArgs> | null
     /**
-     * Filter which Like to delete.
+     * The filter to search for the People to update in case it exists.
      */
-    where: LikeWhereUniqueInput
+    where: PeopleWhereUniqueInput
+    /**
+     * In case the People found by the `where` argument doesn't exist, create a new People with this data.
+     */
+    create: XOR<PeopleCreateInput, PeopleUncheckedCreateInput>
+    /**
+     * In case the People was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PeopleUpdateInput, PeopleUncheckedUpdateInput>
   }
 
   /**
-   * Like deleteMany
+   * People delete
    */
-  export type LikeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Likes to delete
+     * Select specific fields to fetch from the People
      */
-    where?: LikeWhereInput
+    select?: PeopleSelect<ExtArgs> | null
     /**
-     * Limit how many Likes to delete.
+     * Omit specific fields from the People
+     */
+    omit?: PeopleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PeopleInclude<ExtArgs> | null
+    /**
+     * Filter which People to delete.
+     */
+    where: PeopleWhereUniqueInput
+  }
+
+  /**
+   * People deleteMany
+   */
+  export type PeopleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which People to delete
+     */
+    where?: PeopleWhereInput
+    /**
+     * Limit how many People to delete.
      */
     limit?: number
   }
 
   /**
-   * Like without action
+   * People without action
    */
-  export type LikeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PeopleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Like
+     * Select specific fields to fetch from the People
      */
-    select?: LikeSelect<ExtArgs> | null
+    select?: PeopleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Like
+     * Omit specific fields from the People
      */
-    omit?: LikeOmit<ExtArgs> | null
+    omit?: PeopleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: LikeInclude<ExtArgs> | null
+    include?: PeopleInclude<ExtArgs> | null
   }
 
 
@@ -6320,9 +7057,6 @@ export namespace Prisma {
    */
 
   export const TransactionIsolationLevel: {
-    ReadUncommitted: 'ReadUncommitted',
-    ReadCommitted: 'ReadCommitted',
-    RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
   };
 
@@ -6343,6 +7077,7 @@ export namespace Prisma {
   export const FoodPostScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    price: 'price',
     location: 'location',
     phoneNumber: 'phoneNumber',
     resNumber: 'resNumber',
@@ -6367,22 +7102,24 @@ export namespace Prisma {
     id: 'id',
     rating: 'rating',
     content: 'content',
+    like: 'like',
     day: 'day',
     month: 'month',
     year: 'year',
+    foodPostId: 'foodPostId',
     userId: 'userId'
   };
 
   export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
 
 
-  export const LikeScalarFieldEnum: {
+  export const PeopleScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
     commentId: 'commentId'
   };
 
-  export type LikeScalarFieldEnum = (typeof LikeScalarFieldEnum)[keyof typeof LikeScalarFieldEnum]
+  export type PeopleScalarFieldEnum = (typeof PeopleScalarFieldEnum)[keyof typeof PeopleScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6393,39 +7130,12 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const UserOrderByRelevanceFieldEnum: {
-    username: 'username',
-    email: 'email',
-    password: 'password',
-    profile: 'profile'
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
   };
 
-  export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
-
-
-  export const FoodPostOrderByRelevanceFieldEnum: {
-    name: 'name',
-    location: 'location',
-    phoneNumber: 'phoneNumber',
-    resNumber: 'resNumber',
-    image: 'image'
-  };
-
-  export type FoodPostOrderByRelevanceFieldEnum = (typeof FoodPostOrderByRelevanceFieldEnum)[keyof typeof FoodPostOrderByRelevanceFieldEnum]
-
-
-  export const CategoryOrderByRelevanceFieldEnum: {
-    category: 'category'
-  };
-
-  export type CategoryOrderByRelevanceFieldEnum = (typeof CategoryOrderByRelevanceFieldEnum)[keyof typeof CategoryOrderByRelevanceFieldEnum]
-
-
-  export const CommentOrderByRelevanceFieldEnum: {
-    content: 'content'
-  };
-
-  export type CommentOrderByRelevanceFieldEnum = (typeof CommentOrderByRelevanceFieldEnum)[keyof typeof CommentOrderByRelevanceFieldEnum]
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -6468,7 +7178,6 @@ export namespace Prisma {
     profile?: StringFilter<"User"> | string
     foodPost?: FoodPostListRelationFilter
     comment?: CommentListRelationFilter
-    Like?: LikeListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -6479,8 +7188,6 @@ export namespace Prisma {
     profile?: SortOrder
     foodPost?: FoodPostOrderByRelationAggregateInput
     comment?: CommentOrderByRelationAggregateInput
-    Like?: LikeOrderByRelationAggregateInput
-    _relevance?: UserOrderByRelevanceInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -6494,7 +7201,6 @@ export namespace Prisma {
     profile?: StringFilter<"User"> | string
     foodPost?: FoodPostListRelationFilter
     comment?: CommentListRelationFilter
-    Like?: LikeListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -6527,28 +7233,31 @@ export namespace Prisma {
     NOT?: FoodPostWhereInput | FoodPostWhereInput[]
     id?: IntFilter<"FoodPost"> | number
     name?: StringFilter<"FoodPost"> | string
+    price?: IntFilter<"FoodPost"> | number
     location?: StringFilter<"FoodPost"> | string
-    phoneNumber?: StringFilter<"FoodPost"> | string
-    resNumber?: StringFilter<"FoodPost"> | string
+    phoneNumber?: StringNullableFilter<"FoodPost"> | string | null
+    resNumber?: StringNullableFilter<"FoodPost"> | string | null
     image?: StringFilter<"FoodPost"> | string
     rating?: IntFilter<"FoodPost"> | number
     userId?: IntFilter<"FoodPost"> | number
     category?: CategoryListRelationFilter
+    comment?: CommentListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type FoodPostOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    price?: SortOrder
     location?: SortOrder
-    phoneNumber?: SortOrder
-    resNumber?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    resNumber?: SortOrderInput | SortOrder
     image?: SortOrder
     rating?: SortOrder
     userId?: SortOrder
     category?: CategoryOrderByRelationAggregateInput
+    comment?: CommentOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
-    _relevance?: FoodPostOrderByRelevanceInput
   }
 
   export type FoodPostWhereUniqueInput = Prisma.AtLeast<{
@@ -6557,22 +7266,25 @@ export namespace Prisma {
     OR?: FoodPostWhereInput[]
     NOT?: FoodPostWhereInput | FoodPostWhereInput[]
     name?: StringFilter<"FoodPost"> | string
+    price?: IntFilter<"FoodPost"> | number
     location?: StringFilter<"FoodPost"> | string
-    phoneNumber?: StringFilter<"FoodPost"> | string
-    resNumber?: StringFilter<"FoodPost"> | string
+    phoneNumber?: StringNullableFilter<"FoodPost"> | string | null
+    resNumber?: StringNullableFilter<"FoodPost"> | string | null
     image?: StringFilter<"FoodPost"> | string
     rating?: IntFilter<"FoodPost"> | number
     userId?: IntFilter<"FoodPost"> | number
     category?: CategoryListRelationFilter
+    comment?: CommentListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type FoodPostOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    price?: SortOrder
     location?: SortOrder
-    phoneNumber?: SortOrder
-    resNumber?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    resNumber?: SortOrderInput | SortOrder
     image?: SortOrder
     rating?: SortOrder
     userId?: SortOrder
@@ -6589,9 +7301,10 @@ export namespace Prisma {
     NOT?: FoodPostScalarWhereWithAggregatesInput | FoodPostScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"FoodPost"> | number
     name?: StringWithAggregatesFilter<"FoodPost"> | string
+    price?: IntWithAggregatesFilter<"FoodPost"> | number
     location?: StringWithAggregatesFilter<"FoodPost"> | string
-    phoneNumber?: StringWithAggregatesFilter<"FoodPost"> | string
-    resNumber?: StringWithAggregatesFilter<"FoodPost"> | string
+    phoneNumber?: StringNullableWithAggregatesFilter<"FoodPost"> | string | null
+    resNumber?: StringNullableWithAggregatesFilter<"FoodPost"> | string | null
     image?: StringWithAggregatesFilter<"FoodPost"> | string
     rating?: IntWithAggregatesFilter<"FoodPost"> | number
     userId?: IntWithAggregatesFilter<"FoodPost"> | number
@@ -6604,7 +7317,7 @@ export namespace Prisma {
     id?: IntFilter<"Category"> | number
     category?: StringFilter<"Category"> | string
     foodPostId?: IntFilter<"Category"> | number
-    foodPost?: XOR<FoodPostScalarRelationFilter, FoodPostWhereInput>
+    foodPost?: XOR<FoodPostNullableScalarRelationFilter, FoodPostWhereInput> | null
   }
 
   export type CategoryOrderByWithRelationInput = {
@@ -6612,7 +7325,6 @@ export namespace Prisma {
     category?: SortOrder
     foodPostId?: SortOrder
     foodPost?: FoodPostOrderByWithRelationInput
-    _relevance?: CategoryOrderByRelevanceInput
   }
 
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -6622,7 +7334,7 @@ export namespace Prisma {
     NOT?: CategoryWhereInput | CategoryWhereInput[]
     category?: StringFilter<"Category"> | string
     foodPostId?: IntFilter<"Category"> | number
-    foodPost?: XOR<FoodPostScalarRelationFilter, FoodPostWhereInput>
+    foodPost?: XOR<FoodPostNullableScalarRelationFilter, FoodPostWhereInput> | null
   }, "id">
 
   export type CategoryOrderByWithAggregationInput = {
@@ -6652,11 +7364,14 @@ export namespace Prisma {
     id?: IntFilter<"Comment"> | number
     rating?: IntFilter<"Comment"> | number
     content?: StringFilter<"Comment"> | string
+    like?: IntFilter<"Comment"> | number
     day?: IntFilter<"Comment"> | number
     month?: IntFilter<"Comment"> | number
     year?: IntFilter<"Comment"> | number
+    foodPostId?: IntFilter<"Comment"> | number
     userId?: IntFilter<"Comment"> | number
-    like?: LikeListRelationFilter
+    people?: PeopleListRelationFilter
+    foodPost?: XOR<FoodPostScalarRelationFilter, FoodPostWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
@@ -6664,13 +7379,15 @@ export namespace Prisma {
     id?: SortOrder
     rating?: SortOrder
     content?: SortOrder
+    like?: SortOrder
     day?: SortOrder
     month?: SortOrder
     year?: SortOrder
+    foodPostId?: SortOrder
     userId?: SortOrder
-    like?: LikeOrderByRelationAggregateInput
+    people?: PeopleOrderByRelationAggregateInput
+    foodPost?: FoodPostOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
-    _relevance?: CommentOrderByRelevanceInput
   }
 
   export type CommentWhereUniqueInput = Prisma.AtLeast<{
@@ -6680,11 +7397,14 @@ export namespace Prisma {
     NOT?: CommentWhereInput | CommentWhereInput[]
     rating?: IntFilter<"Comment"> | number
     content?: StringFilter<"Comment"> | string
+    like?: IntFilter<"Comment"> | number
     day?: IntFilter<"Comment"> | number
     month?: IntFilter<"Comment"> | number
     year?: IntFilter<"Comment"> | number
+    foodPostId?: IntFilter<"Comment"> | number
     userId?: IntFilter<"Comment"> | number
-    like?: LikeListRelationFilter
+    people?: PeopleListRelationFilter
+    foodPost?: XOR<FoodPostScalarRelationFilter, FoodPostWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
@@ -6692,9 +7412,11 @@ export namespace Prisma {
     id?: SortOrder
     rating?: SortOrder
     content?: SortOrder
+    like?: SortOrder
     day?: SortOrder
     month?: SortOrder
     year?: SortOrder
+    foodPostId?: SortOrder
     userId?: SortOrder
     _count?: CommentCountOrderByAggregateInput
     _avg?: CommentAvgOrderByAggregateInput
@@ -6710,60 +7432,59 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Comment"> | number
     rating?: IntWithAggregatesFilter<"Comment"> | number
     content?: StringWithAggregatesFilter<"Comment"> | string
+    like?: IntWithAggregatesFilter<"Comment"> | number
     day?: IntWithAggregatesFilter<"Comment"> | number
     month?: IntWithAggregatesFilter<"Comment"> | number
     year?: IntWithAggregatesFilter<"Comment"> | number
+    foodPostId?: IntWithAggregatesFilter<"Comment"> | number
     userId?: IntWithAggregatesFilter<"Comment"> | number
   }
 
-  export type LikeWhereInput = {
-    AND?: LikeWhereInput | LikeWhereInput[]
-    OR?: LikeWhereInput[]
-    NOT?: LikeWhereInput | LikeWhereInput[]
-    id?: IntFilter<"Like"> | number
-    userId?: IntFilter<"Like"> | number
-    commentId?: IntFilter<"Like"> | number
+  export type PeopleWhereInput = {
+    AND?: PeopleWhereInput | PeopleWhereInput[]
+    OR?: PeopleWhereInput[]
+    NOT?: PeopleWhereInput | PeopleWhereInput[]
+    id?: IntFilter<"People"> | number
+    userId?: IntFilter<"People"> | number
+    commentId?: IntFilter<"People"> | number
     comment?: XOR<CommentScalarRelationFilter, CommentWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
-  export type LikeOrderByWithRelationInput = {
+  export type PeopleOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
     commentId?: SortOrder
     comment?: CommentOrderByWithRelationInput
-    user?: UserOrderByWithRelationInput
   }
 
-  export type LikeWhereUniqueInput = Prisma.AtLeast<{
+  export type PeopleWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: LikeWhereInput | LikeWhereInput[]
-    OR?: LikeWhereInput[]
-    NOT?: LikeWhereInput | LikeWhereInput[]
-    userId?: IntFilter<"Like"> | number
-    commentId?: IntFilter<"Like"> | number
+    AND?: PeopleWhereInput | PeopleWhereInput[]
+    OR?: PeopleWhereInput[]
+    NOT?: PeopleWhereInput | PeopleWhereInput[]
+    userId?: IntFilter<"People"> | number
+    commentId?: IntFilter<"People"> | number
     comment?: XOR<CommentScalarRelationFilter, CommentWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
-  export type LikeOrderByWithAggregationInput = {
+  export type PeopleOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
     commentId?: SortOrder
-    _count?: LikeCountOrderByAggregateInput
-    _avg?: LikeAvgOrderByAggregateInput
-    _max?: LikeMaxOrderByAggregateInput
-    _min?: LikeMinOrderByAggregateInput
-    _sum?: LikeSumOrderByAggregateInput
+    _count?: PeopleCountOrderByAggregateInput
+    _avg?: PeopleAvgOrderByAggregateInput
+    _max?: PeopleMaxOrderByAggregateInput
+    _min?: PeopleMinOrderByAggregateInput
+    _sum?: PeopleSumOrderByAggregateInput
   }
 
-  export type LikeScalarWhereWithAggregatesInput = {
-    AND?: LikeScalarWhereWithAggregatesInput | LikeScalarWhereWithAggregatesInput[]
-    OR?: LikeScalarWhereWithAggregatesInput[]
-    NOT?: LikeScalarWhereWithAggregatesInput | LikeScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Like"> | number
-    userId?: IntWithAggregatesFilter<"Like"> | number
-    commentId?: IntWithAggregatesFilter<"Like"> | number
+  export type PeopleScalarWhereWithAggregatesInput = {
+    AND?: PeopleScalarWhereWithAggregatesInput | PeopleScalarWhereWithAggregatesInput[]
+    OR?: PeopleScalarWhereWithAggregatesInput[]
+    NOT?: PeopleScalarWhereWithAggregatesInput | PeopleScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"People"> | number
+    userId?: IntWithAggregatesFilter<"People"> | number
+    commentId?: IntWithAggregatesFilter<"People"> | number
   }
 
   export type UserCreateInput = {
@@ -6773,7 +7494,6 @@ export namespace Prisma {
     profile: string
     foodPost?: FoodPostCreateNestedManyWithoutUserInput
     comment?: CommentCreateNestedManyWithoutUserInput
-    Like?: LikeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -6784,7 +7504,6 @@ export namespace Prisma {
     profile: string
     foodPost?: FoodPostUncheckedCreateNestedManyWithoutUserInput
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    Like?: LikeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -6794,7 +7513,6 @@ export namespace Prisma {
     profile?: StringFieldUpdateOperationsInput | string
     foodPost?: FoodPostUpdateManyWithoutUserNestedInput
     comment?: CommentUpdateManyWithoutUserNestedInput
-    Like?: LikeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -6805,7 +7523,6 @@ export namespace Prisma {
     profile?: StringFieldUpdateOperationsInput | string
     foodPost?: FoodPostUncheckedUpdateManyWithoutUserNestedInput
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    Like?: LikeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -6833,56 +7550,65 @@ export namespace Prisma {
 
   export type FoodPostCreateInput = {
     name: string
+    price: number
     location: string
-    phoneNumber: string
-    resNumber: string
+    phoneNumber?: string | null
+    resNumber?: string | null
     image: string
     rating: number
     category?: CategoryCreateNestedManyWithoutFoodPostInput
+    comment?: CommentCreateNestedManyWithoutFoodPostInput
     user: UserCreateNestedOneWithoutFoodPostInput
   }
 
   export type FoodPostUncheckedCreateInput = {
     id?: number
     name: string
+    price: number
     location: string
-    phoneNumber: string
-    resNumber: string
+    phoneNumber?: string | null
+    resNumber?: string | null
     image: string
     rating: number
     userId: number
     category?: CategoryUncheckedCreateNestedManyWithoutFoodPostInput
+    comment?: CommentUncheckedCreateNestedManyWithoutFoodPostInput
   }
 
   export type FoodPostUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    resNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    resNumber?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     category?: CategoryUpdateManyWithoutFoodPostNestedInput
+    comment?: CommentUpdateManyWithoutFoodPostNestedInput
     user?: UserUpdateOneRequiredWithoutFoodPostNestedInput
   }
 
   export type FoodPostUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    resNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    resNumber?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     category?: CategoryUncheckedUpdateManyWithoutFoodPostNestedInput
+    comment?: CommentUncheckedUpdateManyWithoutFoodPostNestedInput
   }
 
   export type FoodPostCreateManyInput = {
     id?: number
     name: string
+    price: number
     location: string
-    phoneNumber: string
-    resNumber: string
+    phoneNumber?: string | null
+    resNumber?: string | null
     image: string
     rating: number
     userId: number
@@ -6890,9 +7616,10 @@ export namespace Prisma {
 
   export type FoodPostUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    resNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    resNumber?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
   }
@@ -6900,9 +7627,10 @@ export namespace Prisma {
   export type FoodPostUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    resNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    resNumber?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
@@ -6910,7 +7638,7 @@ export namespace Prisma {
 
   export type CategoryCreateInput = {
     category: string
-    foodPost: FoodPostCreateNestedOneWithoutCategoryInput
+    foodPost?: FoodPostCreateNestedOneWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateInput = {
@@ -6921,7 +7649,7 @@ export namespace Prisma {
 
   export type CategoryUpdateInput = {
     category?: StringFieldUpdateOperationsInput | string
-    foodPost?: FoodPostUpdateOneRequiredWithoutCategoryNestedInput
+    foodPost?: FoodPostUpdateOneWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateInput = {
@@ -6949,10 +7677,12 @@ export namespace Prisma {
   export type CommentCreateInput = {
     rating: number
     content: string
+    like?: number
     day: number
     month: number
     year: number
-    like?: LikeCreateNestedManyWithoutCommentInput
+    people?: PeopleCreateNestedManyWithoutCommentInput
+    foodPost: FoodPostCreateNestedOneWithoutCommentInput
     user: UserCreateNestedOneWithoutCommentInput
   }
 
@@ -6960,20 +7690,24 @@ export namespace Prisma {
     id?: number
     rating: number
     content: string
+    like?: number
     day: number
     month: number
     year: number
+    foodPostId: number
     userId: number
-    like?: LikeUncheckedCreateNestedManyWithoutCommentInput
+    people?: PeopleUncheckedCreateNestedManyWithoutCommentInput
   }
 
   export type CommentUpdateInput = {
     rating?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
+    like?: IntFieldUpdateOperationsInput | number
     day?: IntFieldUpdateOperationsInput | number
     month?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
-    like?: LikeUpdateManyWithoutCommentNestedInput
+    people?: PeopleUpdateManyWithoutCommentNestedInput
+    foodPost?: FoodPostUpdateOneRequiredWithoutCommentNestedInput
     user?: UserUpdateOneRequiredWithoutCommentNestedInput
   }
 
@@ -6981,26 +7715,31 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     rating?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
+    like?: IntFieldUpdateOperationsInput | number
     day?: IntFieldUpdateOperationsInput | number
     month?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
+    foodPostId?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    like?: LikeUncheckedUpdateManyWithoutCommentNestedInput
+    people?: PeopleUncheckedUpdateManyWithoutCommentNestedInput
   }
 
   export type CommentCreateManyInput = {
     id?: number
     rating: number
     content: string
+    like?: number
     day: number
     month: number
     year: number
+    foodPostId: number
     userId: number
   }
 
   export type CommentUpdateManyMutationInput = {
     rating?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
+    like?: IntFieldUpdateOperationsInput | number
     day?: IntFieldUpdateOperationsInput | number
     month?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
@@ -7010,45 +7749,47 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     rating?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
+    like?: IntFieldUpdateOperationsInput | number
     day?: IntFieldUpdateOperationsInput | number
     month?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
+    foodPostId?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type LikeCreateInput = {
-    comment: CommentCreateNestedOneWithoutLikeInput
-    user: UserCreateNestedOneWithoutLikeInput
+  export type PeopleCreateInput = {
+    userId: number
+    comment: CommentCreateNestedOneWithoutPeopleInput
   }
 
-  export type LikeUncheckedCreateInput = {
+  export type PeopleUncheckedCreateInput = {
     id?: number
     userId: number
     commentId: number
   }
 
-  export type LikeUpdateInput = {
-    comment?: CommentUpdateOneRequiredWithoutLikeNestedInput
-    user?: UserUpdateOneRequiredWithoutLikeNestedInput
+  export type PeopleUpdateInput = {
+    userId?: IntFieldUpdateOperationsInput | number
+    comment?: CommentUpdateOneRequiredWithoutPeopleNestedInput
   }
 
-  export type LikeUncheckedUpdateInput = {
+  export type PeopleUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     commentId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type LikeCreateManyInput = {
+  export type PeopleCreateManyInput = {
     id?: number
     userId: number
     commentId: number
   }
 
-  export type LikeUpdateManyMutationInput = {
-
+  export type PeopleUpdateManyMutationInput = {
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type LikeUncheckedUpdateManyInput = {
+  export type PeopleUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     commentId?: IntFieldUpdateOperationsInput | number
@@ -7076,7 +7817,6 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
@@ -7092,28 +7832,12 @@ export namespace Prisma {
     none?: CommentWhereInput
   }
 
-  export type LikeListRelationFilter = {
-    every?: LikeWhereInput
-    some?: LikeWhereInput
-    none?: LikeWhereInput
-  }
-
   export type FoodPostOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type CommentOrderByRelationAggregateInput = {
     _count?: SortOrder
-  }
-
-  export type LikeOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type UserOrderByRelevanceInput = {
-    fields: UserOrderByRelevanceFieldEnum | UserOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -7175,11 +7899,24 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type CategoryListRelationFilter = {
@@ -7193,19 +7930,19 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type CategoryOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
-  export type FoodPostOrderByRelevanceInput = {
-    fields: FoodPostOrderByRelevanceFieldEnum | FoodPostOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
+  export type CategoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type FoodPostCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    price?: SortOrder
     location?: SortOrder
     phoneNumber?: SortOrder
     resNumber?: SortOrder
@@ -7216,6 +7953,7 @@ export namespace Prisma {
 
   export type FoodPostAvgOrderByAggregateInput = {
     id?: SortOrder
+    price?: SortOrder
     rating?: SortOrder
     userId?: SortOrder
   }
@@ -7223,6 +7961,7 @@ export namespace Prisma {
   export type FoodPostMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    price?: SortOrder
     location?: SortOrder
     phoneNumber?: SortOrder
     resNumber?: SortOrder
@@ -7234,6 +7973,7 @@ export namespace Prisma {
   export type FoodPostMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    price?: SortOrder
     location?: SortOrder
     phoneNumber?: SortOrder
     resNumber?: SortOrder
@@ -7244,19 +7984,31 @@ export namespace Prisma {
 
   export type FoodPostSumOrderByAggregateInput = {
     id?: SortOrder
+    price?: SortOrder
     rating?: SortOrder
     userId?: SortOrder
   }
 
-  export type FoodPostScalarRelationFilter = {
-    is?: FoodPostWhereInput
-    isNot?: FoodPostWhereInput
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type CategoryOrderByRelevanceInput = {
-    fields: CategoryOrderByRelevanceFieldEnum | CategoryOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
+  export type FoodPostNullableScalarRelationFilter = {
+    is?: FoodPostWhereInput | null
+    isNot?: FoodPostWhereInput | null
   }
 
   export type CategoryCountOrderByAggregateInput = {
@@ -7287,28 +8039,41 @@ export namespace Prisma {
     foodPostId?: SortOrder
   }
 
-  export type CommentOrderByRelevanceInput = {
-    fields: CommentOrderByRelevanceFieldEnum | CommentOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
+  export type PeopleListRelationFilter = {
+    every?: PeopleWhereInput
+    some?: PeopleWhereInput
+    none?: PeopleWhereInput
+  }
+
+  export type FoodPostScalarRelationFilter = {
+    is?: FoodPostWhereInput
+    isNot?: FoodPostWhereInput
+  }
+
+  export type PeopleOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type CommentCountOrderByAggregateInput = {
     id?: SortOrder
     rating?: SortOrder
     content?: SortOrder
+    like?: SortOrder
     day?: SortOrder
     month?: SortOrder
     year?: SortOrder
+    foodPostId?: SortOrder
     userId?: SortOrder
   }
 
   export type CommentAvgOrderByAggregateInput = {
     id?: SortOrder
     rating?: SortOrder
+    like?: SortOrder
     day?: SortOrder
     month?: SortOrder
     year?: SortOrder
+    foodPostId?: SortOrder
     userId?: SortOrder
   }
 
@@ -7316,9 +8081,11 @@ export namespace Prisma {
     id?: SortOrder
     rating?: SortOrder
     content?: SortOrder
+    like?: SortOrder
     day?: SortOrder
     month?: SortOrder
     year?: SortOrder
+    foodPostId?: SortOrder
     userId?: SortOrder
   }
 
@@ -7326,18 +8093,22 @@ export namespace Prisma {
     id?: SortOrder
     rating?: SortOrder
     content?: SortOrder
+    like?: SortOrder
     day?: SortOrder
     month?: SortOrder
     year?: SortOrder
+    foodPostId?: SortOrder
     userId?: SortOrder
   }
 
   export type CommentSumOrderByAggregateInput = {
     id?: SortOrder
     rating?: SortOrder
+    like?: SortOrder
     day?: SortOrder
     month?: SortOrder
     year?: SortOrder
+    foodPostId?: SortOrder
     userId?: SortOrder
   }
 
@@ -7346,31 +8117,31 @@ export namespace Prisma {
     isNot?: CommentWhereInput
   }
 
-  export type LikeCountOrderByAggregateInput = {
+  export type PeopleCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     commentId?: SortOrder
   }
 
-  export type LikeAvgOrderByAggregateInput = {
+  export type PeopleAvgOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     commentId?: SortOrder
   }
 
-  export type LikeMaxOrderByAggregateInput = {
+  export type PeopleMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     commentId?: SortOrder
   }
 
-  export type LikeMinOrderByAggregateInput = {
+  export type PeopleMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     commentId?: SortOrder
   }
 
-  export type LikeSumOrderByAggregateInput = {
+  export type PeopleSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     commentId?: SortOrder
@@ -7390,13 +8161,6 @@ export namespace Prisma {
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
-  export type LikeCreateNestedManyWithoutUserInput = {
-    create?: XOR<LikeCreateWithoutUserInput, LikeUncheckedCreateWithoutUserInput> | LikeCreateWithoutUserInput[] | LikeUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: LikeCreateOrConnectWithoutUserInput | LikeCreateOrConnectWithoutUserInput[]
-    createMany?: LikeCreateManyUserInputEnvelope
-    connect?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-  }
-
   export type FoodPostUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<FoodPostCreateWithoutUserInput, FoodPostUncheckedCreateWithoutUserInput> | FoodPostCreateWithoutUserInput[] | FoodPostUncheckedCreateWithoutUserInput[]
     connectOrCreate?: FoodPostCreateOrConnectWithoutUserInput | FoodPostCreateOrConnectWithoutUserInput[]
@@ -7409,13 +8173,6 @@ export namespace Prisma {
     connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
     createMany?: CommentCreateManyUserInputEnvelope
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-  }
-
-  export type LikeUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<LikeCreateWithoutUserInput, LikeUncheckedCreateWithoutUserInput> | LikeCreateWithoutUserInput[] | LikeUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: LikeCreateOrConnectWithoutUserInput | LikeCreateOrConnectWithoutUserInput[]
-    createMany?: LikeCreateManyUserInputEnvelope
-    connect?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -7448,20 +8205,6 @@ export namespace Prisma {
     update?: CommentUpdateWithWhereUniqueWithoutUserInput | CommentUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: CommentUpdateManyWithWhereWithoutUserInput | CommentUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
-  }
-
-  export type LikeUpdateManyWithoutUserNestedInput = {
-    create?: XOR<LikeCreateWithoutUserInput, LikeUncheckedCreateWithoutUserInput> | LikeCreateWithoutUserInput[] | LikeUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: LikeCreateOrConnectWithoutUserInput | LikeCreateOrConnectWithoutUserInput[]
-    upsert?: LikeUpsertWithWhereUniqueWithoutUserInput | LikeUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: LikeCreateManyUserInputEnvelope
-    set?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    disconnect?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    delete?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    connect?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    update?: LikeUpdateWithWhereUniqueWithoutUserInput | LikeUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: LikeUpdateManyWithWhereWithoutUserInput | LikeUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: LikeScalarWhereInput | LikeScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -7500,25 +8243,18 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
-  export type LikeUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<LikeCreateWithoutUserInput, LikeUncheckedCreateWithoutUserInput> | LikeCreateWithoutUserInput[] | LikeUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: LikeCreateOrConnectWithoutUserInput | LikeCreateOrConnectWithoutUserInput[]
-    upsert?: LikeUpsertWithWhereUniqueWithoutUserInput | LikeUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: LikeCreateManyUserInputEnvelope
-    set?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    disconnect?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    delete?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    connect?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    update?: LikeUpdateWithWhereUniqueWithoutUserInput | LikeUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: LikeUpdateManyWithWhereWithoutUserInput | LikeUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: LikeScalarWhereInput | LikeScalarWhereInput[]
-  }
-
   export type CategoryCreateNestedManyWithoutFoodPostInput = {
     create?: XOR<CategoryCreateWithoutFoodPostInput, CategoryUncheckedCreateWithoutFoodPostInput> | CategoryCreateWithoutFoodPostInput[] | CategoryUncheckedCreateWithoutFoodPostInput[]
     connectOrCreate?: CategoryCreateOrConnectWithoutFoodPostInput | CategoryCreateOrConnectWithoutFoodPostInput[]
     createMany?: CategoryCreateManyFoodPostInputEnvelope
     connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
+  export type CommentCreateNestedManyWithoutFoodPostInput = {
+    create?: XOR<CommentCreateWithoutFoodPostInput, CommentUncheckedCreateWithoutFoodPostInput> | CommentCreateWithoutFoodPostInput[] | CommentUncheckedCreateWithoutFoodPostInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutFoodPostInput | CommentCreateOrConnectWithoutFoodPostInput[]
+    createMany?: CommentCreateManyFoodPostInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
   export type UserCreateNestedOneWithoutFoodPostInput = {
@@ -7534,6 +8270,17 @@ export namespace Prisma {
     connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
   }
 
+  export type CommentUncheckedCreateNestedManyWithoutFoodPostInput = {
+    create?: XOR<CommentCreateWithoutFoodPostInput, CommentUncheckedCreateWithoutFoodPostInput> | CommentCreateWithoutFoodPostInput[] | CommentUncheckedCreateWithoutFoodPostInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutFoodPostInput | CommentCreateOrConnectWithoutFoodPostInput[]
+    createMany?: CommentCreateManyFoodPostInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type CategoryUpdateManyWithoutFoodPostNestedInput = {
     create?: XOR<CategoryCreateWithoutFoodPostInput, CategoryUncheckedCreateWithoutFoodPostInput> | CategoryCreateWithoutFoodPostInput[] | CategoryUncheckedCreateWithoutFoodPostInput[]
     connectOrCreate?: CategoryCreateOrConnectWithoutFoodPostInput | CategoryCreateOrConnectWithoutFoodPostInput[]
@@ -7546,6 +8293,20 @@ export namespace Prisma {
     update?: CategoryUpdateWithWhereUniqueWithoutFoodPostInput | CategoryUpdateWithWhereUniqueWithoutFoodPostInput[]
     updateMany?: CategoryUpdateManyWithWhereWithoutFoodPostInput | CategoryUpdateManyWithWhereWithoutFoodPostInput[]
     deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
+  export type CommentUpdateManyWithoutFoodPostNestedInput = {
+    create?: XOR<CommentCreateWithoutFoodPostInput, CommentUncheckedCreateWithoutFoodPostInput> | CommentCreateWithoutFoodPostInput[] | CommentUncheckedCreateWithoutFoodPostInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutFoodPostInput | CommentCreateOrConnectWithoutFoodPostInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutFoodPostInput | CommentUpsertWithWhereUniqueWithoutFoodPostInput[]
+    createMany?: CommentCreateManyFoodPostInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutFoodPostInput | CommentUpdateWithWhereUniqueWithoutFoodPostInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutFoodPostInput | CommentUpdateManyWithWhereWithoutFoodPostInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
   export type UserUpdateOneRequiredWithoutFoodPostNestedInput = {
@@ -7570,25 +8331,47 @@ export namespace Prisma {
     deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
   }
 
+  export type CommentUncheckedUpdateManyWithoutFoodPostNestedInput = {
+    create?: XOR<CommentCreateWithoutFoodPostInput, CommentUncheckedCreateWithoutFoodPostInput> | CommentCreateWithoutFoodPostInput[] | CommentUncheckedCreateWithoutFoodPostInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutFoodPostInput | CommentCreateOrConnectWithoutFoodPostInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutFoodPostInput | CommentUpsertWithWhereUniqueWithoutFoodPostInput[]
+    createMany?: CommentCreateManyFoodPostInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutFoodPostInput | CommentUpdateWithWhereUniqueWithoutFoodPostInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutFoodPostInput | CommentUpdateManyWithWhereWithoutFoodPostInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
+  }
+
   export type FoodPostCreateNestedOneWithoutCategoryInput = {
     create?: XOR<FoodPostCreateWithoutCategoryInput, FoodPostUncheckedCreateWithoutCategoryInput>
     connectOrCreate?: FoodPostCreateOrConnectWithoutCategoryInput
     connect?: FoodPostWhereUniqueInput
   }
 
-  export type FoodPostUpdateOneRequiredWithoutCategoryNestedInput = {
+  export type FoodPostUpdateOneWithoutCategoryNestedInput = {
     create?: XOR<FoodPostCreateWithoutCategoryInput, FoodPostUncheckedCreateWithoutCategoryInput>
     connectOrCreate?: FoodPostCreateOrConnectWithoutCategoryInput
     upsert?: FoodPostUpsertWithoutCategoryInput
+    disconnect?: FoodPostWhereInput | boolean
+    delete?: FoodPostWhereInput | boolean
     connect?: FoodPostWhereUniqueInput
     update?: XOR<XOR<FoodPostUpdateToOneWithWhereWithoutCategoryInput, FoodPostUpdateWithoutCategoryInput>, FoodPostUncheckedUpdateWithoutCategoryInput>
   }
 
-  export type LikeCreateNestedManyWithoutCommentInput = {
-    create?: XOR<LikeCreateWithoutCommentInput, LikeUncheckedCreateWithoutCommentInput> | LikeCreateWithoutCommentInput[] | LikeUncheckedCreateWithoutCommentInput[]
-    connectOrCreate?: LikeCreateOrConnectWithoutCommentInput | LikeCreateOrConnectWithoutCommentInput[]
-    createMany?: LikeCreateManyCommentInputEnvelope
-    connect?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
+  export type PeopleCreateNestedManyWithoutCommentInput = {
+    create?: XOR<PeopleCreateWithoutCommentInput, PeopleUncheckedCreateWithoutCommentInput> | PeopleCreateWithoutCommentInput[] | PeopleUncheckedCreateWithoutCommentInput[]
+    connectOrCreate?: PeopleCreateOrConnectWithoutCommentInput | PeopleCreateOrConnectWithoutCommentInput[]
+    createMany?: PeopleCreateManyCommentInputEnvelope
+    connect?: PeopleWhereUniqueInput | PeopleWhereUniqueInput[]
+  }
+
+  export type FoodPostCreateNestedOneWithoutCommentInput = {
+    create?: XOR<FoodPostCreateWithoutCommentInput, FoodPostUncheckedCreateWithoutCommentInput>
+    connectOrCreate?: FoodPostCreateOrConnectWithoutCommentInput
+    connect?: FoodPostWhereUniqueInput
   }
 
   export type UserCreateNestedOneWithoutCommentInput = {
@@ -7597,25 +8380,33 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type LikeUncheckedCreateNestedManyWithoutCommentInput = {
-    create?: XOR<LikeCreateWithoutCommentInput, LikeUncheckedCreateWithoutCommentInput> | LikeCreateWithoutCommentInput[] | LikeUncheckedCreateWithoutCommentInput[]
-    connectOrCreate?: LikeCreateOrConnectWithoutCommentInput | LikeCreateOrConnectWithoutCommentInput[]
-    createMany?: LikeCreateManyCommentInputEnvelope
-    connect?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
+  export type PeopleUncheckedCreateNestedManyWithoutCommentInput = {
+    create?: XOR<PeopleCreateWithoutCommentInput, PeopleUncheckedCreateWithoutCommentInput> | PeopleCreateWithoutCommentInput[] | PeopleUncheckedCreateWithoutCommentInput[]
+    connectOrCreate?: PeopleCreateOrConnectWithoutCommentInput | PeopleCreateOrConnectWithoutCommentInput[]
+    createMany?: PeopleCreateManyCommentInputEnvelope
+    connect?: PeopleWhereUniqueInput | PeopleWhereUniqueInput[]
   }
 
-  export type LikeUpdateManyWithoutCommentNestedInput = {
-    create?: XOR<LikeCreateWithoutCommentInput, LikeUncheckedCreateWithoutCommentInput> | LikeCreateWithoutCommentInput[] | LikeUncheckedCreateWithoutCommentInput[]
-    connectOrCreate?: LikeCreateOrConnectWithoutCommentInput | LikeCreateOrConnectWithoutCommentInput[]
-    upsert?: LikeUpsertWithWhereUniqueWithoutCommentInput | LikeUpsertWithWhereUniqueWithoutCommentInput[]
-    createMany?: LikeCreateManyCommentInputEnvelope
-    set?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    disconnect?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    delete?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    connect?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    update?: LikeUpdateWithWhereUniqueWithoutCommentInput | LikeUpdateWithWhereUniqueWithoutCommentInput[]
-    updateMany?: LikeUpdateManyWithWhereWithoutCommentInput | LikeUpdateManyWithWhereWithoutCommentInput[]
-    deleteMany?: LikeScalarWhereInput | LikeScalarWhereInput[]
+  export type PeopleUpdateManyWithoutCommentNestedInput = {
+    create?: XOR<PeopleCreateWithoutCommentInput, PeopleUncheckedCreateWithoutCommentInput> | PeopleCreateWithoutCommentInput[] | PeopleUncheckedCreateWithoutCommentInput[]
+    connectOrCreate?: PeopleCreateOrConnectWithoutCommentInput | PeopleCreateOrConnectWithoutCommentInput[]
+    upsert?: PeopleUpsertWithWhereUniqueWithoutCommentInput | PeopleUpsertWithWhereUniqueWithoutCommentInput[]
+    createMany?: PeopleCreateManyCommentInputEnvelope
+    set?: PeopleWhereUniqueInput | PeopleWhereUniqueInput[]
+    disconnect?: PeopleWhereUniqueInput | PeopleWhereUniqueInput[]
+    delete?: PeopleWhereUniqueInput | PeopleWhereUniqueInput[]
+    connect?: PeopleWhereUniqueInput | PeopleWhereUniqueInput[]
+    update?: PeopleUpdateWithWhereUniqueWithoutCommentInput | PeopleUpdateWithWhereUniqueWithoutCommentInput[]
+    updateMany?: PeopleUpdateManyWithWhereWithoutCommentInput | PeopleUpdateManyWithWhereWithoutCommentInput[]
+    deleteMany?: PeopleScalarWhereInput | PeopleScalarWhereInput[]
+  }
+
+  export type FoodPostUpdateOneRequiredWithoutCommentNestedInput = {
+    create?: XOR<FoodPostCreateWithoutCommentInput, FoodPostUncheckedCreateWithoutCommentInput>
+    connectOrCreate?: FoodPostCreateOrConnectWithoutCommentInput
+    upsert?: FoodPostUpsertWithoutCommentInput
+    connect?: FoodPostWhereUniqueInput
+    update?: XOR<XOR<FoodPostUpdateToOneWithWhereWithoutCommentInput, FoodPostUpdateWithoutCommentInput>, FoodPostUncheckedUpdateWithoutCommentInput>
   }
 
   export type UserUpdateOneRequiredWithoutCommentNestedInput = {
@@ -7626,46 +8417,32 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCommentInput, UserUpdateWithoutCommentInput>, UserUncheckedUpdateWithoutCommentInput>
   }
 
-  export type LikeUncheckedUpdateManyWithoutCommentNestedInput = {
-    create?: XOR<LikeCreateWithoutCommentInput, LikeUncheckedCreateWithoutCommentInput> | LikeCreateWithoutCommentInput[] | LikeUncheckedCreateWithoutCommentInput[]
-    connectOrCreate?: LikeCreateOrConnectWithoutCommentInput | LikeCreateOrConnectWithoutCommentInput[]
-    upsert?: LikeUpsertWithWhereUniqueWithoutCommentInput | LikeUpsertWithWhereUniqueWithoutCommentInput[]
-    createMany?: LikeCreateManyCommentInputEnvelope
-    set?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    disconnect?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    delete?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    connect?: LikeWhereUniqueInput | LikeWhereUniqueInput[]
-    update?: LikeUpdateWithWhereUniqueWithoutCommentInput | LikeUpdateWithWhereUniqueWithoutCommentInput[]
-    updateMany?: LikeUpdateManyWithWhereWithoutCommentInput | LikeUpdateManyWithWhereWithoutCommentInput[]
-    deleteMany?: LikeScalarWhereInput | LikeScalarWhereInput[]
+  export type PeopleUncheckedUpdateManyWithoutCommentNestedInput = {
+    create?: XOR<PeopleCreateWithoutCommentInput, PeopleUncheckedCreateWithoutCommentInput> | PeopleCreateWithoutCommentInput[] | PeopleUncheckedCreateWithoutCommentInput[]
+    connectOrCreate?: PeopleCreateOrConnectWithoutCommentInput | PeopleCreateOrConnectWithoutCommentInput[]
+    upsert?: PeopleUpsertWithWhereUniqueWithoutCommentInput | PeopleUpsertWithWhereUniqueWithoutCommentInput[]
+    createMany?: PeopleCreateManyCommentInputEnvelope
+    set?: PeopleWhereUniqueInput | PeopleWhereUniqueInput[]
+    disconnect?: PeopleWhereUniqueInput | PeopleWhereUniqueInput[]
+    delete?: PeopleWhereUniqueInput | PeopleWhereUniqueInput[]
+    connect?: PeopleWhereUniqueInput | PeopleWhereUniqueInput[]
+    update?: PeopleUpdateWithWhereUniqueWithoutCommentInput | PeopleUpdateWithWhereUniqueWithoutCommentInput[]
+    updateMany?: PeopleUpdateManyWithWhereWithoutCommentInput | PeopleUpdateManyWithWhereWithoutCommentInput[]
+    deleteMany?: PeopleScalarWhereInput | PeopleScalarWhereInput[]
   }
 
-  export type CommentCreateNestedOneWithoutLikeInput = {
-    create?: XOR<CommentCreateWithoutLikeInput, CommentUncheckedCreateWithoutLikeInput>
-    connectOrCreate?: CommentCreateOrConnectWithoutLikeInput
+  export type CommentCreateNestedOneWithoutPeopleInput = {
+    create?: XOR<CommentCreateWithoutPeopleInput, CommentUncheckedCreateWithoutPeopleInput>
+    connectOrCreate?: CommentCreateOrConnectWithoutPeopleInput
     connect?: CommentWhereUniqueInput
   }
 
-  export type UserCreateNestedOneWithoutLikeInput = {
-    create?: XOR<UserCreateWithoutLikeInput, UserUncheckedCreateWithoutLikeInput>
-    connectOrCreate?: UserCreateOrConnectWithoutLikeInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type CommentUpdateOneRequiredWithoutLikeNestedInput = {
-    create?: XOR<CommentCreateWithoutLikeInput, CommentUncheckedCreateWithoutLikeInput>
-    connectOrCreate?: CommentCreateOrConnectWithoutLikeInput
-    upsert?: CommentUpsertWithoutLikeInput
+  export type CommentUpdateOneRequiredWithoutPeopleNestedInput = {
+    create?: XOR<CommentCreateWithoutPeopleInput, CommentUncheckedCreateWithoutPeopleInput>
+    connectOrCreate?: CommentCreateOrConnectWithoutPeopleInput
+    upsert?: CommentUpsertWithoutPeopleInput
     connect?: CommentWhereUniqueInput
-    update?: XOR<XOR<CommentUpdateToOneWithWhereWithoutLikeInput, CommentUpdateWithoutLikeInput>, CommentUncheckedUpdateWithoutLikeInput>
-  }
-
-  export type UserUpdateOneRequiredWithoutLikeNestedInput = {
-    create?: XOR<UserCreateWithoutLikeInput, UserUncheckedCreateWithoutLikeInput>
-    connectOrCreate?: UserCreateOrConnectWithoutLikeInput
-    upsert?: UserUpsertWithoutLikeInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLikeInput, UserUpdateWithoutLikeInput>, UserUncheckedUpdateWithoutLikeInput>
+    update?: XOR<XOR<CommentUpdateToOneWithWhereWithoutPeopleInput, CommentUpdateWithoutPeopleInput>, CommentUncheckedUpdateWithoutPeopleInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -7690,7 +8467,6 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
@@ -7732,32 +8508,77 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type FoodPostCreateWithoutUserInput = {
     name: string
+    price: number
     location: string
-    phoneNumber: string
-    resNumber: string
+    phoneNumber?: string | null
+    resNumber?: string | null
     image: string
     rating: number
     category?: CategoryCreateNestedManyWithoutFoodPostInput
+    comment?: CommentCreateNestedManyWithoutFoodPostInput
   }
 
   export type FoodPostUncheckedCreateWithoutUserInput = {
     id?: number
     name: string
+    price: number
     location: string
-    phoneNumber: string
-    resNumber: string
+    phoneNumber?: string | null
+    resNumber?: string | null
     image: string
     rating: number
     category?: CategoryUncheckedCreateNestedManyWithoutFoodPostInput
+    comment?: CommentUncheckedCreateNestedManyWithoutFoodPostInput
   }
 
   export type FoodPostCreateOrConnectWithoutUserInput = {
@@ -7767,26 +8588,29 @@ export namespace Prisma {
 
   export type FoodPostCreateManyUserInputEnvelope = {
     data: FoodPostCreateManyUserInput | FoodPostCreateManyUserInput[]
-    skipDuplicates?: boolean
   }
 
   export type CommentCreateWithoutUserInput = {
     rating: number
     content: string
+    like?: number
     day: number
     month: number
     year: number
-    like?: LikeCreateNestedManyWithoutCommentInput
+    people?: PeopleCreateNestedManyWithoutCommentInput
+    foodPost: FoodPostCreateNestedOneWithoutCommentInput
   }
 
   export type CommentUncheckedCreateWithoutUserInput = {
     id?: number
     rating: number
     content: string
+    like?: number
     day: number
     month: number
     year: number
-    like?: LikeUncheckedCreateNestedManyWithoutCommentInput
+    foodPostId: number
+    people?: PeopleUncheckedCreateNestedManyWithoutCommentInput
   }
 
   export type CommentCreateOrConnectWithoutUserInput = {
@@ -7796,26 +8620,6 @@ export namespace Prisma {
 
   export type CommentCreateManyUserInputEnvelope = {
     data: CommentCreateManyUserInput | CommentCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type LikeCreateWithoutUserInput = {
-    comment: CommentCreateNestedOneWithoutLikeInput
-  }
-
-  export type LikeUncheckedCreateWithoutUserInput = {
-    id?: number
-    commentId: number
-  }
-
-  export type LikeCreateOrConnectWithoutUserInput = {
-    where: LikeWhereUniqueInput
-    create: XOR<LikeCreateWithoutUserInput, LikeUncheckedCreateWithoutUserInput>
-  }
-
-  export type LikeCreateManyUserInputEnvelope = {
-    data: LikeCreateManyUserInput | LikeCreateManyUserInput[]
-    skipDuplicates?: boolean
   }
 
   export type FoodPostUpsertWithWhereUniqueWithoutUserInput = {
@@ -7840,9 +8644,10 @@ export namespace Prisma {
     NOT?: FoodPostScalarWhereInput | FoodPostScalarWhereInput[]
     id?: IntFilter<"FoodPost"> | number
     name?: StringFilter<"FoodPost"> | string
+    price?: IntFilter<"FoodPost"> | number
     location?: StringFilter<"FoodPost"> | string
-    phoneNumber?: StringFilter<"FoodPost"> | string
-    resNumber?: StringFilter<"FoodPost"> | string
+    phoneNumber?: StringNullableFilter<"FoodPost"> | string | null
+    resNumber?: StringNullableFilter<"FoodPost"> | string | null
     image?: StringFilter<"FoodPost"> | string
     rating?: IntFilter<"FoodPost"> | number
     userId?: IntFilter<"FoodPost"> | number
@@ -7871,35 +8676,12 @@ export namespace Prisma {
     id?: IntFilter<"Comment"> | number
     rating?: IntFilter<"Comment"> | number
     content?: StringFilter<"Comment"> | string
+    like?: IntFilter<"Comment"> | number
     day?: IntFilter<"Comment"> | number
     month?: IntFilter<"Comment"> | number
     year?: IntFilter<"Comment"> | number
+    foodPostId?: IntFilter<"Comment"> | number
     userId?: IntFilter<"Comment"> | number
-  }
-
-  export type LikeUpsertWithWhereUniqueWithoutUserInput = {
-    where: LikeWhereUniqueInput
-    update: XOR<LikeUpdateWithoutUserInput, LikeUncheckedUpdateWithoutUserInput>
-    create: XOR<LikeCreateWithoutUserInput, LikeUncheckedCreateWithoutUserInput>
-  }
-
-  export type LikeUpdateWithWhereUniqueWithoutUserInput = {
-    where: LikeWhereUniqueInput
-    data: XOR<LikeUpdateWithoutUserInput, LikeUncheckedUpdateWithoutUserInput>
-  }
-
-  export type LikeUpdateManyWithWhereWithoutUserInput = {
-    where: LikeScalarWhereInput
-    data: XOR<LikeUpdateManyMutationInput, LikeUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type LikeScalarWhereInput = {
-    AND?: LikeScalarWhereInput | LikeScalarWhereInput[]
-    OR?: LikeScalarWhereInput[]
-    NOT?: LikeScalarWhereInput | LikeScalarWhereInput[]
-    id?: IntFilter<"Like"> | number
-    userId?: IntFilter<"Like"> | number
-    commentId?: IntFilter<"Like"> | number
   }
 
   export type CategoryCreateWithoutFoodPostInput = {
@@ -7918,7 +8700,38 @@ export namespace Prisma {
 
   export type CategoryCreateManyFoodPostInputEnvelope = {
     data: CategoryCreateManyFoodPostInput | CategoryCreateManyFoodPostInput[]
-    skipDuplicates?: boolean
+  }
+
+  export type CommentCreateWithoutFoodPostInput = {
+    rating: number
+    content: string
+    like?: number
+    day: number
+    month: number
+    year: number
+    people?: PeopleCreateNestedManyWithoutCommentInput
+    user: UserCreateNestedOneWithoutCommentInput
+  }
+
+  export type CommentUncheckedCreateWithoutFoodPostInput = {
+    id?: number
+    rating: number
+    content: string
+    like?: number
+    day: number
+    month: number
+    year: number
+    userId: number
+    people?: PeopleUncheckedCreateNestedManyWithoutCommentInput
+  }
+
+  export type CommentCreateOrConnectWithoutFoodPostInput = {
+    where: CommentWhereUniqueInput
+    create: XOR<CommentCreateWithoutFoodPostInput, CommentUncheckedCreateWithoutFoodPostInput>
+  }
+
+  export type CommentCreateManyFoodPostInputEnvelope = {
+    data: CommentCreateManyFoodPostInput | CommentCreateManyFoodPostInput[]
   }
 
   export type UserCreateWithoutFoodPostInput = {
@@ -7927,7 +8740,6 @@ export namespace Prisma {
     password: string
     profile: string
     comment?: CommentCreateNestedManyWithoutUserInput
-    Like?: LikeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFoodPostInput = {
@@ -7937,7 +8749,6 @@ export namespace Prisma {
     password: string
     profile: string
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    Like?: LikeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFoodPostInput = {
@@ -7970,6 +8781,22 @@ export namespace Prisma {
     foodPostId?: IntFilter<"Category"> | number
   }
 
+  export type CommentUpsertWithWhereUniqueWithoutFoodPostInput = {
+    where: CommentWhereUniqueInput
+    update: XOR<CommentUpdateWithoutFoodPostInput, CommentUncheckedUpdateWithoutFoodPostInput>
+    create: XOR<CommentCreateWithoutFoodPostInput, CommentUncheckedCreateWithoutFoodPostInput>
+  }
+
+  export type CommentUpdateWithWhereUniqueWithoutFoodPostInput = {
+    where: CommentWhereUniqueInput
+    data: XOR<CommentUpdateWithoutFoodPostInput, CommentUncheckedUpdateWithoutFoodPostInput>
+  }
+
+  export type CommentUpdateManyWithWhereWithoutFoodPostInput = {
+    where: CommentScalarWhereInput
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutFoodPostInput>
+  }
+
   export type UserUpsertWithoutFoodPostInput = {
     update: XOR<UserUpdateWithoutFoodPostInput, UserUncheckedUpdateWithoutFoodPostInput>
     create: XOR<UserCreateWithoutFoodPostInput, UserUncheckedCreateWithoutFoodPostInput>
@@ -7987,7 +8814,6 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     profile?: StringFieldUpdateOperationsInput | string
     comment?: CommentUpdateManyWithoutUserNestedInput
-    Like?: LikeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFoodPostInput = {
@@ -7997,28 +8823,31 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     profile?: StringFieldUpdateOperationsInput | string
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    Like?: LikeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type FoodPostCreateWithoutCategoryInput = {
     name: string
+    price: number
     location: string
-    phoneNumber: string
-    resNumber: string
+    phoneNumber?: string | null
+    resNumber?: string | null
     image: string
     rating: number
+    comment?: CommentCreateNestedManyWithoutFoodPostInput
     user: UserCreateNestedOneWithoutFoodPostInput
   }
 
   export type FoodPostUncheckedCreateWithoutCategoryInput = {
     id?: number
     name: string
+    price: number
     location: string
-    phoneNumber: string
-    resNumber: string
+    phoneNumber?: string | null
+    resNumber?: string | null
     image: string
     rating: number
     userId: number
+    comment?: CommentUncheckedCreateNestedManyWithoutFoodPostInput
   }
 
   export type FoodPostCreateOrConnectWithoutCategoryInput = {
@@ -8039,42 +8868,75 @@ export namespace Prisma {
 
   export type FoodPostUpdateWithoutCategoryInput = {
     name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    resNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    resNumber?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
+    comment?: CommentUpdateManyWithoutFoodPostNestedInput
     user?: UserUpdateOneRequiredWithoutFoodPostNestedInput
   }
 
   export type FoodPostUncheckedUpdateWithoutCategoryInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    resNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    resNumber?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
+    comment?: CommentUncheckedUpdateManyWithoutFoodPostNestedInput
   }
 
-  export type LikeCreateWithoutCommentInput = {
-    user: UserCreateNestedOneWithoutLikeInput
+  export type PeopleCreateWithoutCommentInput = {
+    userId: number
   }
 
-  export type LikeUncheckedCreateWithoutCommentInput = {
+  export type PeopleUncheckedCreateWithoutCommentInput = {
     id?: number
     userId: number
   }
 
-  export type LikeCreateOrConnectWithoutCommentInput = {
-    where: LikeWhereUniqueInput
-    create: XOR<LikeCreateWithoutCommentInput, LikeUncheckedCreateWithoutCommentInput>
+  export type PeopleCreateOrConnectWithoutCommentInput = {
+    where: PeopleWhereUniqueInput
+    create: XOR<PeopleCreateWithoutCommentInput, PeopleUncheckedCreateWithoutCommentInput>
   }
 
-  export type LikeCreateManyCommentInputEnvelope = {
-    data: LikeCreateManyCommentInput | LikeCreateManyCommentInput[]
-    skipDuplicates?: boolean
+  export type PeopleCreateManyCommentInputEnvelope = {
+    data: PeopleCreateManyCommentInput | PeopleCreateManyCommentInput[]
+  }
+
+  export type FoodPostCreateWithoutCommentInput = {
+    name: string
+    price: number
+    location: string
+    phoneNumber?: string | null
+    resNumber?: string | null
+    image: string
+    rating: number
+    category?: CategoryCreateNestedManyWithoutFoodPostInput
+    user: UserCreateNestedOneWithoutFoodPostInput
+  }
+
+  export type FoodPostUncheckedCreateWithoutCommentInput = {
+    id?: number
+    name: string
+    price: number
+    location: string
+    phoneNumber?: string | null
+    resNumber?: string | null
+    image: string
+    rating: number
+    userId: number
+    category?: CategoryUncheckedCreateNestedManyWithoutFoodPostInput
+  }
+
+  export type FoodPostCreateOrConnectWithoutCommentInput = {
+    where: FoodPostWhereUniqueInput
+    create: XOR<FoodPostCreateWithoutCommentInput, FoodPostUncheckedCreateWithoutCommentInput>
   }
 
   export type UserCreateWithoutCommentInput = {
@@ -8083,7 +8945,6 @@ export namespace Prisma {
     password: string
     profile: string
     foodPost?: FoodPostCreateNestedManyWithoutUserInput
-    Like?: LikeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentInput = {
@@ -8093,7 +8954,6 @@ export namespace Prisma {
     password: string
     profile: string
     foodPost?: FoodPostUncheckedCreateNestedManyWithoutUserInput
-    Like?: LikeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCommentInput = {
@@ -8101,20 +8961,65 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutCommentInput, UserUncheckedCreateWithoutCommentInput>
   }
 
-  export type LikeUpsertWithWhereUniqueWithoutCommentInput = {
-    where: LikeWhereUniqueInput
-    update: XOR<LikeUpdateWithoutCommentInput, LikeUncheckedUpdateWithoutCommentInput>
-    create: XOR<LikeCreateWithoutCommentInput, LikeUncheckedCreateWithoutCommentInput>
+  export type PeopleUpsertWithWhereUniqueWithoutCommentInput = {
+    where: PeopleWhereUniqueInput
+    update: XOR<PeopleUpdateWithoutCommentInput, PeopleUncheckedUpdateWithoutCommentInput>
+    create: XOR<PeopleCreateWithoutCommentInput, PeopleUncheckedCreateWithoutCommentInput>
   }
 
-  export type LikeUpdateWithWhereUniqueWithoutCommentInput = {
-    where: LikeWhereUniqueInput
-    data: XOR<LikeUpdateWithoutCommentInput, LikeUncheckedUpdateWithoutCommentInput>
+  export type PeopleUpdateWithWhereUniqueWithoutCommentInput = {
+    where: PeopleWhereUniqueInput
+    data: XOR<PeopleUpdateWithoutCommentInput, PeopleUncheckedUpdateWithoutCommentInput>
   }
 
-  export type LikeUpdateManyWithWhereWithoutCommentInput = {
-    where: LikeScalarWhereInput
-    data: XOR<LikeUpdateManyMutationInput, LikeUncheckedUpdateManyWithoutCommentInput>
+  export type PeopleUpdateManyWithWhereWithoutCommentInput = {
+    where: PeopleScalarWhereInput
+    data: XOR<PeopleUpdateManyMutationInput, PeopleUncheckedUpdateManyWithoutCommentInput>
+  }
+
+  export type PeopleScalarWhereInput = {
+    AND?: PeopleScalarWhereInput | PeopleScalarWhereInput[]
+    OR?: PeopleScalarWhereInput[]
+    NOT?: PeopleScalarWhereInput | PeopleScalarWhereInput[]
+    id?: IntFilter<"People"> | number
+    userId?: IntFilter<"People"> | number
+    commentId?: IntFilter<"People"> | number
+  }
+
+  export type FoodPostUpsertWithoutCommentInput = {
+    update: XOR<FoodPostUpdateWithoutCommentInput, FoodPostUncheckedUpdateWithoutCommentInput>
+    create: XOR<FoodPostCreateWithoutCommentInput, FoodPostUncheckedCreateWithoutCommentInput>
+    where?: FoodPostWhereInput
+  }
+
+  export type FoodPostUpdateToOneWithWhereWithoutCommentInput = {
+    where?: FoodPostWhereInput
+    data: XOR<FoodPostUpdateWithoutCommentInput, FoodPostUncheckedUpdateWithoutCommentInput>
+  }
+
+  export type FoodPostUpdateWithoutCommentInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    location?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    resNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    category?: CategoryUpdateManyWithoutFoodPostNestedInput
+    user?: UserUpdateOneRequiredWithoutFoodPostNestedInput
+  }
+
+  export type FoodPostUncheckedUpdateWithoutCommentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    location?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    resNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    category?: CategoryUncheckedUpdateManyWithoutFoodPostNestedInput
   }
 
   export type UserUpsertWithoutCommentInput = {
@@ -8134,7 +9039,6 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     profile?: StringFieldUpdateOperationsInput | string
     foodPost?: FoodPostUpdateManyWithoutUserNestedInput
-    Like?: LikeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentInput = {
@@ -8144,123 +9048,77 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     profile?: StringFieldUpdateOperationsInput | string
     foodPost?: FoodPostUncheckedUpdateManyWithoutUserNestedInput
-    Like?: LikeUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type CommentCreateWithoutLikeInput = {
+  export type CommentCreateWithoutPeopleInput = {
     rating: number
     content: string
+    like?: number
     day: number
     month: number
     year: number
+    foodPost: FoodPostCreateNestedOneWithoutCommentInput
     user: UserCreateNestedOneWithoutCommentInput
   }
 
-  export type CommentUncheckedCreateWithoutLikeInput = {
+  export type CommentUncheckedCreateWithoutPeopleInput = {
     id?: number
     rating: number
     content: string
+    like?: number
     day: number
     month: number
     year: number
+    foodPostId: number
     userId: number
   }
 
-  export type CommentCreateOrConnectWithoutLikeInput = {
+  export type CommentCreateOrConnectWithoutPeopleInput = {
     where: CommentWhereUniqueInput
-    create: XOR<CommentCreateWithoutLikeInput, CommentUncheckedCreateWithoutLikeInput>
+    create: XOR<CommentCreateWithoutPeopleInput, CommentUncheckedCreateWithoutPeopleInput>
   }
 
-  export type UserCreateWithoutLikeInput = {
-    username: string
-    email: string
-    password: string
-    profile: string
-    foodPost?: FoodPostCreateNestedManyWithoutUserInput
-    comment?: CommentCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutLikeInput = {
-    id?: number
-    username: string
-    email: string
-    password: string
-    profile: string
-    foodPost?: FoodPostUncheckedCreateNestedManyWithoutUserInput
-    comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutLikeInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutLikeInput, UserUncheckedCreateWithoutLikeInput>
-  }
-
-  export type CommentUpsertWithoutLikeInput = {
-    update: XOR<CommentUpdateWithoutLikeInput, CommentUncheckedUpdateWithoutLikeInput>
-    create: XOR<CommentCreateWithoutLikeInput, CommentUncheckedCreateWithoutLikeInput>
+  export type CommentUpsertWithoutPeopleInput = {
+    update: XOR<CommentUpdateWithoutPeopleInput, CommentUncheckedUpdateWithoutPeopleInput>
+    create: XOR<CommentCreateWithoutPeopleInput, CommentUncheckedCreateWithoutPeopleInput>
     where?: CommentWhereInput
   }
 
-  export type CommentUpdateToOneWithWhereWithoutLikeInput = {
+  export type CommentUpdateToOneWithWhereWithoutPeopleInput = {
     where?: CommentWhereInput
-    data: XOR<CommentUpdateWithoutLikeInput, CommentUncheckedUpdateWithoutLikeInput>
+    data: XOR<CommentUpdateWithoutPeopleInput, CommentUncheckedUpdateWithoutPeopleInput>
   }
 
-  export type CommentUpdateWithoutLikeInput = {
+  export type CommentUpdateWithoutPeopleInput = {
     rating?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
+    like?: IntFieldUpdateOperationsInput | number
     day?: IntFieldUpdateOperationsInput | number
     month?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
+    foodPost?: FoodPostUpdateOneRequiredWithoutCommentNestedInput
     user?: UserUpdateOneRequiredWithoutCommentNestedInput
   }
 
-  export type CommentUncheckedUpdateWithoutLikeInput = {
+  export type CommentUncheckedUpdateWithoutPeopleInput = {
     id?: IntFieldUpdateOperationsInput | number
     rating?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
+    like?: IntFieldUpdateOperationsInput | number
     day?: IntFieldUpdateOperationsInput | number
     month?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
+    foodPostId?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type UserUpsertWithoutLikeInput = {
-    update: XOR<UserUpdateWithoutLikeInput, UserUncheckedUpdateWithoutLikeInput>
-    create: XOR<UserCreateWithoutLikeInput, UserUncheckedCreateWithoutLikeInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutLikeInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutLikeInput, UserUncheckedUpdateWithoutLikeInput>
-  }
-
-  export type UserUpdateWithoutLikeInput = {
-    username?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    profile?: StringFieldUpdateOperationsInput | string
-    foodPost?: FoodPostUpdateManyWithoutUserNestedInput
-    comment?: CommentUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutLikeInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    username?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    profile?: StringFieldUpdateOperationsInput | string
-    foodPost?: FoodPostUncheckedUpdateManyWithoutUserNestedInput
-    comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type FoodPostCreateManyUserInput = {
     id?: number
     name: string
+    price: number
     location: string
-    phoneNumber: string
-    resNumber: string
+    phoneNumber?: string | null
+    resNumber?: string | null
     image: string
     rating: number
   }
@@ -8269,43 +9127,45 @@ export namespace Prisma {
     id?: number
     rating: number
     content: string
+    like?: number
     day: number
     month: number
     year: number
-  }
-
-  export type LikeCreateManyUserInput = {
-    id?: number
-    commentId: number
+    foodPostId: number
   }
 
   export type FoodPostUpdateWithoutUserInput = {
     name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    resNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    resNumber?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     category?: CategoryUpdateManyWithoutFoodPostNestedInput
+    comment?: CommentUpdateManyWithoutFoodPostNestedInput
   }
 
   export type FoodPostUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    resNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    resNumber?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     category?: CategoryUncheckedUpdateManyWithoutFoodPostNestedInput
+    comment?: CommentUncheckedUpdateManyWithoutFoodPostNestedInput
   }
 
   export type FoodPostUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
     location?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    resNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    resNumber?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
   }
@@ -8313,48 +9173,51 @@ export namespace Prisma {
   export type CommentUpdateWithoutUserInput = {
     rating?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
+    like?: IntFieldUpdateOperationsInput | number
     day?: IntFieldUpdateOperationsInput | number
     month?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
-    like?: LikeUpdateManyWithoutCommentNestedInput
+    people?: PeopleUpdateManyWithoutCommentNestedInput
+    foodPost?: FoodPostUpdateOneRequiredWithoutCommentNestedInput
   }
 
   export type CommentUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     rating?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
+    like?: IntFieldUpdateOperationsInput | number
     day?: IntFieldUpdateOperationsInput | number
     month?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
-    like?: LikeUncheckedUpdateManyWithoutCommentNestedInput
+    foodPostId?: IntFieldUpdateOperationsInput | number
+    people?: PeopleUncheckedUpdateManyWithoutCommentNestedInput
   }
 
   export type CommentUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     rating?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
+    like?: IntFieldUpdateOperationsInput | number
     day?: IntFieldUpdateOperationsInput | number
     month?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type LikeUpdateWithoutUserInput = {
-    comment?: CommentUpdateOneRequiredWithoutLikeNestedInput
-  }
-
-  export type LikeUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    commentId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type LikeUncheckedUpdateManyWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    commentId?: IntFieldUpdateOperationsInput | number
+    foodPostId?: IntFieldUpdateOperationsInput | number
   }
 
   export type CategoryCreateManyFoodPostInput = {
     id?: number
     category: string
+  }
+
+  export type CommentCreateManyFoodPostInput = {
+    id?: number
+    rating: number
+    content: string
+    like?: number
+    day: number
+    month: number
+    year: number
+    userId: number
   }
 
   export type CategoryUpdateWithoutFoodPostInput = {
@@ -8371,21 +9234,55 @@ export namespace Prisma {
     category?: StringFieldUpdateOperationsInput | string
   }
 
-  export type LikeCreateManyCommentInput = {
+  export type CommentUpdateWithoutFoodPostInput = {
+    rating?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    like?: IntFieldUpdateOperationsInput | number
+    day?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    people?: PeopleUpdateManyWithoutCommentNestedInput
+    user?: UserUpdateOneRequiredWithoutCommentNestedInput
+  }
+
+  export type CommentUncheckedUpdateWithoutFoodPostInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    like?: IntFieldUpdateOperationsInput | number
+    day?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    people?: PeopleUncheckedUpdateManyWithoutCommentNestedInput
+  }
+
+  export type CommentUncheckedUpdateManyWithoutFoodPostInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    like?: IntFieldUpdateOperationsInput | number
+    day?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PeopleCreateManyCommentInput = {
     id?: number
     userId: number
   }
 
-  export type LikeUpdateWithoutCommentInput = {
-    user?: UserUpdateOneRequiredWithoutLikeNestedInput
+  export type PeopleUpdateWithoutCommentInput = {
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type LikeUncheckedUpdateWithoutCommentInput = {
+  export type PeopleUncheckedUpdateWithoutCommentInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type LikeUncheckedUpdateManyWithoutCommentInput = {
+  export type PeopleUncheckedUpdateManyWithoutCommentInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
   }

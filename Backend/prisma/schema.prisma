@@ -10,9 +10,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model User {
@@ -23,18 +23,20 @@ model User {
   profile    String
   foodPost   FoodPost[]
   comment    Comment[]
-  Like Like[]
+  // Like       Like[]
 }
 
 model FoodPost {
   id         Int    @id @default(autoincrement())
   name       String
   category   Category[]
+  price      Int
   location   String
-  phoneNumber  String
-  resNumber  String
+  phoneNumber  String?
+  resNumber  String?
   image      String
   rating     Int
+  comment    Comment[]
   userId     Int
   user       User   @relation(fields: [userId], references: [id])
 }
@@ -43,25 +45,37 @@ model Category {
   id         Int    @id @default(autoincrement())
   category   String
   foodPostId     Int
-  foodPost   FoodPost   @relation(fields: [foodPostId], references: [id])
+  foodPost   FoodPost?   @relation(fields: [foodPostId], references: [id], onDelete: Cascade)
 }
 
 model Comment {
   id         Int    @id @default(autoincrement())
   rating     Int
   content    String 
-  like       Like[]
+  like       Int   @default(0)
   day        Int
   month      Int
   year       Int
+  people     People[]
+  foodPostId     Int
+  foodPost   FoodPost   @relation(fields: [foodPostId], references: [id])
   userId     Int
   user       User   @relation(fields: [userId], references: [id])
 }
 
-model Like {
+// model Like {
+//   id         Int    @id @default(autoincrement())
+//   likeNum    Int    @default(0)
+//   userId     Int
+//   commentId  Int
+//   people     People[]
+//   comment    Comment   @relation(fields: [commentId], references: [id])
+//   user       User   @relation(fields: [userId], references: [id])
+// }
+
+model People {
   id         Int    @id @default(autoincrement())
   userId     Int
-  commentId  Int
-  comment    Comment   @relation(fields: [commentId], references: [id])
-  user       User   @relation(fields: [userId], references: [id])
+  commentId     Int
+  comment       Comment   @relation(fields: [commentId], references: [id])
 }

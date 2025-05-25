@@ -2,11 +2,27 @@ import { React, useState } from 'react'
 import { FaUser } from "react-icons/fa";
 import { LuEyeClosed } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
+import * as apiUser from "../api/user";
 
 const EditProfileModal = ({edit, username, email, password}) => {
     const [hide, setHide] = useState(true);
-    const [editUsername, setEditUsername] = useState("");
+    const [editUsername, setEditUsername] = useState(username);
     const blind = "*************";
+
+    // Get userId from localStorage and assign to userAccount (variable)
+    const userAccount = parseInt(localStorage.getItem("userAccount"));
+
+    // Backend => API editUsername
+    const editUser = async (id, newUsername) => {
+        await apiUser.editUsername(id, newUsername);
+    }
+
+    function confirm() {
+        editUser(userAccount, editUsername);
+        edit(false);
+        window.location.reload();
+    }
+
 
   return (
     <>
@@ -14,12 +30,12 @@ const EditProfileModal = ({edit, username, email, password}) => {
         <div className='flex justify-center'>
             <div className='bg-white w-175 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] max-sm:w-90 max-sm:h-175 max-sm:mx-4'>
                 <div className='flex justify-center items-center gap-20 max-sm:flex-col max-sm:gap-5'>
-                    <FaUser className='border-1 rounded-[100%] text-[128px] p-5 max-sm:text-[128px] max-sm:p-5'/>
+                    <FaUser className='border-1 rounded-[100%] text-[128px] p-5'/>
                     <div className='max-sm:w-full max-sm:mt-4'>
                         <label className='text-[20px] font-semibold max-sm:text-base'>Email</label> <br />
-                        <input type="text" value={email} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5 max-sm:w-full' readOnly/> <br />
+                        <input type="text" value={email} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5' readOnly/> <br />
+                        <input type="text" value={editUsername} onChange={(e) => setEditUsername(e.target.value)} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5 hover:border-black max-sm:w-full' /> <br />
                         <label className='text-[20px] font-semibold max-sm:text-base'>Username</label> <br />
-                        <input type="text" onChange={(e) => setEditUsername(e.target.value)} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5 hover:border-black max-sm:w-full' /> <br />
                         <label className='text-[20px] font-semibold max-sm:text-base'>Password</label> <br />
                         <div className='flex items-center'>
                             <input type="text" value={hide ? blind : password} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5 max-sm:w-full' readOnly/> <br />
@@ -28,7 +44,8 @@ const EditProfileModal = ({edit, username, email, password}) => {
                         </div>
                         <div className='flex justify-center gap-5 mt-5 max-sm:gap-2 max-sm:mt-50 max-sm:ml-35'>
                             <button onClick={() => edit(false)} className='text-[18px] font-semibold bg-black text-white rounded-lg px-7 py-2 cursor-pointer max-sm:text-base max-sm:px-4 max-sm:'>Cancel</button>
-                            <button className='text-[18px] font-semibold bg-[#DE0000] text-white rounded-lg px-7 py-2 cursor-pointer max-sm:text-base max-sm:px-4'>Confirm</button>
+                            <button onClick={confirm} className='text-[18px] font-semibold bg-[#DE0000] text-white rounded-lg px-7 py-2 cursor-pointer max-sm:text-base max-sm:px-4'>Confirm</button>
+
                         </div>
                     </div>
                 </div>
