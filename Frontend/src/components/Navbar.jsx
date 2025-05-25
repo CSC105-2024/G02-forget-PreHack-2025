@@ -118,7 +118,7 @@ const Navbar = () => {
             }
         </nav>
     </header>
-    <div className='absolute top-20 right-50 z-20 '>
+    <div className='absolute top-20 right-105 z-20 '>
         {isSearchOpen && searchPosts.map((post) => (
         <div className='flex justify-center drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
             <div className='w-175 bg-white hover:bg-[#D9D9D9]'>
