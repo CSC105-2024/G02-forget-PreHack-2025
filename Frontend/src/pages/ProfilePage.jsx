@@ -4,6 +4,7 @@ import EditProfileModal from '../components/EditProfileModal';
 import * as color from '../components/ChangeColorStar'
 // Router
 import { Link } from "react-router-dom";
+import Footer from '../components/Footer';
 // Icon
 import { FaUser } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
@@ -420,6 +421,7 @@ const ProfilePage = () => {
     </div>
     </>
     }
+    <Footer></Footer>
     </>
   )
 }

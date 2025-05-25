@@ -6,6 +6,7 @@ import * as color from '../components/ChangeColorStar'
 // Router
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
+import Footer from '../components/Footer';
 // Icon
 import { IoMdArrowBack } from "react-icons/io";
 import { IoIosStar } from "react-icons/io";
@@ -431,6 +432,7 @@ const FoodPostPage = () => {
     </div>
     </>
     }
+    <Footer></Footer>
     </>
   )
 }

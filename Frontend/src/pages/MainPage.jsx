@@ -29,9 +29,9 @@ import Pizza from '../img/Pizza.png'
 import Steak from '../img/Steak.png'
 import ThaiFood from '../img/Thai_Food.png'
 import VegetarianFood from '../img/Vegetarian_Food.png'
-import Footer from '../components/Footer';
 // Router
 import { useNavigate } from "react-router-dom";
+import Footer from '../components/Footer';
 // API
 import * as apiPost from "../api/foodPost"
 import * as apiCategory from "../api/category"
@@ -162,7 +162,7 @@ const MainPage = () => {
                     {(categories[post.id] || []).map((category, index) => (
                     <h2 key={index} className='max-sm:text-[12px] text-[#A9A9A9] ml-2 lg:mb-10'>{category}</h2>
                     ))}
-                    <p className='flex items-end max-sm:h-8 max-sm:text-[12px] ml-2 font-bold'>{post.comment.length} {post.comment.length > 1 ? "views" : "view"}</p>
+                    <p className='flex items-end max-sm:h-8 max-sm:text-[12px] ml-2 font-bold'>{post.comment.length} {post.comment.length > 1 ? "reviews" : "review"}</p>
                 </Link>
                 </>
                 ))}

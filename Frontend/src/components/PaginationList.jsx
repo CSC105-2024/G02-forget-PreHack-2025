@@ -40,7 +40,7 @@ const PaginationList = ({posts, rating, categories, postsPerPage = 5}) => {
                   <p className='text-white text-[16px] font-semibold'>{rating.find(r => r.foodPostId === post.id)?.rating ?? "N/A"}</p>
                   <IoIosStar className='text-white text-[14px]'/>
               </div>
-              <p className='text-[#A9A9A9] text-[20px]'>{post.comment.length} {post.comment.length > 1 ? "views" : "view"}</p>
+              <p className='text-[#A9A9A9] text-[20px]'>{post.comment.length} {post.comment.length > 1 ? "reviews" : "review"}</p>
               <div className='flex items-center gap-3'>
                   <FaLocationDot className='text-[20px]'/>
                   <p className='font-semibold text-[20px]'>{post.location}</p>
