@@ -24,8 +24,9 @@ const LoginPage = () => {
     // Backend => API loginUser
     const login = async (email, password) => {
         try {
-        const data = await apiUser.loginUser(email);
-        if (data.data.success && data.data.data.password == password) {
+        const data = await apiUser.loginUser(email,password);
+        console.log(data)
+        if (data.data.success) {
             // Collect userId in localStorage
             localStorage.setItem("userAccount", data.data.data.id);
             // User already login
@@ -35,7 +36,7 @@ const LoginPage = () => {
         } else {
             // set error in localStorage when data is not correct
             localStorage.setItem("error", "Email or password is wrong");
-            window.location.reload();
+             window.location.reload();
         }
         } catch (e) {
             console.log(e);

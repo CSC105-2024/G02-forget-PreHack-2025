@@ -86,13 +86,13 @@ const RegisterPage = () => {
                     <label className='text-[20px] -my-5 max-sm:ml-3'>Password</label> <br />
                     {errorText && <span className='text-red-600'>{errorText}</span>}
                     <div className='flex items-center'>
-                        <input type={hidePassword ? "password" : "text"} value={formData.password} onChange={(e) => setFormData({ ...formData, password: e.target.value })} required placeholder='Enter your Password' className='text-[18px] border-1 border-[#D9D9D9] rounded-lg px-3 py-1 mt-2 w-100 hover:border-black max-sm:ml-2'/>
+                        <input type={hidePassword ? "password" : "text"} value={formData.password} onChange={(e) => setFormData({ ...formData, password: e.target.value })} required placeholder='Enter your Password' className='text-[18px] border-1 border-[#D9D9D9] rounded-lg px-3 py-1 mt-2 w-100 hover:border-black max-sm:ml-2 max-sm:w-85'/>
                         {hidePassword && <LuEyeClosed onClick={() => setHidePassword(false)} className='-ml-8 text-[20px] cursor-pointer'/>}
                         {!hidePassword && <LuEye onClick={() => setHidePassword(true)} className='-ml-8 text-[20px] cursor-pointer'/>}
                     </div>
                     <label className='text-[20px] mt-5 -mb-5 max-sm:ml-3'>Confirm password</label> <br />
                     <div className='flex items-center'>
-                        <input type={hideConfirmPassword ? "password" : "text"} value={formData.confirmPassword} onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })} required placeholder='Enter your Password' className='text-[18px] border-1 border-[#D9D9D9] rounded-lg px-3 py-1 mt-2 w-100 hover:border-black max-sm:ml-2'/>
+                        <input type={hideConfirmPassword ? "password" : "text"} value={formData.confirmPassword} onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })} required placeholder='Enter your Password' className='text-[18px] border-1 border-[#D9D9D9] rounded-lg px-3 py-1 mt-2 w-100 hover:border-black max-sm:ml-2 max-sm:w-85'/>
                         {hideConfirmPassword && <LuEyeClosed onClick={() => setHideConfirmPassword(false)} className='-ml-8 text-[20px] cursor-pointer'/>}
                         {!hideConfirmPassword && <LuEye onClick={() => setHideConfirmPassword(true)} className='-ml-8 text-[20px] cursor-pointer'/>}
                     </div>

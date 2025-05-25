@@ -162,7 +162,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\nitro\\OneDrive\\เดสก์ท็อป\\Coding naja\\WebAppDev\\AbbSabb\\Backend\\src\\generated\\prisma",
+      "value": "C:\\Users\\Kornc\\OneDrive\\เอกสาร\\Frontendprofile\\G02-forget\\G02-forget-PreHack-2025\\Backend\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -176,7 +176,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\nitro\\OneDrive\\เดสก์ท็อป\\Coding naja\\WebAppDev\\AbbSabb\\Backend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Kornc\\OneDrive\\เอกสาร\\Frontendprofile\\G02-forget\\G02-forget-PreHack-2025\\Backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

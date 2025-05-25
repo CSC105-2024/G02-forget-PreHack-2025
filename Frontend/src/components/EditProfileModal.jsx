@@ -34,8 +34,8 @@ const EditProfileModal = ({edit, username, email, password}) => {
                     <div className='max-sm:w-full max-sm:mt-4'>
                         <label className='text-[20px] font-semibold max-sm:text-base'>Email</label> <br />
                         <input type="text" value={email} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5' readOnly/> <br />
-                        <input type="text" value={editUsername} onChange={(e) => setEditUsername(e.target.value)} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5 hover:border-black max-sm:w-full' /> <br />
                         <label className='text-[20px] font-semibold max-sm:text-base'>Username</label> <br />
+                        <input type="text" value={editUsername} onChange={(e) => setEditUsername(e.target.value)} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5 hover:border-black max-sm:w-full' /> <br />
                         <label className='text-[20px] font-semibold max-sm:text-base'>Password</label> <br />
                         <div className='flex items-center'>
                             <input type="text" value={hide ? blind : password} className='border-1 border-[#D9D9D9] rounded-lg px-2 py-1 w-75 mt-2 mb-5 max-sm:w-full' readOnly/> <br />

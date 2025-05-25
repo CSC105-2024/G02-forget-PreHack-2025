@@ -31,7 +31,7 @@ const getInfoUser = async (id: number) => {
 
 const loginUser = async (email: string, password: string) => {
     try {
-        const response = await Axios.post("/users/login", {email: email});
+        const response = await Axios.post("/users/login", {email: email,password:password});
         return {
             success: true,
             data: response.data
