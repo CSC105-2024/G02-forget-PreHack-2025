@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { IoIosStar } from "react-icons/io";
 import * as apiUser from '../api/user';
 // Image for select categories
@@ -32,10 +32,99 @@ import VegetarianFood from '../img/Vegetarian_Food.png'
 import Footer from '../components/Footer';
 // Router
 import { useNavigate } from "react-router-dom";
+// API
+import * as apiPost from "../api/foodPost"
+import * as apiCategory from "../api/category"
+import * as apiComment from "../api/comment"
 
+export let sendCategoryFromHome = [];
+export const setSendCategoryFromHome = (category) => {
+    sendCategoryFromHome = category;
+}
 
 const MainPage = () => {
     const [seeMore, setSeeMore] = useState(false)
+
+    // Store data when API is sent
+    const [posts, setPosts] = useState([]);
+    const [categories, setCategories] = useState({});
+    
+    // Backend => API getAllPost
+    const getAllPost = async () => {
+        const data = await apiPost.getAllPost();
+        if (data.data.success) {
+            setPosts(data.data.data);
+            for (let i = 0; i < data.data.data.length; i++) {
+                await getCategoryFromPost(data.data.data[i].id);
+                await getCommentFromPost(data.data.data[i].id)
+            }
+        }
+    }
+
+    // Store data when API getCommentFromPost is sent
+    const [rating, setRating] = useState([]);
+
+    // Backend => API getCategoryFromPost
+    const getCategoryFromPost = async (foodPostId) => {
+        const data = await apiCategory.getCategoryFromPost(foodPostId);
+        if (data.data.success) {
+            for (let i = 0; i < data.data.data.length; i++) {
+                // Set categories of post in categoryOfPost(variable)
+                const categoryOfPost = data.data.data.map(item => item.category);
+                // And Store in categories(useState) and use foodPostId to seacrh the data
+                // Ex: Suppose we already have 3 posts
+                // In console => 1: ['Category1']
+                //               2: ['Category1', 'Category2']
+                //               3: ['Category1']
+                setCategories(prev => ({
+                    ...prev,
+                    [foodPostId]: categoryOfPost
+                }))
+            }
+        }
+    }
+
+    // Backend => API getCommentFromPost
+    const getCommentFromPost = async (foodPostId) => {
+        const data = await apiComment.getCommentFromPost(foodPostId);
+        if (data.data.success) {
+            let overall = 0;
+            for (let i = 0; i < data.data.data.length; i++) {           
+                overall += data.data.data[i].rating;           
+            }
+            const rawRating = overall / data.data.data.length;
+            const ratingValue = isNaN(rawRating)
+                ? '0.0'
+                : (rawRating).toFixed(1);
+            setRating(prev => {
+                const filtered = prev.filter(r => r.foodPostId !== foodPostId);
+                return [
+                    ...filtered, // No dupicated
+                {
+                foodPostId,
+                rating: ratingValue
+                }
+                ];
+            });    
+        }
+    }
+    
+    // Render all posts
+    useEffect(() => {
+        getAllPost();
+    }, [])
+
+    const [topPosts, setTopPosts] = useState([]);
+
+    useEffect(() => {
+    if (posts.length > 0) {
+        const sortedTop = [...posts]
+        .sort((a, b) => b.comment.length - a.comment.length)
+        .slice(0, 4);
+        setTopPosts(sortedTop);
+    }
+    }, [posts]);
+
 
     function turnSeeMore() {
         if (seeMore) {
@@ -47,9 +136,9 @@ const MainPage = () => {
 
     const navigate = new useNavigate();
 
-    function selectCategory(category) {
-        localStorage.setItem("category", category);
-        navigate("/search");
+    function selectCategory(categorySelect) {
+        setSendCategoryFromHome([categorySelect])
+        navigate(`/search`);
     }
     
   return (
@@ -59,58 +148,24 @@ const MainPage = () => {
         <div className='bg-white w-275 mx-3 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
             <h1 className='text-[24px] lg:text-[36px] font-bold underline mb-4 lg:mb-10'>Popular menu</h1>
             <div className='grid justify-evenly grid-cols-2 lg:grid-cols-4 gap-5 mb-10'>
-                {/* Post#1 */}
-                <div className='w-[100%] lg:w-60 rounded-lg max-sm:h-45 bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img className='flex h-25 lg:h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={FriedChickenCurry} alt={"dsa"} />
+                {topPosts.map((post) => (
+                <>
+                <Link to={`/foodPost/${post.id}`} className='w-[100%] lg:w-60 rounded-lg max-sm:h-45 bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
+                    <img className='flex h-25 lg:h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={post.image} />
                     <div className='flex mt-2 p-2 justify-between items-center h-5'>
-                        <h1 className='text-[18px] lg:text-[24px] font-semibold'>Name</h1>
+                        <h1 className='text-[18px] lg:text-[24px] font-semibold'>{post.name}</h1>
                         <div className='flex items-center gap-1 bg-[#DE0000] px-1 lg:px-2 rounded-md'>
-                            <p className='text-white text-[10px] lg:text-[14px] font-semibold'>4.0</p>
+                            <p className='text-white text-[10px] lg:text-[14px] font-semibold'>{rating.find(r => r.foodPostId === post.id)?.rating ?? "N/A"}</p>
                             <IoIosStar className='text-white text-[10px]'/>
                         </div>
                     </div>
-                    <h2 className='max-sm:text-[12px] text-[#A9A9A9] ml-2 lg:mb-10'>Category</h2>
-                    <p className='flex items-end max-sm:h-8 max-sm:text-[12px] ml-2 font-bold'>1234 views</p>
-                </div>
-                {/* Post#2 */}
-                <div className='w-[100%] lg:w-60 rounded-lg max-sm:h-45 bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img className='flex h-25 lg:h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={DryNoodle} alt={"dsa"} />
-                    <div className='flex mt-2 p-2 justify-between items-center h-5'>
-                        <h1 className='text-[18px] lg:text-[24px] font-semibold'>Name</h1>
-                        <div className='flex items-center gap-1 bg-[#DE0000] px-1 lg:px-2 rounded-md'>
-                            <p className='text-white text-[10px] lg:text-[14px] font-semibold'>4.0</p>
-                            <IoIosStar className='text-white text-[10px]'/>
-                        </div>
-                    </div>
-                    <h2 className='max-sm:text-[12px] text-[#A9A9A9] ml-2 lg:mb-10'>Category</h2>
-                    <p className='flex items-end max-sm:h-8 max-sm:text-[12px] ml-2 font-bold'>1234 views</p>
-                </div>
-                {/* Post#3 */}
-                <div className='w-[100%] lg:w-60 rounded-lg max-sm:h-45 bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img className='flex h-25 lg:h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={CrispyPorkSalad} alt={"dsa"} />
-                    <div className='flex mt-2 p-2 justify-between items-center h-5'>
-                        <h1 className='text-[18px] lg:text-[24px] font-semibold'>Name</h1>
-                        <div className='flex items-center gap-1 bg-[#DE0000] px-1 lg:px-2 rounded-md'>
-                            <p className='text-white text-[10px] lg:text-[14px] font-semibold'>4.0</p>
-                            <IoIosStar className='text-white text-[10px]'/>
-                        </div>
-                    </div>
-                    <h2 className='max-sm:text-[12px] text-[#A9A9A9] ml-2 lg:mb-10'>Category</h2>
-                    <p className='flex items-end max-sm:h-8 max-sm:text-[12px] ml-2 font-bold'>1234 views</p>
-                </div>
-                {/* Post#4 */}
-                <div className='w-[100%] lg:w-60 rounded-lg max-sm:h-45 bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
-                    <img className='flex h-25 lg:h-[200px] w-[250px] object-cover rounded-t-lg hover:brightness-70' src={MalaGrilledPorkNeck} alt={"dsa"} />
-                    <div className='flex mt-2 p-2 justify-between items-center h-5'>
-                        <h1 className='text-[18px] lg:text-[24px] font-semibold'>Name</h1>
-                        <div className='flex items-center gap-1 bg-[#DE0000] px-1 lg:px-2 rounded-md'>
-                            <p className='text-white text-[10px] lg:text-[14px] font-semibold'>4.0</p>
-                            <IoIosStar className='text-white text-[10px]'/>
-                        </div>
-                    </div>
-                    <h2 className='max-sm:text-[12px] text-[#A9A9A9] ml-2 lg:mb-10'>Category</h2>
-                    <p className='flex items-end max-sm:h-8 max-sm:text-[12px] ml-2 font-bold'>1234 views</p>
-                </div>
+                    {(categories[post.id] || []).map((category, index) => (
+                    <h2 key={index} className='max-sm:text-[12px] text-[#A9A9A9] ml-2 lg:mb-10'>{category}</h2>
+                    ))}
+                    <p className='flex items-end max-sm:h-8 max-sm:text-[12px] ml-2 font-bold'>{post.comment.length} {post.comment.length > 1 ? "views" : "view"}</p>
+                </Link>
+                </>
+                ))}
             </div>
             <div className='flex justify-center'>
                 <NavLink to={"/search"} className='bg-[#F3F3F3] w-[95%] text-center font-bold py-1 lg:py-2 rounded-lg cursor-pointer hover:bg-[#E2E2E2]'>See more</NavLink>
@@ -124,7 +179,7 @@ const MainPage = () => {
                 <h1 className='text-[36px] font-bold underline'>Category</h1>
                 <button onClick={turnSeeMore} className='text-[#DE0000] text-[18px] font-bold cursor-pointer hover:underline'>See more</button>
             </div>
-            <div className='flex justify-center gap-3 lg:gap-15 lg:-mb-5 mt-4'>
+            <div className='flex justify-center gap-3 lg:gap-15 lg:-mb-7 mt-4'>
                 {/* Category#1 */}
                 <div onClick={() => selectCategory("Fast Food")} className='cursor-pointer'>
                     <img src={Fastfood} alt="fastfood" className='rounded-md brightness-75 w-50 h-21 lg:h-50 object-cover hover:brightness-50'/>

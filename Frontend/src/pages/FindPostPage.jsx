@@ -4,6 +4,7 @@ import FilterModal from '../components/FilterModal';
 import { sendFilterRating, sendFilterCategory, sendFilterPrice } from '../components/FilterModal';
 import PaginationList from '../components/PaginationList';
 import PaginationListForFilter from '../components/PaginationListForFilter';
+import { sendCategoryFromHome } from './MainPage';
 // Router
 import { NavLink, Link } from "react-router-dom";
 // Icon
@@ -110,6 +111,10 @@ const FindPostPage = () => {
     useEffect(() => {
         setCategoryList(sendFilterCategory)
     }, [sendFilterCategory])
+    // Render when value sendCategoryFromHome have changed
+    useEffect(() => {
+        setCategoryList(sendCategoryFromHome)
+    }, [sendCategoryFromHome])
     // Render when value priceList(useState) have changed
     useEffect(() => {
         setPriceList(sendFilterPrice)
@@ -136,10 +141,11 @@ const FindPostPage = () => {
                 ratingList.length === 0 ||
                 ratingList.some((r) => 
                     postRating >= parseFloat(r));
-
+                
             const matchCategory =
                 categoryList.length === 0 ||
-                categoryList.some((item) => post.category.map(c => c.category).includes(item));           
+                categoryList.some((item) => post.category.map(c => c.category).includes(item));  
+                         
 
             const matchPrice =
                 priceList.length === 0 || checkPriceMatch(post.price, priceList);
@@ -147,6 +153,7 @@ const FindPostPage = () => {
             return matchRating && matchCategory && matchPrice;
         });   
         setFilterPosts(filteredPosts);
+        
     }
     // Function check price
     function checkPriceMatch(postPrice, filterPrices) {
@@ -158,25 +165,17 @@ const FindPostPage = () => {
             return false;
         });
     }
-    useEffect(() => {
-        const storedCategory = localStorage.getItem("category");
-        if (storedCategory && !categoryList.includes(storedCategory)) {
-            setCategoryList([storedCategory]);        
-        }
-    }, []);
 
     // Render when ratingList, categoryList, priceList have something changed
     useEffect(() => {
         if (ratingList.length === 0 && categoryList.length === 0 && priceList.length === 0) {
             setFilterPosts([]);
-            setUsingFilter(false);
-            console.log(1);
-                    
+            setUsingFilter(false);    
         } else {
             applyFilters();
             setUsingFilter(true);     
         }
-    }, [ratingList, categoryList, priceList]);
+    }, [ratingList, categoryList, priceList, posts]);
 
   return (
     <>
