@@ -254,7 +254,7 @@ const FoodPostPage = () => {
             </div>
             <hr className='my-5 border-1'/>
             <div className='flex justify-between items-center'>
-                <button onClick={() => setShowUpload(true)} className='flex justify-center items-center gap-2 max-sm:w-30 text-[20px] text-white bg-black px-8 max-sm:px-2 py-1 rounded-lg cursor-pointer'><FaPlus /> Image</button>
+                {postUser === userAccount && <button onClick={() => setShowUpload(true)} className='flex justify-center items-center gap-2 max-sm:w-30 text-[20px] text-white bg-black px-8 max-sm:px-2 py-1 rounded-lg cursor-pointer'><FaPlus /> Image</button>}
                 {postUser === userAccount && <HiDotsVertical onClick={() => openMenuPost ? setOpenMenuPost(false) : setOpenMenuPost(true)} className={`p-1 text-[24px] ${openMenuPost && !confirmDelete2 ? "bg-[#D9D9D9]" : "bg-none"} rounded-[100%] cursor-pointer hover:bg-[#D9D9D9]`}/>}
             </div>
             {(openMenuPost && !confirmDelete2) &&
