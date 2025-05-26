@@ -345,12 +345,11 @@ const ProfilePage = () => {
                 }
                 <div className='flex justify-between items-center'>
                     <div className='flex items-center text-[24px] gap-2'>
-                        {comment.people.map((person, index) => (
-                        <>
-                        {person.userId === userAccount ? (<BiSolidLike key={index} onClick={() => addLike(comment.id, comment.like)} className='cursor-pointer text-blue-600'/>) : (<BiLike onClick={() => addLike(comment.id, comment.like)} className='cursor-pointer text-blue-600'/>)}  
-                        </>
-                        ))}
-                        {comment.people.length === 0 && (<BiLike onClick={() => addLike(comment.id, comment.like)} className='cursor-pointer text-blue-600'/>)}
+                        {comment.people.some(person => person.userId === userAccount) ? (
+                            <BiSolidLike onClick={() => addLike(comment.id, comment.like)} className='cursor-pointer text-blue-600'/>
+                        ) : (
+                            <BiLike onClick={() => addLike(comment.id, comment.like)} className='cursor-pointer text-blue-600'/>
+                        )}
                         <p>{comment.like} {comment.like > 1 ? "likes" : "like"}</p>
                     </div>
                     {comment.userId === userAccount && <HiDotsVertical onClick={() => setOpenMenuId(openMenuId === comment.id ? null : comment.id)} className={`p-1 text-[24px] rounded-[100%] ${openMenuId === comment.id ? "bg-[#D9D9D9]" : "bg-none"} cursor-pointer hover:bg-[#D9D9D9]`}/>}
