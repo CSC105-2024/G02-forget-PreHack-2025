@@ -153,7 +153,7 @@ const MainPage = () => {
                 <Link to={`/foodPost/${post.id}`} className='w-[100%] lg:w-60 rounded-lg max-sm:h-45 bg-white drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] cursor-pointer'>
                     <img className='flex h-25 lg:h-[200px] w-[100%] object-cover rounded-t-lg hover:brightness-70' src={post.image} />
                     <div className='flex mt-2 p-2 justify-between items-center h-5'>
-                        <h1 className={`text-[22px] max-sm:text-[18px] font-semibold`}>{post.name.length > 16 ? post.name.substring(0,12) + "..." : post.name}</h1>
+                        <h1 className={`text-[22px] max-sm:text-[16px] font-semibold`}>{post.name.length > 16 ? post.name.substring(0,12) + "..." : post.name}</h1>
                         <div className='flex items-center gap-1 bg-[#DE0000] px-1 lg:px-2 rounded-md'>
                             <p className='text-white text-[10px] lg:text-[14px] font-semibold'>{rating.find(r => r.foodPostId === post.id)?.rating ?? "N/A"}</p>
                             <IoIosStar className='text-white text-[10px]'/>
@@ -161,10 +161,10 @@ const MainPage = () => {
                     </div>
                     <div className='grid grid-cols-2'>
                         {(categories[post.id] || []).map((category, index) => (
-                        <p key={index} className='max-sm:text-[12px] text-[#A9A9A9] ml-2'>{category}</p>
+                        <p key={index} className='max-sm:text-[10px] text-[#A9A9A9] ml-2'>{category}</p>
                         ))}
                     </div>
-                    <p className='flex items-end max-sm:h-8 max-sm:text-[12px] ml-2 font-bold'>{post.comment.length} {post.comment.length > 1 ? "reviews" : "review"}</p>
+                    <p className='flex items-end max-sm:text-[10px] ml-2 font-bold'>{post.comment.length} {post.comment.length > 1 ? "reviews" : "review"}</p>
                 </Link>
                 </>
                 ))}
