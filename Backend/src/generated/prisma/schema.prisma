@@ -11,6 +11,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
+  // provider = "mysql"
   url      = env("DATABASE_URL")
   // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
@@ -23,7 +24,6 @@ model User {
   profile  String
   foodPost FoodPost[]
   comment  Comment[]
-  // Like       Like[]
 }
 
 model FoodPost {
@@ -62,16 +62,6 @@ model Comment {
   userId     Int
   user       User     @relation(fields: [userId], references: [id])
 }
-
-// model Like {
-//   id         Int    @id @default(autoincrement())
-//   likeNum    Int    @default(0)
-//   userId     Int
-//   commentId  Int
-//   people     People[]
-//   comment    Comment   @relation(fields: [commentId], references: [id])
-//   user       User   @relation(fields: [userId], references: [id])
-// }
 
 model People {
   id        Int     @id @default(autoincrement())

@@ -162,7 +162,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Kornc\\OneDrive\\เอกสาร\\Frontendprofile\\G02-forget\\G02-forget-PreHack-2025\\Backend\\src\\generated\\prisma",
+      "value": "C:\\Users\\kawin\\Dropbox\\My PC (LAPTOP-59KBJNQV)\\Desktop\\PreHack2025\\G02-forget-PreHack-2025\\Backend\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -176,7 +176,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Kornc\\OneDrive\\เอกสาร\\Frontendprofile\\G02-forget\\G02-forget-PreHack-2025\\Backend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\kawin\\Dropbox\\My PC (LAPTOP-59KBJNQV)\\Desktop\\PreHack2025\\G02-forget-PreHack-2025\\Backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -198,8 +198,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n  // shadowDatabaseUrl = env(\"SHADOW_DATABASE_URL\")\n}\n\nmodel User {\n  id       Int        @id @default(autoincrement())\n  username String\n  email    String     @unique\n  password String\n  profile  String\n  foodPost FoodPost[]\n  comment  Comment[]\n  // Like       Like[]\n}\n\nmodel FoodPost {\n  id          Int        @id @default(autoincrement())\n  name        String\n  category    Category[]\n  price       Int\n  location    String\n  phoneNumber String?\n  resNumber   String?\n  image       String\n  rating      Int\n  comment     Comment[]\n  userId      Int\n  user        User       @relation(fields: [userId], references: [id])\n}\n\nmodel Category {\n  id         Int       @id @default(autoincrement())\n  category   String\n  foodPostId Int\n  foodPost   FoodPost? @relation(fields: [foodPostId], references: [id], onDelete: Cascade)\n}\n\nmodel Comment {\n  id         Int      @id @default(autoincrement())\n  rating     Int\n  content    String\n  like       Int      @default(0)\n  day        Int\n  month      Int\n  year       Int\n  people     People[]\n  foodPostId Int\n  foodPost   FoodPost @relation(fields: [foodPostId], references: [id])\n  userId     Int\n  user       User     @relation(fields: [userId], references: [id])\n}\n\n// model Like {\n//   id         Int    @id @default(autoincrement())\n//   likeNum    Int    @default(0)\n//   userId     Int\n//   commentId  Int\n//   people     People[]\n//   comment    Comment   @relation(fields: [commentId], references: [id])\n//   user       User   @relation(fields: [userId], references: [id])\n// }\n\nmodel People {\n  id        Int     @id @default(autoincrement())\n  userId    Int\n  commentId Int\n  comment   Comment @relation(fields: [commentId], references: [id])\n}\n",
-  "inlineSchemaHash": "41bc2ea87696a982793a7b0cc57311135e1f2efb6769f9b53d003ef34f4e79ec",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  // provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n  // shadowDatabaseUrl = env(\"SHADOW_DATABASE_URL\")\n}\n\nmodel User {\n  id       Int        @id @default(autoincrement())\n  username String\n  email    String     @unique\n  password String\n  profile  String\n  foodPost FoodPost[]\n  comment  Comment[]\n}\n\nmodel FoodPost {\n  id          Int        @id @default(autoincrement())\n  name        String\n  category    Category[]\n  price       Int\n  location    String\n  phoneNumber String?\n  resNumber   String?\n  image       String\n  rating      Int\n  comment     Comment[]\n  userId      Int\n  user        User       @relation(fields: [userId], references: [id])\n}\n\nmodel Category {\n  id         Int       @id @default(autoincrement())\n  category   String\n  foodPostId Int\n  foodPost   FoodPost? @relation(fields: [foodPostId], references: [id], onDelete: Cascade)\n}\n\nmodel Comment {\n  id         Int      @id @default(autoincrement())\n  rating     Int\n  content    String\n  like       Int      @default(0)\n  day        Int\n  month      Int\n  year       Int\n  people     People[]\n  foodPostId Int\n  foodPost   FoodPost @relation(fields: [foodPostId], references: [id])\n  userId     Int\n  user       User     @relation(fields: [userId], references: [id])\n}\n\nmodel People {\n  id        Int     @id @default(autoincrement())\n  userId    Int\n  commentId Int\n  comment   Comment @relation(fields: [commentId], references: [id])\n}\n",
+  "inlineSchemaHash": "744c6515f5bc24daefb5aec53c7b047134b0ab3f9f67983e05f57f81a7c7e889",
   "copyEngine": true
 }
 config.dirname = '/'
