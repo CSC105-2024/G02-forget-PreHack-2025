@@ -211,7 +211,7 @@ const FindPostPage = () => {
     {showFilter && <FilterModal filter={setShowFilter} usingFilter={setUsingFilter}></FilterModal>}
 
     <div className='flex justify-center mt-10'>
-        <div className='grid grid-cols-6 gap-3 w-275'>
+        <div className='grid grid-cols-6 gap-3 w-275 max-sm:grid-cols-3'>
             {ratingList.map((rating, index) => (
                 <div onClick={() => removeFilterRating(index)} key={index} className='flex justify-center gap-3 items-center py-1 px-2 border-1 rounded-xl bg-[#D9D9D9] cursor-pointer'>
                     <ImCross className='text-[12px]'/>

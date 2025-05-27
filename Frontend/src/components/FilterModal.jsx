@@ -78,7 +78,7 @@ const FilterModal = ({filter, usingFilter}) => {
     <>
     <div className='fixed inset-0 z-40 bg-[rgba(0,0,0,0.50)] flex justify-center items-center'>
         <div className='flex justify-center'>
-            <div className='bg-white w-175 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+            <div className='bg-white w-175 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)] max-sm:w-[100%]'>
                 <div className='flex justify-between items-center'>
                     <h1 className='text-[36px] font-bold underline'>Filters</h1>
                     <ImCross onClick={() => filter(false)} className='text-[24px] mr-6 cursor-pointer'/>
@@ -90,7 +90,7 @@ const FilterModal = ({filter, usingFilter}) => {
                         {ratings.map((rating, index) => (
                             <label key={index} className='flex items-center gap-3 cursor-pointer'>
                                 <input type="checkbox" value={rating} checked={ratingList.includes(rating)} onChange={(e) => handleChangeRating(e, e.target.value)} className='accent-[#DE0000] checked:border-0 h-5 w-5 border-2 rounded-sm cursor-pointer'/>
-                                <span className='text-[20px] font-semibold'>{rating}</span>
+                                <span className='text-[20px] font-semibold max-sm:text-[16px]'>{rating}</span>
                             </label>
                         ))}
                     </div>
@@ -100,7 +100,7 @@ const FilterModal = ({filter, usingFilter}) => {
                         {categories.map((food, index) => (
                             <label key={index} className='flex items-center gap-3 cursor-pointer'>
                                 <input type="checkbox" value={food} checked={categoryList.includes(food)} onChange={(e) => handleChangeCategory(e, e.target.value)} className='accent-[#DE0000] checked:border-0 h-5 w-5 border-2 rounded-sm cursor-pointer'/>
-                                <span className='text-[20px] font-semibold'>{food}</span>
+                                <span className='text-[20px] font-semibold max-sm:text-[16px]'>{food}</span>
                             </label>
                         ))}
                     </div>
@@ -110,14 +110,14 @@ const FilterModal = ({filter, usingFilter}) => {
                         {prices.map((price, index) => (
                             <label key={index} className='flex items-center gap-3 cursor-pointer'>
                                 <input type="checkbox" value={price} checked={priceList.includes(price)} onChange={(e) => handleChangePrice(e, e.target.value)} className='accent-[#DE0000] checked:border-0 h-5 w-5 border-2 rounded-sm cursor-pointer'/>
-                                <span className='text-[20px] font-semibold'>{price}</span>
+                                <span className='text-[20px] font-semibold max-sm:text-[16px]'>{price}</span>
                             </label>
                         ))}
                     </div>
                 </div>
                 <div className='flex justify-evenly mt-5'>
-                    <button onClick={isFillAll ? fillAll : clearAll} className='text-[20px] font-semibold bg-black text-white px-25 py-1 rounded-lg cursor-pointer'>{isFillAll ? "Fill All" : "Clear All"}</button>
-                    <button onClick={search} className='text-[20px] font-semibold bg-[#DE0000] text-white px-25 py-1 rounded-lg cursor-pointer'>Search</button>
+                    <button onClick={isFillAll ? fillAll : clearAll} className='text-[20px] font-semibold bg-black text-white px-25 py-1 rounded-lg cursor-pointer max-sm:px-15'>{isFillAll ? "Fill All" : "Clear All"}</button>
+                    <button onClick={search} className='text-[20px] font-semibold bg-[#DE0000] text-white px-25 py-1 rounded-lg cursor-pointer max-sm:px-15'>Search</button>
                 </div>
             </div>
         </div>

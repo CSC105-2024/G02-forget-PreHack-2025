@@ -30,25 +30,25 @@ const PaginationList = ({posts, rating, categories, postsPerPage = 5}) => {
     <>
     {currentPosts.map((post, index) => (
     <Link to={`/foodPost/${post.id}`} key={index} className='flex justify-center mt-10 cursor-pointer'>
-      <div className='flex gap-5 bg-white w-275 p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
+      <div className='flex gap-5 bg-white w-275 max-sm:w-[100%] p-5 rounded-lg drop-shadow-[0_4px_3px_rgba(0,0,0,0.25)]'>
           <div className=''>
-              <img src={post.image} className='w-60 h-50 bg-[#D9D9D9] rounded-lg'/>
+              <img src={post.image} className='w-60 h-50 object-cover bg-[#D9D9D9] rounded-lg'/>
           </div>
           <div className=''>
-              <h1 className='text-[36px] font-semibold'>{post.name}</h1>
+              <h1 className='text-[36px] font-semibold max-sm:text-[24px]'>{post.name.length > 19 ? post.name.substring(0,19) + "..." : post.name}</h1>
               <div className='flex justify-center items-center w-15 gap-1 bg-[#DE0000] px-2 rounded-sm'>
                   <p className='text-white text-[16px] font-semibold'>{rating.find(r => r.foodPostId === post.id)?.rating ?? "N/A"}</p>
                   <IoIosStar className='text-white text-[14px]'/>
               </div>
-              <p className='text-[#A9A9A9] text-[20px]'>{post.comment.length} {post.comment.length > 1 ? "reviews" : "review"}</p>
+              <p className='text-[#A9A9A9] text-[20px] max-sm:text-[16px]'>{post.comment.length} {post.comment.length > 1 ? "reviews" : "review"}</p>
               <div className='flex items-center gap-3'>
                   <FaLocationDot className='text-[20px]'/>
-                  <p className='font-semibold text-[20px]'>{post.location}</p>
+                  <p className='font-semibold text-[20px] max-sm:text-[16px]'>{post.location}</p>
               </div>
-              <div className='flex gap-5 mt-5'>
+              <div className='flex gap-5 mt-5 max-sm:grid max-sm:grid-cols-2'>
                   {(categories[post.id] || []).map((category, index) => (
                       <div key={index} className=''>
-                          <p className='border-2 text-center px-2 py-1 rounded-lg text-[18px] font-semibold'>{category}</p>
+                          <p className='border-2 text-center px-2 py-1 rounded-lg text-[18px] font-semibold max-sm:text-[14px]'>{category}</p>
                       </div>
                   ))}
               </div>
