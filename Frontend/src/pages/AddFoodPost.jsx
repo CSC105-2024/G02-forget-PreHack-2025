@@ -19,7 +19,7 @@ const AddFoodPost = () => {
     const [mobileNumber, setMobileNumber] = useState("");
     const [resNumber, setResNumber] = useState("");
     const categories = [
-    'Fast Food', 'Seafoods', 'Noodles', 'Desserts', 'Burgers', 'Steaks',
+    'Fast food', 'Seafoods', 'Noodles', 'Desserts', 'Burgers', 'Steaks',
     'Dietary Food', 'Buffets', 'Hot Pots', 'Grilled', 'Pizzas', 'Bakeries',
     'Vegetarian food', 'Thai Food', 'Chinese Food', 'Japanese Food', 'Korean Food', 'French Food',
     ];
