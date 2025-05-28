@@ -48,7 +48,7 @@ cd G02-forget-PreHack-2025
 
 ### Tech Stack
 
- - bHono
+ - Hono
  - MySQL
  - Prisma
 
