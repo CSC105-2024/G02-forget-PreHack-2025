@@ -22,7 +22,7 @@ cd G02-forget-PreHack-2025
 - React Router DOM  
 - Tailwind CSS  
 
-### 🚀 Getting Started - React Client
+### Getting Started - React Client
 
 1. Navigate to the frontend directory:
 
